@@ -31,5 +31,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         app('rinvex.attributes.entities')->push(App\Models\User::class);
+        
+        \Route::prefix('api')
+        ->middleware('api')
+        ->as('api.')
+        ->namespace($this->app->getNamespace().'Http\Controllers\API')
+        ->group(base_path('routes/api.php'));
     }
 }

@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -100,4 +100,22 @@ class OrderComment extends Model
     ];
 
     
+
+
+
+
+
+
+
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function Order()
+    {
+        return $this->belongsTo(Order::class);
+    }
+
+
 }

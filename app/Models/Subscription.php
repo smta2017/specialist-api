@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -98,5 +98,14 @@ class Subscription extends Model
         'plan_id' => 'required'
     ];
 
-    
+    public function Plan()
+    {
+        return $this->belongsTo(Plan::class);
+    }
+
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

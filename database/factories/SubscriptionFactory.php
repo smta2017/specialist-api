@@ -24,8 +24,8 @@ class SubscriptionFactory extends Factory
         return [
             'user_id' => $this->faker->randomDigitNotNull,
         'plan_id' => $this->faker->randomDigitNotNull,
-        'start_at' => $this->faker->word,
-        'end_at' => $this->faker->word,
+        'start_at' => $this->faker->date('Y-m-d'),
+        'end_at' => $this->faker->date('Y-m-d'),
         'order_count' => $this->faker->randomDigitNotNull,
         'created_at' => $this->faker->date('Y-m-d H:i:s'),
         'updated_at' => $this->faker->date('Y-m-d H:i:s')

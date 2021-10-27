@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -82,5 +82,9 @@ class Plan extends Model
         'request_counts' => 'required numeric'
     ];
 
-  
+    public function Subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
 }

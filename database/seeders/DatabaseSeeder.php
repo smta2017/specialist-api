@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\Plan::factory(10)->create();
         \App\Models\SpecialistArea::factory(10)->create();
         \App\Models\SpecialistType::factory(10)->create();
-        \App\Models\SpecialistPlan::factory(10)->create();
+        \App\Models\Subscription::factory(10)->create();
         \App\Models\CustomerAddress::factory(10)->create();
         \App\Models\Order::factory(10)->create();
         \App\Models\OrderComment::factory(10)->create();

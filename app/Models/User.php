@@ -56,6 +56,11 @@ class User extends Authenticatable implements Auditable, MustVerifyEmail, HasMed
         'email_verified_at' => 'datetime',
     ];
 
+    /*
+    |--------------------------------------------------------------------------
+    | FUNCTIONS
+    |--------------------------------------------------------------------------
+    */
 
     public function sendEmailVerificationNotification()
     {
@@ -67,6 +72,27 @@ class User extends Authenticatable implements Auditable, MustVerifyEmail, HasMed
         $this->sendOTP($this->phone);
     }
 
+    public function SubValid()
+    {
+        return  $this->whereHas('Subscriptions', function ($q) {
+            $q->where('start_at', '<', date('Y-m-d'))
+                ->where('end_at', '>', date('Y-m-d'))
+                ->where('order_count', '>=', $this->OrderComments->count());
+        })->count();
+    }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | SCOPES
+    |--------------------------------------------------------------------------
+    */
+    /**
+     * Scope a query to only include none canceled orders.
+     *
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
     public function scopeAdmin($query)
     {
         return $query->where('is_admin', 1);
@@ -87,4 +113,47 @@ class User extends Authenticatable implements Auditable, MustVerifyEmail, HasMed
         return $query->where('user_type', 'customer');
     }
 
+    public function scopeHasSub($query)
+    {
+        return $query
+            ->whereHas('Subscriptions', function ($q) {
+                $q->where('start_at', '<', date('Y-m-d'))
+                    ->where('end_at', '>', date('Y-m-d'))
+                    ->where('order_count', '>=', $this->OrderComments->count());
+            });
+    }
+
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | RELATIONS
+    |--------------------------------------------------------------------------
+    */
+
+    public function Subscriptions()
+    {
+        return $this->hasMany(Subscription::class);
+    }
+
+
+
+    public function OrderComments()
+    {
+        return $this->hasMany(OrderComment::class);
+    }
+
+    /*
+    |--------------------------------------------------------------------------
+    | ACCESSORS
+    |--------------------------------------------------------------------------
+    */
+
+    /*
+    |--------------------------------------------------------------------------
+    | MUTATORS
+    |--------------------------------------------------------------------------
+    */
 }

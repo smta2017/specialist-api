@@ -86,3 +86,9 @@ Route::resource('plans', App\Http\Controllers\API\PlanAPIController::class);
 
 
 Route::resource('specialist_areas', App\Http\Controllers\API\SpecialistAreaAPIController::class);
+
+
+Route::resource('specialist_types', App\Http\Controllers\API\SpecialistTypeAPIController::class);
+
+
+Route::resource('specialist_plans', App\Http\Controllers\API\SpecialistPlanAPIController::class);

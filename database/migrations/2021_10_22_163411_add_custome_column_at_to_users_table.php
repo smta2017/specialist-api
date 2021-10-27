@@ -37,8 +37,9 @@ class AddCustomeColumnAtToUsersTable extends Migration
             $table->dropColumn('phone_verified_at');
             $table->dropColumn('is_active');
             $table->dropColumn('is_admin');
-            $table->dropColumn('phone_number');
+            $table->dropColumn('phone');
             $table->dropColumn('gender');
+            $table->dropColumn('user_type');
             $table->dropColumn('dop');
             $table->dropColumn('sms_notification');
             $table->dropColumn('lang');

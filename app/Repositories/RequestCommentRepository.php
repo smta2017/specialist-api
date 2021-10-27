@@ -22,7 +22,6 @@ class RequestCommentRepository extends BaseRepository
         'body',
         'offer',
         'delivery_date',
-        'user_id'
     ];
 
     /**

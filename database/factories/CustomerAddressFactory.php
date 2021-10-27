@@ -25,7 +25,7 @@ class CustomerAddressFactory extends Factory
             'user_id' => $this->faker->randomDigitNotNull,
         'area_id' => $this->faker->randomDigitNotNull,
         'street' => $this->faker->word,
-        'is_default' => $this->faker->word,
+        'is_default' => $this->faker->boolean(),
         'floor_no' => $this->faker->word,
         'build_no' => $this->faker->word,
         'notes' => $this->faker->word,

@@ -40,12 +40,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *          format="date"
  *      ),
  *      @SWG\Property(
- *          property="user_id",
- *          description="user_id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
  *          property="created_at",
  *          description="created_at",
  *          type="string",
@@ -77,8 +71,7 @@ class RequestComment extends Model
         'user_id',
         'body',
         'offer',
-        'delivery_date',
-        'user_id'
+        'delivery_date'
     ];
 
     /**
@@ -91,8 +84,7 @@ class RequestComment extends Model
         'user_id' => 'integer',
         'body' => 'string',
         'offer' => 'float',
-        'delivery_date' => 'date',
-        'user_id' => 'integer'
+        'delivery_date' => 'date'
     ];
 
     /**

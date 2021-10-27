@@ -26,8 +26,7 @@ class RequestCommentFactory extends Factory
         'user_id' => $this->faker->randomDigitNotNull,
         'body' => $this->faker->word,
         'offer' => $this->faker->randomDigitNotNull,
-        'delivery_date' => $this->faker->word,
-        'user_id' => $this->faker->randomDigitNotNull,
+        'delivery_date' => $this->faker->date('Y-m-d'),
         'created_at' => $this->faker->date('Y-m-d H:i:s'),
         'updated_at' => $this->faker->date('Y-m-d H:i:s')
         ];

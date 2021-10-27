@@ -22,8 +22,8 @@ class SpecialistAreaFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->word,
-        'area_id' => $this->faker->word,
+            'user_id' => $this->faker->randomDigitNotNull,
+        'area_id' => $this->faker->randomDigitNotNull,
         'created_at' => $this->faker->date('Y-m-d H:i:s'),
         'updated_at' => $this->faker->date('Y-m-d H:i:s')
         ];

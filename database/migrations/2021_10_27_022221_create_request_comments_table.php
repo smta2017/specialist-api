@@ -21,7 +21,6 @@ class CreateRequestCommentsTable extends Migration
             $table->string('body');
             $table->float('offer');
             $table->date('delivery_date');
-            $table->integer('user_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

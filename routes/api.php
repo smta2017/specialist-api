@@ -77,3 +77,12 @@ Route::group(['prefix' => 'en'], function () {
 
     });
 });
+
+
+Route::resource('special_types', App\Http\Controllers\API\SpecialTypesAPIController::class);
+
+
+Route::resource('plans', App\Http\Controllers\API\PlanAPIController::class);
+
+
+Route::resource('specialist_areas', App\Http\Controllers\API\SpecialistAreaAPIController::class);

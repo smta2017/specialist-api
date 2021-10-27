@@ -18,11 +18,11 @@ class CreateCustomerAddressesTable extends Migration
             $table->id('id');
             $table->integer('user_id');
             $table->integer('area_id');
-            $table->string('street');
-            $table->boolean('is_default');
-            $table->string('floor_no');
-            $table->string('build_no');
-            $table->string('notes');
+            $table->string('street')->nullable();
+            $table->boolean('is_default')->nullable();
+            $table->string('floor_no')->nullable();
+            $table->string('build_no')->nullable();
+            $table->string('notes')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -8,22 +8,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @SWG\Definition(
- *      definition="Plan",
- *      required={"name", "price", "request_counts"},
+ *      definition="Order",
+ *      required={"title", "user_id"},
  *      @SWG\Property(
- *          property="name",
- *          description="name",
+ *          property="title",
+ *          description="title",
  *          type="string"
  *      ),
  *      @SWG\Property(
- *          property="price",
- *          description="price",
- *          type="number",
- *          format="number"
+ *          property="body",
+ *          description="body",
+ *          type="string"
  *      ),
  *      @SWG\Property(
- *          property="request_counts",
- *          description="request_counts",
+ *          property="user_id",
+ *          description="user_id",
  *          type="integer",
  *          format="int32"
  *      ),
@@ -41,13 +40,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *      )
  * )
  */
-class Plan extends Model
+class Order extends Model
 {
     use SoftDeletes;
 
     use HasFactory;
 
-    public $table = 'plans';
+    public $table = 'orders';
     
 
     protected $dates = ['deleted_at'];
@@ -55,9 +54,9 @@ class Plan extends Model
 
 
     public $fillable = [
-        'name',
-        'price',
-        'request_counts'
+        'title',
+        'body',
+        'user_id'
     ];
 
     /**
@@ -66,9 +65,9 @@ class Plan extends Model
      * @var array
      */
     protected $casts = [
-        'name' => 'string',
-        'price' => 'float',
-        'request_counts' => 'integer'
+        'title' => 'string',
+        'body' => 'string',
+        'user_id' => 'integer'
     ];
 
     /**
@@ -77,10 +76,9 @@ class Plan extends Model
      * @var array
      */
     public static $rules = [
-        'name' => 'required',
-        'price' => 'required',
-        'request_counts' => 'required numeric'
+        'title' => 'required',
+        'user_id' => 'required'
     ];
 
-  
+    
 }

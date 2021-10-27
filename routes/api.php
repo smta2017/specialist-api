@@ -78,6 +78,7 @@ Route::group(['prefix' => 'en'], function () {
     });
 });
 
+Route::group(['prefix' => 'v1'], function () {
 
 Route::resource('special_types', App\Http\Controllers\API\SpecialTypesAPIController::class);
 
@@ -101,3 +102,6 @@ Route::resource('requests', App\Http\Controllers\API\RequestAPIController::class
 
 
 Route::resource('request_comments', App\Http\Controllers\API\RequestCommentAPIController::class);
+});
+
+Route::resource('orders', App\Http\Controllers\API\OrderAPIController::class);

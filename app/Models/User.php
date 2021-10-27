@@ -77,8 +77,14 @@ class User extends Authenticatable implements Auditable, MustVerifyEmail, HasMed
         return $query->where('is_active', 1);
     }
 
-    public function scopeType($query, $type)
+    public function scopeSpecialist($query)
     {
-        return $query->where('user_type', $type);
+        return $query->where('user_type', 'specialist');
     }
+
+    public function scopeCustomer($query)
+    {
+        return $query->where('user_type', 'customer');
+    }
+
 }

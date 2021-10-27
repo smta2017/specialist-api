@@ -98,3 +98,6 @@ Route::resource('customer_addresses', App\Http\Controllers\API\CustomerAddressAP
 
 
 Route::resource('requests', App\Http\Controllers\API\RequestAPIController::class);
+
+
+Route::resource('request_comments', App\Http\Controllers\API\RequestCommentAPIController::class);

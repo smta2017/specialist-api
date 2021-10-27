@@ -92,18 +92,13 @@ Route::resource('specialist_areas', App\Http\Controllers\API\SpecialistAreaAPICo
 Route::resource('specialistTypes', App\Http\Controllers\API\SpecialistTypeAPIController::class);
 
 
-Route::resource('specialist_plans', App\Http\Controllers\API\SpecialistPlanAPIController::class);
-
-
 Route::resource('customer_addresses', App\Http\Controllers\API\CustomerAddressAPIController::class);
-
-
 
 
 Route::resource('orders', App\Http\Controllers\API\OrderAPIController::class);
 
 
 Route::resource('orderComments', App\Http\Controllers\API\OrderCommentAPIController::class);
+Route::resource('subscriptions', App\Http\Controllers\API\SubscriptionAPIController::class);
 });
 
-Route::resource('subscriptions', App\Http\Controllers\API\SubscriptionAPIController::class);

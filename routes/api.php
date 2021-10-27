@@ -105,3 +105,5 @@ Route::resource('orders', App\Http\Controllers\API\OrderAPIController::class);
 
 Route::resource('orderComments', App\Http\Controllers\API\OrderCommentAPIController::class);
 });
+
+Route::resource('subscriptions', App\Http\Controllers\API\SubscriptionAPIController::class);

@@ -80,7 +80,7 @@ Route::group(['prefix' => 'en'], function () {
 
 Route::group(['prefix' => 'v1'], function () {
 
-Route::resource('special_types', App\Http\Controllers\API\SpecialTypesAPIController::class);
+Route::resource('specialTypes', App\Http\Controllers\API\SpecialTypesAPIController::class);
 
 
 Route::resource('plans', App\Http\Controllers\API\PlanAPIController::class);
@@ -89,7 +89,7 @@ Route::resource('plans', App\Http\Controllers\API\PlanAPIController::class);
 Route::resource('specialist_areas', App\Http\Controllers\API\SpecialistAreaAPIController::class);
 
 
-Route::resource('specialist_types', App\Http\Controllers\API\SpecialistTypeAPIController::class);
+Route::resource('specialistTypes', App\Http\Controllers\API\SpecialistTypeAPIController::class);
 
 
 Route::resource('specialist_plans', App\Http\Controllers\API\SpecialistPlanAPIController::class);
@@ -98,9 +98,10 @@ Route::resource('specialist_plans', App\Http\Controllers\API\SpecialistPlanAPICo
 Route::resource('customer_addresses', App\Http\Controllers\API\CustomerAddressAPIController::class);
 
 
-});
+
 
 Route::resource('orders', App\Http\Controllers\API\OrderAPIController::class);
 
 
-Route::resource('order_comments', App\Http\Controllers\API\OrderCommentAPIController::class);
+Route::resource('orderComments', App\Http\Controllers\API\OrderCommentAPIController::class);
+});

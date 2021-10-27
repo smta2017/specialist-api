@@ -26,7 +26,7 @@ class OrderCommentFactory extends Factory
         'user_id' => $this->faker->randomDigitNotNull,
         'body' => $this->faker->text,
         'offer' => $this->faker->randomDigitNotNull,
-        'delivery_date' => $this->faker->word,
+        'delivery_date' => $this->faker->date('Y-m-d'),
         'created_at' => $this->faker->date('Y-m-d H:i:s'),
         'updated_at' => $this->faker->date('Y-m-d H:i:s')
         ];

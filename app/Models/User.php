@@ -72,7 +72,7 @@ class User extends Authenticatable implements Auditable, MustVerifyEmail, HasMed
         $this->sendOTP($this->phone);
     }
 
-    public function SubValid()
+    public function isValidSub()
     {
         return  $this->whereHas('Subscriptions', function ($q) {
             $q->where('start_at', '<', date('Y-m-d'))

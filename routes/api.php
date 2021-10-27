@@ -98,10 +98,6 @@ Route::resource('specialist_plans', App\Http\Controllers\API\SpecialistPlanAPICo
 Route::resource('customer_addresses', App\Http\Controllers\API\CustomerAddressAPIController::class);
 
 
-Route::resource('requests', App\Http\Controllers\API\RequestAPIController::class);
-
-
-Route::resource('request_comments', App\Http\Controllers\API\RequestCommentAPIController::class);
 });
 
 Route::resource('orders', App\Http\Controllers\API\OrderAPIController::class);

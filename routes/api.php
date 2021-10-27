@@ -92,3 +92,9 @@ Route::resource('specialist_types', App\Http\Controllers\API\SpecialistTypeAPICo
 
 
 Route::resource('specialist_plans', App\Http\Controllers\API\SpecialistPlanAPIController::class);
+
+
+Route::resource('customer_addresses', App\Http\Controllers\API\CustomerAddressAPIController::class);
+
+
+Route::resource('requests', App\Http\Controllers\API\RequestAPIController::class);

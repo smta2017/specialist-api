@@ -101,3 +101,6 @@ Route::resource('customer_addresses', App\Http\Controllers\API\CustomerAddressAP
 });
 
 Route::resource('orders', App\Http\Controllers\API\OrderAPIController::class);
+
+
+Route::resource('order_comments', App\Http\Controllers\API\OrderCommentAPIController::class);

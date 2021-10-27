@@ -1,0 +1,232 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Laravel Generator APIs",
+        "version": "1.0.0"
+    },
+    "basePath": "/api/v1",
+    "paths": {
+        "/specialTypes": {
+            "get": {
+                "tags": [
+                    "SpecialTypes"
+                ],
+                "summary": "Get a listing of the SpecialTypes.",
+                "description": "Get all SpecialTypes",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SpecialTypes"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "SpecialTypes"
+                ],
+                "summary": "Store a newly created SpecialTypes in storage",
+                "description": "Store SpecialTypes",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "SpecialTypes that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/SpecialTypes"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/SpecialTypes"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/specialTypes/{id}": {
+            "get": {
+                "tags": [
+                    "SpecialTypes"
+                ],
+                "summary": "Display the specified SpecialTypes",
+                "description": "Get SpecialTypes",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of SpecialTypes",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/SpecialTypes"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "SpecialTypes"
+                ],
+                "summary": "Update the specified SpecialTypes in storage",
+                "description": "Update SpecialTypes",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of SpecialTypes",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "SpecialTypes that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/SpecialTypes"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/SpecialTypes"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "SpecialTypes"
+                ],
+                "summary": "Remove the specified SpecialTypes from storage",
+                "description": "Delete SpecialTypes",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of SpecialTypes",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "SpecialTypes": {
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "description": "name",
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "created_at",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updated_at": {
+                    "description": "updated_at",
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        }
+    }
+}

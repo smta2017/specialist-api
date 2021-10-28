@@ -23,30 +23,47 @@ class ForgotPasswordController extends Controller
         return $this->auth = $auth;
     }
 
-    /**
-     * send reset password email.
+   /**
      *
-     * @return \Illuminate\Http\JsonResponse
-     
-     * @OA\post(
-     *   path="/auth/forgot-password",
-     *   tags={"system"},
-     *   summary="Forget password",
-     *  
-     *   @OA\Response(
-     *     response=200,
-     *     description="", @OA\JsonContent()
-     *   ),
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     *  * @SWG\post(
+     *      path="/auth/forgot-password",
+     *      summary="send user reset password email",
+     *      tags={"Auth"},
+     *      description="the system users login",
+     *      produces={"application/json"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="string"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      ),
      * 
-     * 
-     * @OA\RequestBody(
-     *    @OA\MediaType(
-     *        mediaType="application/json",
-     *        @OA\Schema(
-     *             example= {"email":"name@email.com"}
-     *                 )
-     *             )
-     *         ),
+     *  @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          description="CustomerAddress that should be updated",
+     *          required=false,
+     *          @SWG\Schema(example= 
+     *               {
+     *                "email":"esteban55@example.com",
+     *               }
+     *          )
+     *      ),
      * 
      * )
      */

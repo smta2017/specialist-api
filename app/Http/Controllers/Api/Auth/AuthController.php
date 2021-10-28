@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Helpers\ApiResponse;
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\Auth\RegisterRequest;
 use App\Repositories\Contracts\User\IAuth;
 use Illuminate\Http\Request;
 use Auth;
 
-class AuthController extends Controller
+class AuthController extends AppBaseController
 {
 
     /**
@@ -29,55 +29,46 @@ class AuthController extends Controller
 
 
     /**
-     * Get a TOKEN via given credentials.
+     * @param int $id
+     * @return Response
      *
-     * @return \Illuminate\Http\JsonResponse
-     
-     * @OA\post(
-     *   path="/auth/login",
-     *   tags={"system"},
-     *   summary="Login Customer",
-     *  
-     *   @OA\Response(
-     *     response=200,
-     *     description="", @OA\JsonContent()
-     *   ),
-     *
-     *
-     *   @OA\Parameter(
-     *name="email",
-     *     in="query",
-     *     required=true,
-     *         @OA\Schema(
-     *           type="string",
-     *           maxLength=100,
+     * @SWG\post(
+     *      path="/auth/login",
+     *      summary="User Login",
+     *      tags={"Auth"},
+     *      description="the system users login",
+     *      produces={"application/json"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="string"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      ),
      * 
-     *         )
-     *     ),
-     *  
-     *   @OA\Parameter(
-     *name="password",
-     *     in="query",
-     *     required=true,
-     *         @OA\Schema(
-     *           type="string",
-     *           maxLength=100,
-     *         ),
-     *      style="form"
-     *     ),
-     *  
-     * 
-     *    @OA\Parameter(
-     *name="firebase_token",
-     *     in="query",
-     *     required=false,
-     *         @OA\Schema(
-     *           type="string",
-     *         ),
-     *      style="form"
-     *     ),
-     *  
-     * 
+     *  @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          description="CustomerAddress that should be updated",
+     *          required=false,
+     *          @SWG\Schema(example= {
+     *                                "email":"santina.veum@example.net",
+     *                                "password":"password"
+     *                              }
+     *          )
+     *      ),
      * 
      * )
      */
@@ -89,131 +80,100 @@ class AuthController extends Controller
     }
 
 
+
+
     /**
-     * Store a newly created resource in storage. 
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     *
-     * @OA\post(
-     *   path="/auth/register",
-     *   tags={"system"},
-     *   summary="Register Customer",
-     *
-     *    @OA\Response(
-     *     response=200,
-     *     description="", @OA\JsonContent()
-     *   ),
-     *
+     *  * @SWG\post(
+     *      path="/auth/register",
+     *      summary="User registration",
+     *      tags={"Auth"},
+     *      description="the system users login",
+     *      produces={"application/json"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="string"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      ),
      * 
-     *   @OA\Parameter(
-     *name="name",
-     *     in="query",
-     *     required=true,
-     *         @OA\Schema(
-     *           type="string",
-     *           maxLength=100,
-     * 
-     *         )
-     *     ),
-     * 
-     *   @OA\Parameter(
-     *name="email",
-     *     in="query",
-     *     required=true,
-     *         @OA\Schema(
-     *           type="string",
-     *           maxLength=100,
-     * 
-     *         )
-     *     ),
-     * 
-     * 
-     * 
-     *     @OA\Parameter(
-     *name="country_code",
-     *     in="query",
-     *     required=true,
-     *         @OA\Schema(
-     *           type="string",
-     *           maxLength=100,
-     * 
-     *         )
-     *     ),
-     * 
-     * 
-     *   @OA\Parameter(
-     *name="phone",
-     *     in="query",
-     *     required=true,
-     *         @OA\Schema(
-     *           type="string",
-     *           maxLength=100,
-     * 
-     *         )
-     *     ),
-     *  
-     *   @OA\Parameter(
-     *name="password",
-     *     in="query",
-     *     required=true,
-     *         @OA\Schema(
-     *           type="string",
-     *           maxLength=100,
-     *         ),
-     *      style="form"
-     *     ),
-     *  
-     * 
-     *   @OA\Parameter(
-     *name="firebase_token",
-     *     in="query",
-     *     required=false,
-     *         @OA\Schema(
-     *           type="string",
-     *           maxLength=200,
-     *         ),
-     *      style="form"
-     *     ),
-     *  
-     * 
-     *  
-     *   @OA\Parameter(
-     *name="user_type",
-     *     in="query",
-     *     required=true,
-     *         @OA\Schema(
-     *           enum={"customer", "specialist"}
-     *         )
-     *     ),
-     * 
+     *  @SWG\Parameter(
+     *          name="body",
+     *          in="body",
+     *          description="CustomerAddress that should be updated",
+     *          required=false,
+     *          @SWG\Schema(example= 
+     *               {
+     *                "name":"sameh",
+     *                "email":"sameh@test.com",
+     *                "phone":"01274200778",
+     *                "password":"password",
+     *                "firebase_token":"2986tGfr56hb5tg6r6f6",
+     *                "user_type":"specialist",
+     *                "areas":{2,5,1},
+     *                "specials":{3,1,2},
+     *               }
+     *          )
+     *      ),
      * 
      * )
      */
 
+
     public function register(RegisterRequest $request)
     {
-        return $this->auth->registerUser($request);
+        $user = $this->auth->registerUser($request);
+        return  $this->sendResponse($user, "success");
     }
 
 
 
+   
     /**
-     * Get the authenticated User.
      *
-     * @return \Illuminate\Http\JsonResponse
-     * @OA\post(
-     *   path="/auth/me",
-     *   tags={"system"},
-     *   summary="Authenticated User",
-     *   security={{ "apiAuth": {} }}, 
-     *
-     *    @OA\Response(
-     *     response=200,
-     *     description="", @OA\JsonContent()
-     *   ),
-     * 
-     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     *  * @SWG\post(
+     *      path="/auth/me",
+     *      summary="User registration",
+     *      tags={"Auth"},
+     *      description="get user info",
+     *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="string"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      ),
      * )
      */
 

@@ -8,6 +8,7 @@ use App\Models\Plan;
 use App\Repositories\PlanRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use App\Http\Resources\Subscription\SubscriptionResource;
 use Response;
 
 /**
@@ -278,4 +279,45 @@ class PlanAPIController extends AppBaseController
 
         return $this->sendSuccess('Plan deleted successfully');
     }
+
+
+    /**
+     * @param int $id
+     * @return Response
+     *
+     * @SWG\get(
+     *      path="/plan/specialist",
+     *      summary="get user subscripe",
+     *      tags={"Plan"},
+     *      description="Get Current user Plan",
+     *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="string"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
+     */
+    public function subscripe()
+    {
+        $subscriptions= auth()->user()['subscriptions'];
+        return $this->sendResponse(SubscriptionResource::collection($subscriptions), 'Subscripe retrieved successfully');
+
+    }
+
 }

@@ -17,7 +17,7 @@ class CreateSpecialistTypesTable extends Migration
         Schema::create('specialist_types', function (Blueprint $table) {
             $table->id('id');
             $table->integer('user_id');
-            $table->integer('special_types');
+            $table->integer('special_type_id');
             $table->timestamps();
             $table->softDeletes();
         });

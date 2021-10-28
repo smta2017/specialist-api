@@ -14,25 +14,42 @@ use Carbon\Carbon;
 
 class SocialAuthController extends Controller
 {
-    /**
-     * get the url to login with facebook.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     
-     * @OA\get(
-     *   path="/auth/facebook/login",
-     *   tags={"system"},
-     *   summary="Facebook login",
-     *  
-     *   @OA\Response(
-     *     response=200,
-     *     description="", @OA\JsonContent()
-     *   ),
     
-     * 
+
+
+      /**
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     *  * @SWG\get(
+     *      path="/auth/facebook/login",
+     *      summary="login using facebook",
+     *      tags={"Auth"},
+     *      description="the system users login",
+     *      produces={"application/json"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="string"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      ),
      * 
      * )
      */
+
     public function facebookLogin()
     {
         $url = Socialite::driver('facebook')->stateless()->redirect()->getTargetUrl();
@@ -65,16 +82,32 @@ class SocialAuthController extends Controller
      * get the url to login with google.
      *
      * @return \Illuminate\Http\JsonResponse
-     
-     * @OA\get(
-     *   path="/auth/google/login",
-     *   tags={"system"},
-     *   summary="Facebook login",
-     *  
-     *   @OA\Response(
-     *     response=200,
-     *     description="", @OA\JsonContent()
-     *   ),
+     * 
+     *   @SWG\get(
+     *      path="/auth/google/login",
+     *      summary="login using google",
+     *      tags={"Auth"},
+     *      description="the system users login",
+     *      produces={"application/json"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="string"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      ),
      * 
      * )
      */

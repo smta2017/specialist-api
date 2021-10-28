@@ -18,7 +18,7 @@ class SpecialistTypeRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'user_id',
-        'special_types'
+        'special_type_id'
     ];
 
     /**

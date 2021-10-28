@@ -8,6 +8,7 @@ use App\Models\OrderComment;
 use App\Repositories\OrderCommentRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use App\Http\Resources\OrderComment\OrderCommentResource;
 use Response;
 
 /**
@@ -35,6 +36,7 @@ class OrderCommentAPIController extends AppBaseController
      *      tags={"OrderComment"},
      *      description="Get all OrderComments",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Response(
      *          response=200,
      *          description="successful operation",
@@ -60,12 +62,12 @@ class OrderCommentAPIController extends AppBaseController
     public function index(Request $request)
     {
         $orderComments = $this->orderCommentRepository->all(
-            $request->except(['skip', 'limit']),
+            auth()->check() ? ['user_id' => auth()->user()->id] : [],
             $request->get('skip'),
             $request->get('limit')
         );
 
-        return $this->sendResponse($orderComments->toArray(), 'Order Comments retrieved successfully');
+        return $this->sendResponse(OrderCommentResource::collection($orderComments), 'Order Comments retrieved successfully');
     }
 
     /**
@@ -78,6 +80,7 @@ class OrderCommentAPIController extends AppBaseController
      *      tags={"OrderComment"},
      *      description="Store OrderComment",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
@@ -112,7 +115,7 @@ class OrderCommentAPIController extends AppBaseController
 
         $orderComment = $this->orderCommentRepository->create($input);
 
-        return $this->sendResponse($orderComment->toArray(), 'Order Comment saved successfully');
+        return $this->sendResponse(new OrderCommentResource($orderComment), 'Order Comment saved successfully');
     }
 
     /**
@@ -125,6 +128,7 @@ class OrderCommentAPIController extends AppBaseController
      *      tags={"OrderComment"},
      *      description="Get OrderComment",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of OrderComment",
@@ -162,7 +166,7 @@ class OrderCommentAPIController extends AppBaseController
             return $this->sendError('Order Comment not found');
         }
 
-        return $this->sendResponse($orderComment->toArray(), 'Order Comment retrieved successfully');
+        return $this->sendResponse(new OrderCommentResource($orderComment), 'Order Comment retrieved successfully');
     }
 
     /**
@@ -176,6 +180,7 @@ class OrderCommentAPIController extends AppBaseController
      *      tags={"OrderComment"},
      *      description="Update OrderComment",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of OrderComment",
@@ -224,7 +229,7 @@ class OrderCommentAPIController extends AppBaseController
 
         $orderComment = $this->orderCommentRepository->update($input, $id);
 
-        return $this->sendResponse($orderComment->toArray(), 'OrderComment updated successfully');
+        return $this->sendResponse(new OrderCommentResource($orderComment), 'OrderComment updated successfully');
     }
 
     /**
@@ -237,6 +242,7 @@ class OrderCommentAPIController extends AppBaseController
      *      tags={"OrderComment"},
      *      description="Delete OrderComment",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of OrderComment",

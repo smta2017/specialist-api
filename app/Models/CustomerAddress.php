@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -10,12 +10,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  * @SWG\Definition(
  *      definition="CustomerAddress",
  *      required={"user_id", "area_id"},
- *      @SWG\Property(
- *          property="user_id",
- *          description="user_id",
- *          type="integer",
- *          format="int32"
- *      ),
  *      @SWG\Property(
  *          property="area_id",
  *          description="area_id",
@@ -30,7 +24,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *      @SWG\Property(
  *          property="is_default",
  *          description="is_default",
- *          type="boolean"
+ *          type="boolean",
+ *          default="false"
  *      ),
  *      @SWG\Property(
  *          property="floor_no",
@@ -46,18 +41,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *          property="notes",
  *          description="notes",
  *          type="string"
- *      ),
- *      @SWG\Property(
- *          property="created_at",
- *          description="created_at",
- *          type="string",
- *          format="date-time"
- *      ),
- *      @SWG\Property(
- *          property="updated_at",
- *          description="updated_at",
- *          type="string",
- *          format="date-time"
  *      )
  * )
  */
@@ -105,9 +88,25 @@ class CustomerAddress extends Model
      * @var array
      */
     public static $rules = [
-        'user_id' => 'required numeric',
-        'area_id' => 'required numeric'
+        'area_id' => 'required|numeric',
     ];
 
+        
+    public function Orders()
+    {
+        return $this->hasMany(Order::class);
+    }
     
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function Area()
+    {
+        return $this->belongsTo(Area::class);
+    }
+
+
+
 }

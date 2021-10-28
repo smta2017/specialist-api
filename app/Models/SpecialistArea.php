@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -57,9 +57,19 @@ class SpecialistArea extends Model
      * @var array
      */
     public static $rules = [
-        'user_id' => 'required numeric',
-        'area_id' => 'required numeric'
+        'user_id' => 'required|numeric',
+        'area_id' => 'required|numeric'
     ];
+
+    public function SpecialistAreas()
+    {
+        return $this->hasMany(SpecialistArea::class);
+    }
+
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
 
     
 }

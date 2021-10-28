@@ -27,17 +27,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="created_at",
- *          description="created_at",
- *          type="string",
- *          format="date-time"
+ *          property="customer_address_id",
+ *          description="customer_address_id",
+ *          type="integer",
+ *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="updated_at",
- *          description="updated_at",
+ *          property="status_id",
+ *          description="status_id",
  *          type="string",
- *          format="date-time"
- *      )
+ *          default="new"
+ *      ),
+ *      @SWG\Property(
+ *          property="special_type_id",
+ *          description="special_type_id",
+ *          type="string",
+ *          default="new"
+ *      ),
+
  * )
  */
 class Order extends Model
@@ -56,7 +63,10 @@ class Order extends Model
     public $fillable = [
         'title',
         'body',
-        'user_id'
+        'user_id',
+        'status_id',
+        'customer_address_id',
+        'special_type_id'
     ];
 
     /**
@@ -67,7 +77,10 @@ class Order extends Model
     protected $casts = [
         'title' => 'string',
         'body' => 'string',
-        'user_id' => 'integer'
+        'user_id' => 'integer',
+        'status_id' => 'string',
+        'customer_address_id' => 'integer',
+        'special_type_id' => 'integer'
     ];
 
     /**
@@ -77,13 +90,28 @@ class Order extends Model
      */
     public static $rules = [
         'title' => 'required',
-        'user_id' => 'required'
+        'customer_address_id' => 'required',
+        'special_type_id' => 'required'
     ];
 
     
 
 
 
+    public function CustomerAddress()
+    {
+        return $this->belongsTo(CustomerAddress::class);
+    }
+
+    public function SpecialistType()
+    {
+        return $this->belongsTo(SpecialistType::class);
+    }
+   
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 
     

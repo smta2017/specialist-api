@@ -3,6 +3,8 @@
 namespace App\Repositories\Eloquent\User;
 
 use App\Helpers\ApiResponse;
+use App\Models\SpecialistArea;
+use App\Models\SpecialistType;
 use App\Repositories\Eloquent\BaseRepository;
 use App\Repositories\Contracts\User\IAuth;
 use Illuminate\Contracts\Foundation\Application;
@@ -44,6 +46,7 @@ class AuthRepository extends BaseRepository implements IAuth
         return response()->json([
             'access_token' => $token,
             'token_type' => 'Bearer',
+            'full_token' => 'Bearer ' . $token,
         ]);
     }
 
@@ -57,7 +60,7 @@ class AuthRepository extends BaseRepository implements IAuth
         if (!auth()->attempt($request)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-        return  ApiResponse::format("success9", $this->respondWithToken(auth()->user()->createToken('')->plainTextToken));
+        return  ApiResponse::format("success", $this->respondWithToken(auth()->user()->createToken('')->plainTextToken));
     }
 
     /**
@@ -72,17 +75,38 @@ class AuthRepository extends BaseRepository implements IAuth
         ));
 
         if ($user) {
-           $user['access_token']= $user->createToken('')->plainTextToken;
+            $user['access_token'] = $user->createToken('')->plainTextToken;
+            //need db teansactions
+            foreach ($request->areas as $area) {
+                $this->addUserArea($user->id, $area);
+            }
+            foreach ($request->specials as $special) {
+                $this->addUserSpecial($user->id, $special);
+            }
         }
+
+        //need job
         if (\config("app.enable_email_verification")) {
             $user->sendEmailVerificationNotification();
         }
 
+        //need job
         if (\config("app.enable_phone_verification")) {
             $user->sendPhoneVerificationOTP();
         }
 
-        return  ApiResponse::format("success", $user);
+        return $user;
+    }
+
+
+    public function addUserArea($user_id, $area_id)
+    {
+        SpecialistArea::create(['user_id' => $user_id, 'area_id' => $area_id]);
+    }
+
+    public function addUserSpecial($user_id, $area_id)
+    {
+        SpecialistType::create(['user_id' => $user_id, 'special_type_id' => $area_id]);
     }
 
     /**
@@ -105,7 +129,7 @@ class AuthRepository extends BaseRepository implements IAuth
             $request->only('email')
         );
 
-        return  ApiResponse::format("success",'Email sent.');
+        return  ApiResponse::format("success", 'Email sent.');
     }
     public function resetView(Request $request)
     {

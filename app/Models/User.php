@@ -74,7 +74,7 @@ class User extends Authenticatable implements Auditable, MustVerifyEmail, HasMed
 
     public function isValidSub()
     {
-        return  $this->whereHas('Subscriptions', function ($q) {
+        return  $this->whete("user_type")->whereHas('Subscriptions', function ($q) {
             $q->where('start_at', '<', date('Y-m-d'))
                 ->where('end_at', '>', date('Y-m-d'))
                 ->where('order_count', '>=', $this->OrderComments->count());
@@ -133,16 +133,34 @@ class User extends Authenticatable implements Auditable, MustVerifyEmail, HasMed
     |--------------------------------------------------------------------------
     */
 
+    public function Orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
     public function Subscriptions()
     {
         return $this->hasMany(Subscription::class);
     }
 
-
+    public function CustomerAddresses()
+    {
+        return $this->hasMany(CustomerAddress::class);
+    }
 
     public function OrderComments()
     {
         return $this->hasMany(OrderComment::class);
+    }
+
+    public function SpecialistAreas()
+    {
+        return $this->hasMany(SpecialistArea::class);
+    }
+
+    public function SpecialistTypes()
+    {
+        return $this->hasMany(SpecialistType::class);
     }
 
     /*

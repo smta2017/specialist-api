@@ -39,18 +39,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *          type="string",
  *          format="date"
  *      ),
- *      @SWG\Property(
- *          property="created_at",
- *          description="created_at",
- *          type="string",
- *          format="date-time"
- *      ),
- *      @SWG\Property(
- *          property="updated_at",
- *          description="updated_at",
- *          type="string",
- *          format="date-time"
- *      )
  * )
  */
 class OrderComment extends Model
@@ -93,9 +81,9 @@ class OrderComment extends Model
      * @var array
      */
     public static $rules = [
-        'order_id' => 'required numeric',
-        'user_id' => 'required numeric',
-        'body' => 'reqired',
+        'order_id' => 'required|numeric',
+        'user_id' => 'required|numeric',
+        'body' => 'required',
         'offer' => 'required'
     ];
 

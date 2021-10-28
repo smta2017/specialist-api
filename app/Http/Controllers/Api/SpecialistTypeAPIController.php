@@ -35,6 +35,7 @@ class SpecialistTypeAPIController extends AppBaseController
      *      tags={"SpecialistType"},
      *      description="Get all SpecialistTypes",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Response(
      *          response=200,
      *          description="successful operation",
@@ -78,6 +79,7 @@ class SpecialistTypeAPIController extends AppBaseController
      *      tags={"SpecialistType"},
      *      description="Store SpecialistType",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
@@ -125,6 +127,7 @@ class SpecialistTypeAPIController extends AppBaseController
      *      tags={"SpecialistType"},
      *      description="Get SpecialistType",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of SpecialistType",
@@ -176,6 +179,7 @@ class SpecialistTypeAPIController extends AppBaseController
      *      tags={"SpecialistType"},
      *      description="Update SpecialistType",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of SpecialistType",
@@ -237,6 +241,7 @@ class SpecialistTypeAPIController extends AppBaseController
      *      tags={"SpecialistType"},
      *      description="Delete SpecialistType",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of SpecialistType",

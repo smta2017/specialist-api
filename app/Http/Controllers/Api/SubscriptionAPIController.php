@@ -35,6 +35,7 @@ class SubscriptionAPIController extends AppBaseController
      *      tags={"Subscription"},
      *      description="Get all Subscriptions",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Response(
      *          response=200,
      *          description="successful operation",
@@ -78,6 +79,7 @@ class SubscriptionAPIController extends AppBaseController
      *      tags={"Subscription"},
      *      description="Store Subscription",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
@@ -125,6 +127,7 @@ class SubscriptionAPIController extends AppBaseController
      *      tags={"Subscription"},
      *      description="Get Subscription",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of Subscription",
@@ -176,6 +179,7 @@ class SubscriptionAPIController extends AppBaseController
      *      tags={"Subscription"},
      *      description="Update Subscription",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of Subscription",
@@ -237,6 +241,7 @@ class SubscriptionAPIController extends AppBaseController
      *      tags={"Subscription"},
      *      description="Delete Subscription",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of Subscription",

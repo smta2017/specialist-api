@@ -12,8 +12,16 @@ class Area extends Model implements Auditable
     use HasFactory;
     use \OwenIt\Auditing\Auditable;
 
+    public $table = 'areas';
+
     public function City()
     {
     	return $this->belongsTo(City::class);
+    }
+
+    
+    public function CustomerAddresses()
+    {
+        return $this->hasMany(CustomerAddress::class);
     }
 }

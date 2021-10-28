@@ -8,6 +8,7 @@ use App\Models\CustomerAddress;
 use App\Repositories\CustomerAddressRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use App\Http\Resources\CustomerAddress\CustomerAddressResource;
 use Response;
 
 /**
@@ -35,6 +36,7 @@ class CustomerAddressAPIController extends AppBaseController
      *      tags={"CustomerAddress"},
      *      description="Get all CustomerAddresses",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Response(
      *          response=200,
      *          description="successful operation",
@@ -60,12 +62,12 @@ class CustomerAddressAPIController extends AppBaseController
     public function index(Request $request)
     {
         $customerAddresses = $this->customerAddressRepository->all(
-            $request->except(['skip', 'limit']),
+            auth()->check() ? ['user_id' => auth()->user()->id] : [],
             $request->get('skip'),
             $request->get('limit')
         );
 
-        return $this->sendResponse($customerAddresses->toArray(), 'Customer Addresses retrieved successfully');
+        return $this->sendResponse(CustomerAddressResource::collection($customerAddresses), 'Customer Addresses retrieved successfully');
     }
 
     /**
@@ -78,6 +80,7 @@ class CustomerAddressAPIController extends AppBaseController
      *      tags={"CustomerAddress"},
      *      description="Store CustomerAddress",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
@@ -108,11 +111,14 @@ class CustomerAddressAPIController extends AppBaseController
      */
     public function store(CreateCustomerAddressAPIRequest $request)
     {
-        $input = $request->all();
+        $input = array_merge(
+            $request->all(),
+            ['user_id' => auth()->user()->id],
+        );
 
         $customerAddress = $this->customerAddressRepository->create($input);
 
-        return $this->sendResponse($customerAddress->toArray(), 'Customer Address saved successfully');
+        return $this->sendResponse(new CustomerAddressResource($customerAddress), 'Customer Address saved successfully');
     }
 
     /**
@@ -125,6 +131,7 @@ class CustomerAddressAPIController extends AppBaseController
      *      tags={"CustomerAddress"},
      *      description="Get CustomerAddress",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of CustomerAddress",
@@ -162,7 +169,7 @@ class CustomerAddressAPIController extends AppBaseController
             return $this->sendError('Customer Address not found');
         }
 
-        return $this->sendResponse($customerAddress->toArray(), 'Customer Address retrieved successfully');
+        return $this->sendResponse(new CustomerAddressResource($customerAddress), 'Customer Address retrieved successfully');
     }
 
     /**
@@ -176,6 +183,7 @@ class CustomerAddressAPIController extends AppBaseController
      *      tags={"CustomerAddress"},
      *      description="Update CustomerAddress",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of CustomerAddress",
@@ -224,7 +232,7 @@ class CustomerAddressAPIController extends AppBaseController
 
         $customerAddress = $this->customerAddressRepository->update($input, $id);
 
-        return $this->sendResponse($customerAddress->toArray(), 'CustomerAddress updated successfully');
+        return $this->sendResponse(new CustomerAddressResource($customerAddress), 'CustomerAddress updated successfully');
     }
 
     /**
@@ -237,6 +245,7 @@ class CustomerAddressAPIController extends AppBaseController
      *      tags={"CustomerAddress"},
      *      description="Delete CustomerAddress",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of CustomerAddress",
@@ -277,5 +286,61 @@ class CustomerAddressAPIController extends AppBaseController
         $customerAddress->delete();
 
         return $this->sendSuccess('Customer Address deleted successfully');
+    }
+
+    /**
+     * @param int $id
+     * @return Response
+     *
+     * @SWG\put(
+     *      path="/customerAddresses/default/{id}",
+     *      summary="Set address as default",
+     *      tags={"CustomerAddress"},
+     *      description="Delete CustomerAddress",
+     *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
+     *      @SWG\Parameter(
+     *          name="id",
+     *          description="id of CustomerAddress",
+     *          type="integer",
+     *          required=true,
+     *          in="path"
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="string"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
+     */
+    public function setDefault($id)
+    {
+
+
+        /** @var CustomerAddress $customerAddress */
+        $customerAddress = $this->customerAddressRepository->find($id);
+
+        if (empty($customerAddress)) {
+            return $this->sendError('Customer Address not found');
+        }
+
+        CustomerAddress::query()->where('user_id', auth()->user()->id)->update(['is_default' => 0]);
+        $customerAddress = $this->customerAddressRepository->update(['is_default' => 1], $id);
+
+        return $this->sendResponse(new CustomerAddressResource($customerAddress), 'CustomerAddress seted default successfully');
     }
 }

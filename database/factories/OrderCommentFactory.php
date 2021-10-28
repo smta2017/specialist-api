@@ -22,13 +22,13 @@ class OrderCommentFactory extends Factory
     public function definition()
     {
         return [
-            'order_id' => $this->faker->randomDigitNotNull,
-        'user_id' => $this->faker->randomDigitNotNull,
+            'order_id' => $this->faker->numberBetween($min = 1, $max = 300),
+        'user_id' => $this->faker->numberBetween($min = 1, $max = 300),
         'body' => $this->faker->text,
-        'offer' => $this->faker->randomDigitNotNull,
+        'offer' => $this->faker->numberBetween($min = 1, $max = 300),
         'delivery_date' => $this->faker->date('Y-m-d'),
-        'created_at' => $this->faker->date('Y-m-d H:i:s'),
-        'updated_at' => $this->faker->date('Y-m-d H:i:s')
+        'created_at' => $this->faker->dateTimeBetween($startDate = '-2 years', $endDate = '2years', $timezone = null), // DateTime('2003-03-15 02:00:49', 'Africa/Lagos'),
+        'updated_at' => $this->faker->dateTimeBetween($startDate = '-2 years', $endDate = '2years', $timezone = null), // DateTime('2003-03-15 02:00:49', 'Africa/Lagos'),
         ];
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class AddCustomeColumnAtToUsersTable extends Migration
 {
-   /**
+    /**
      * Run the migrations.
      *
      * @return void
@@ -14,12 +14,15 @@ class AddCustomeColumnAtToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->string('phone')->nullable();
+            $table->string('facebook_id')->nullable();
+            $table->string('google_id')->nullable();
+            $table->string('firebase_token')->nullable();
             $table->timestamp('phone_verified_at')->nullable();
             $table->tinyInteger('is_active')->nullable();
             $table->tinyInteger('is_admin')->nullable();
-            $table->string('phone')->nullable();
-            $table->enum('gender',['mail,femail'])->nullable();
-            $table->enum('user_type',config("app.user_types"))->nullable();
+            $table->enum('gender', ['mail,femail'])->nullable();
+            $table->enum('user_type', config("app.user_types"))->nullable();
             $table->date('dop')->nullable();
             $table->tinyInteger('sms_notification')->nullable();
             $table->string('lang')->nullable();
@@ -34,10 +37,13 @@ class AddCustomeColumnAtToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('phone');
+            Schema::dropIfExists('facebook_id');
+            Schema::dropIfExists('google_id');
+            Schema::dropIfExists('firebase_token');
             $table->dropColumn('phone_verified_at');
             $table->dropColumn('is_active');
             $table->dropColumn('is_admin');
-            $table->dropColumn('phone');
             $table->dropColumn('gender');
             $table->dropColumn('user_type');
             $table->dropColumn('dop');

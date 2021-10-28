@@ -1,11 +1,264 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "Laravel Generator APIs",
+        "title": "Specialist APP APIs",
         "version": "1.0.0"
     },
-    "basePath": "/api/v1",
+    "basePath": "/api/en/v1",
+    "schemes": [
+        "http",
+        "https"
+    ],
     "paths": {
+        "/auth/login": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "User Login",
+                "description": "the system users login",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "CustomerAddress that should be updated",
+                        "required": false,
+                        "schema": {
+                            "example": {
+                                "email": "santina.veum@example.net",
+                                "password": "password"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/register": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "User registration",
+                "description": "the system users login",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "CustomerAddress that should be updated",
+                        "required": false,
+                        "schema": {
+                            "example": {
+                                "name": "sameh",
+                                "email": "sameh@test.com",
+                                "phone": "01274200778",
+                                "password": "password",
+                                "firebase_token": "2986tGfr56hb5tg6r6f6",
+                                "user_type": "specialist",
+                                "areas": [
+                                    2,
+                                    5,
+                                    1
+                                ],
+                                "specials": [
+                                    3,
+                                    1,
+                                    2
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/me": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "User registration",
+                "description": "get user info",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/auth/forgot-password": {
+            "post": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "send user reset password email",
+                "description": "the system users login",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "CustomerAddress that should be updated",
+                        "required": false,
+                        "schema": {
+                            "example": {
+                                "email": "esteban55@example.com"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/facebook/login": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "login using facebook",
+                "description": "the system users login",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/auth/google/login": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "login using google",
+                "description": "the system users login",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "description": "get the url to login with google.",
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "description": "get the url to login with google.",
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "description": "get the url to login with google.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/customerAddresses": {
             "get": {
                 "tags": [
@@ -37,7 +290,12 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -77,7 +335,12 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             }
         },
         "/customerAddresses/{id}": {
@@ -117,7 +380,12 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -164,7 +432,12 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -202,13 +475,63 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/customerAddresses/default/{id}": {
+            "put": {
+                "tags": [
+                    "CustomerAddress"
+                ],
+                "summary": "Set address as default",
+                "description": "Delete CustomerAddress",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of CustomerAddress",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             }
         },
         "/orders": {
             "get": {
                 "tags": [
-                    "Order"
+                    "Order-cust"
                 ],
                 "summary": "Get a listing of the Orders.",
                 "description": "Get all Orders",
@@ -236,11 +559,16 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
-                    "Order"
+                    "Order-cust"
                 ],
                 "summary": "Store a newly created Order in storage",
                 "description": "Store Order",
@@ -276,13 +604,18 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             }
         },
         "/orders/{id}": {
             "get": {
                 "tags": [
-                    "Order"
+                    "Order-cust"
                 ],
                 "summary": "Display the specified Order",
                 "description": "Get Order",
@@ -316,11 +649,16 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
-                    "Order"
+                    "Order-cust"
                 ],
                 "summary": "Update the specified Order in storage",
                 "description": "Update Order",
@@ -363,11 +701,16 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
-                    "Order"
+                    "Order-cust"
                 ],
                 "summary": "Remove the specified Order from storage",
                 "description": "Delete Order",
@@ -401,7 +744,161 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/orders/complete/{id}": {
+            "put": {
+                "tags": [
+                    "Order-cust"
+                ],
+                "summary": "Update status order to complete",
+                "description": "complete order",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of CustomerAddress",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/orders/detail/{id}": {
+            "get": {
+                "tags": [
+                    "Order-cust"
+                ],
+                "summary": "Display Detail for specified Order",
+                "description": "Get details of Order",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Order",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Order"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/orders/sp": {
+            "post": {
+                "tags": [
+                    "Order-Specialist"
+                ],
+                "summary": "Get SPECIALIST listing of the Orders.",
+                "description": "Get all Orders",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Order that should be stored",
+                        "required": false,
+                        "schema": {
+                            "example": {
+                                "special_type_id": [
+                                    4,
+                                    7
+                                ],
+                                "area_id": [
+                                    1,
+                                    3
+                                ]
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Order"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             }
         },
         "/orderComments": {
@@ -435,7 +932,12 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -475,7 +977,12 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             }
         },
         "/orderComments/{id}": {
@@ -515,7 +1022,12 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -562,7 +1074,12 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -600,7 +1117,12 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             }
         },
         "/plans": {
@@ -802,6 +1324,42 @@
                 }
             }
         },
+        "/plan/specialist": {
+            "get": {
+                "tags": [
+                    "Plan"
+                ],
+                "summary": "get user subscripe",
+                "description": "Get Current user Plan",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
         "/specialTypes": {
             "get": {
                 "tags": [
@@ -833,7 +1391,12 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -873,7 +1436,12 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             }
         },
         "/specialTypes/{id}": {
@@ -913,7 +1481,12 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -960,7 +1533,12 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -998,7 +1576,12 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             }
         },
         "/specialistAreas": {
@@ -1200,205 +1783,6 @@
                 }
             }
         },
-        "/specialistPlans": {
-            "get": {
-                "tags": [
-                    "SpecialistPlan"
-                ],
-                "summary": "Get a listing of the SpecialistPlans.",
-                "description": "Get all SpecialistPlans",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/SpecialistPlan"
-                                    }
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "SpecialistPlan"
-                ],
-                "summary": "Store a newly created SpecialistPlan in storage",
-                "description": "Store SpecialistPlan",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "SpecialistPlan that should be stored",
-                        "required": false,
-                        "schema": {
-                            "$ref": "#/definitions/SpecialistPlan"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/SpecialistPlan"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/specialistPlans/{id}": {
-            "get": {
-                "tags": [
-                    "SpecialistPlan"
-                ],
-                "summary": "Display the specified SpecialistPlan",
-                "description": "Get SpecialistPlan",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id of SpecialistPlan",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/SpecialistPlan"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "SpecialistPlan"
-                ],
-                "summary": "Update the specified SpecialistPlan in storage",
-                "description": "Update SpecialistPlan",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id of SpecialistPlan",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "SpecialistPlan that should be updated",
-                        "required": false,
-                        "schema": {
-                            "$ref": "#/definitions/SpecialistPlan"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "$ref": "#/definitions/SpecialistPlan"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "SpecialistPlan"
-                ],
-                "summary": "Remove the specified SpecialistPlan from storage",
-                "description": "Delete SpecialistPlan",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "id of SpecialistPlan",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "type": "string"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
         "/specialistTypes": {
             "get": {
                 "tags": [
@@ -1430,7 +1814,12 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             },
             "post": {
                 "tags": [
@@ -1470,7 +1859,12 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             }
         },
         "/specialistTypes/{id}": {
@@ -1510,7 +1904,12 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             },
             "put": {
                 "tags": [
@@ -1557,7 +1956,12 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             },
             "delete": {
                 "tags": [
@@ -1595,7 +1999,236 @@
                             "type": "object"
                         }
                     }
-                }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/subscriptions": {
+            "get": {
+                "tags": [
+                    "Subscription"
+                ],
+                "summary": "Get a listing of the Subscriptions.",
+                "description": "Get all Subscriptions",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Subscription"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Subscription"
+                ],
+                "summary": "Store a newly created Subscription in storage",
+                "description": "Store Subscription",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Subscription that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Subscription"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Subscription"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/subscriptions/{id}": {
+            "get": {
+                "tags": [
+                    "Subscription"
+                ],
+                "summary": "Display the specified Subscription",
+                "description": "Get Subscription",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Subscription",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Subscription"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Subscription"
+                ],
+                "summary": "Update the specified Subscription in storage",
+                "description": "Update Subscription",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Subscription",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Subscription that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Subscription"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Subscription"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Subscription"
+                ],
+                "summary": "Remove the specified Subscription from storage",
+                "description": "Delete Subscription",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Subscription",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             }
         }
     },
@@ -1606,11 +2239,6 @@
                 "area_id"
             ],
             "properties": {
-                "user_id": {
-                    "description": "user_id",
-                    "type": "integer",
-                    "format": "int32"
-                },
                 "area_id": {
                     "description": "area_id",
                     "type": "integer",
@@ -1622,7 +2250,8 @@
                 },
                 "is_default": {
                     "description": "is_default",
-                    "type": "boolean"
+                    "type": "boolean",
+                    "default": "false"
                 },
                 "floor_no": {
                     "description": "floor_no",
@@ -1635,16 +2264,6 @@
                 "notes": {
                     "description": "notes",
                     "type": "string"
-                },
-                "created_at": {
-                    "description": "created_at",
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "updated_at": {
-                    "description": "updated_at",
-                    "type": "string",
-                    "format": "date-time"
                 }
             }
         },
@@ -1667,15 +2286,20 @@
                     "type": "integer",
                     "format": "int32"
                 },
-                "created_at": {
-                    "description": "created_at",
-                    "type": "string",
-                    "format": "date-time"
+                "customer_address_id": {
+                    "description": "customer_address_id",
+                    "type": "integer",
+                    "format": "int32"
                 },
-                "updated_at": {
-                    "description": "updated_at",
+                "status_id": {
+                    "description": "status_id",
                     "type": "string",
-                    "format": "date-time"
+                    "default": "new"
+                },
+                "special_type_id": {
+                    "description": "special_type_id",
+                    "type": "string",
+                    "default": "new"
                 }
             }
         },
@@ -1709,16 +2333,6 @@
                     "description": "delivery_date",
                     "type": "string",
                     "format": "date"
-                },
-                "created_at": {
-                    "description": "created_at",
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "updated_at": {
-                    "description": "updated_at",
-                    "type": "string",
-                    "format": "date-time"
                 }
             }
         },
@@ -1794,10 +2408,10 @@
                 }
             }
         },
-        "SpecialistPlan": {
+        "SpecialistType": {
             "required": [
                 "user_id",
-                "plan_id"
+                "special_type_id"
             ],
             "properties": {
                 "user_id": {
@@ -1805,8 +2419,8 @@
                     "type": "integer",
                     "format": "int32"
                 },
-                "plan_id": {
-                    "description": "plan_id",
+                "special_type_id": {
+                    "description": "special_type_id",
                     "type": "integer",
                     "format": "int32"
                 },
@@ -1822,10 +2436,10 @@
                 }
             }
         },
-        "SpecialistType": {
+        "Subscription": {
             "required": [
                 "user_id",
-                "special_types"
+                "plan_id"
             ],
             "properties": {
                 "user_id": {
@@ -1833,8 +2447,23 @@
                     "type": "integer",
                     "format": "int32"
                 },
-                "special_types": {
-                    "description": "special_types",
+                "plan_id": {
+                    "description": "plan_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "start_at": {
+                    "description": "start_at",
+                    "type": "string",
+                    "format": "date"
+                },
+                "end_at": {
+                    "description": "end_at",
+                    "type": "string",
+                    "format": "date"
+                },
+                "order_count": {
+                    "description": "order_count",
                     "type": "integer",
                     "format": "int32"
                 },
@@ -1849,6 +2478,14 @@
                     "format": "date-time"
                 }
             }
+        }
+    },
+    "securityDefinitions": {
+        "Bearer": {
+            "type": "apiKey",
+            "description": "Auth Bearer Token\n *      Format as 'Bearer <access_token>'",
+            "name": "Authorization",
+            "in": "header"
         }
     }
 }

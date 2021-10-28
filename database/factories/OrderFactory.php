@@ -23,10 +23,13 @@ class OrderFactory extends Factory
     {
         return [
             'title' => $this->faker->word,
-        'body' => $this->faker->text,
-        'user_id' => $this->faker->randomDigitNotNull,
-        'created_at' => $this->faker->date('Y-m-d H:i:s'),
-        'updated_at' => $this->faker->date('Y-m-d H:i:s')
+            'body' => $this->faker->text,
+            'user_id' => $this->faker->numberBetween($min = 1, $max = 300),
+            'status_id' => 'new',
+            "customer_address_id" => $this->faker->numberBetween($min = 1, $max = 300),
+            "special_type_id" => $this->faker->numberBetween($min = 1, $max = 300),
+            'created_at' => $this->faker->dateTimeBetween($startDate = '-2 years', $endDate = '2years', $timezone = null), // DateTime('2003-03-15 02:00:49', 'Africa/Lagos'),
+            'updated_at' => $this->faker->dateTimeBetween($startDate = '-2 years', $endDate = '2years', $timezone = null) // DateTime('2003-03-15 02:00:49', 'Africa/Lagos')
         ];
     }
 }

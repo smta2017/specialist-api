@@ -2,14 +2,14 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @SWG\Definition(
  *      definition="SpecialistType",
- *      required={"user_id", "special_types"},
+ *      required={"user_id", "special_type_id"},
  *      @SWG\Property(
  *          property="user_id",
  *          description="user_id",
@@ -17,8 +17,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="special_types",
- *          description="special_types",
+ *          property="special_type_id",
+ *          description="special_type_id",
  *          type="integer",
  *          format="int32"
  *      ),
@@ -51,7 +51,7 @@ class SpecialistType extends Model
 
     public $fillable = [
         'user_id',
-        'special_types'
+        'special_type_id'
     ];
 
     /**
@@ -61,7 +61,7 @@ class SpecialistType extends Model
      */
     protected $casts = [
         'user_id' => 'integer',
-        'special_types' => 'integer'
+        'special_type_id' => 'integer'
     ];
 
     /**
@@ -70,9 +70,18 @@ class SpecialistType extends Model
      * @var array
      */
     public static $rules = [
-        'user_id' => 'required numeric',
-        'special_types' => 'required numeric'
+        'user_id' => 'required|numeric',
+        'special_type_id' => 'required|numeric'
     ];
 
     
+    public function SpecialistTypes()
+    {
+        return $this->hasMany(SpecialistType::class);
+    }
+
+     public function Order()
+    {
+        return $this->belongsTo(Order::class);
+    }
 }

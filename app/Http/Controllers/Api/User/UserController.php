@@ -6,10 +6,14 @@ use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserStoreRequest;
 use App\Http\Requests\User\UserUpdateRequest;
+use App\Models\User;
 use App\Repositories\Contracts\User\IUser;
 use Illuminate\Http\Request;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Resources\CustomerAddress\CustomerAddressResource;
+use App\Http\Resources\Subscription\SubscriptionResource;
 
-class UserController extends Controller
+class UserController extends AppBaseController
 {
     /**
      * @var IUser

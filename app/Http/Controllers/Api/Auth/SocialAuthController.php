@@ -21,7 +21,7 @@ class SocialAuthController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     *  * @SWG\get(
+     *  * @SWG\Get(
      *      path="/auth/facebook/login",
      *      summary="login using facebook",
      *      tags={"Auth"},
@@ -83,7 +83,7 @@ class SocialAuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      * 
-     *   @SWG\get(
+     *   @SWG\Get(
      *      path="/auth/google/login",
      *      summary="login using google",
      *      tags={"Auth"},

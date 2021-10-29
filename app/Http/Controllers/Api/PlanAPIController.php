@@ -290,7 +290,7 @@ class PlanAPIController extends AppBaseController
      * @param int $id
      * @return Response
      *
-     * @SWG\get(
+     * @SWG\Get(
      *      path="/plan/specialist",
      *      summary="get user subscripe",
      *      tags={"Plan"},

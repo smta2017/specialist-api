@@ -292,7 +292,7 @@ class CustomerAddressAPIController extends AppBaseController
      * @param int $id
      * @return Response
      *
-     * @SWG\put(
+     * @SWG\Put(
      *      path="/customerAddresses/default/{id}",
      *      summary="Set address as default",
      *      tags={"CustomerAddress"},

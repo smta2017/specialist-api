@@ -302,7 +302,7 @@ class OrderAPIController extends AppBaseController
      * @param int $id
      * @return Response
      *
-     * @SWG\put(
+     * @SWG\Put(
      *      path="/orders/complete/{id}",
      *      summary="Update status order to complete",
      *      tags={"Order"},

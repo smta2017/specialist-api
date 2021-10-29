@@ -32,7 +32,7 @@ class AuthController extends AppBaseController
      * @param int $id
      * @return Response
      *
-     * @SWG\post(
+     * @SWG\Post(
      *      path="/auth/login",
      *      summary="User Login",
      *      tags={"Auth"},
@@ -85,8 +85,7 @@ class AuthController extends AppBaseController
     /**
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     *  * @SWG\post(
+     *  * @SWG\Post(
      *      path="/auth/register",
      *      summary="User registration",
      *      tags={"Auth"},
@@ -148,7 +147,7 @@ class AuthController extends AppBaseController
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     *  * @SWG\post(
+     *  * @SWG\Post(
      *      path="/auth/me",
      *      summary="User registration",
      *      tags={"Auth"},

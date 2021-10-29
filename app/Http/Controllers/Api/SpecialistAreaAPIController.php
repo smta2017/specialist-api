@@ -35,6 +35,7 @@ class SpecialistAreaAPIController extends AppBaseController
      *      tags={"SpecialistArea"},
      *      description="Get all SpecialistAreas",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Response(
      *          response=200,
      *          description="successful operation",
@@ -78,6 +79,7 @@ class SpecialistAreaAPIController extends AppBaseController
      *      tags={"SpecialistArea"},
      *      description="Store SpecialistArea",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
@@ -125,6 +127,7 @@ class SpecialistAreaAPIController extends AppBaseController
      *      tags={"SpecialistArea"},
      *      description="Get SpecialistArea",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of SpecialistArea",
@@ -176,6 +179,7 @@ class SpecialistAreaAPIController extends AppBaseController
      *      tags={"SpecialistArea"},
      *      description="Update SpecialistArea",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of SpecialistArea",
@@ -237,6 +241,7 @@ class SpecialistAreaAPIController extends AppBaseController
      *      tags={"SpecialistArea"},
      *      description="Delete SpecialistArea",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of SpecialistArea",

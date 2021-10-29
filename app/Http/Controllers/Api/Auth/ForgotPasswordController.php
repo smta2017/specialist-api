@@ -27,7 +27,7 @@ class ForgotPasswordController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
-     *  * @SWG\post(
+     *  * @SWG\Post(
      *      path="/auth/forgot-password",
      *      summary="send user reset password email",
      *      tags={"Auth"},

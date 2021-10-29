@@ -123,13 +123,15 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-    'user_types' => ['customer', 'specialist'],
+    'user_types' => ['customer', 'specialist','libirary'],
 
     'enable_email_verification' => env('EMAIL_VERIFICATION', true),
 
     'enable_phone_verification' => env('PHONE_VERIFICATION', true),
 
-    'enable_registration' => env(' REGISTRATION', true),
+    'enable_registration' => env('REGISTRATION', true),
+
+    'seeder_count' => env('DB_SEED_COUNT', 10),
 
     'Form'      => Collective\Html\FormFacade::class,
     'Html'      => Collective\Html\HtmlFacade::class,

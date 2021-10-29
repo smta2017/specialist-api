@@ -13,15 +13,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\User::factory(1000)->create();
-        \App\Models\SpecialTypes::factory(1000)->create();
-        \App\Models\Plan::factory(1000)->create();
-        \App\Models\SpecialistArea::factory(1000)->create();
-        \App\Models\SpecialistType::factory(1000)->create();
-        \App\Models\Subscription::factory(1000)->create();
-        \App\Models\CustomerAddress::factory(1000)->create();
-        \App\Models\Order::factory(1000)->create();
-        \App\Models\OrderComment::factory(1000)->create();
+        \App\Models\User::factory(config("app.seeder_count"))->create();
+        \App\Models\SpecialTypes::factory(config("app.seeder_count"))->create();
+        \App\Models\Plan::factory(config("app.seeder_count"))->create();
+        \App\Models\SpecialistArea::factory(config("app.seeder_count"))->create();
+        \App\Models\SpecialistType::factory(config("app.seeder_count"))->create();
+        \App\Models\Subscription::factory(config("app.seeder_count"))->create();
+        \App\Models\CustomerAddress::factory(config("app.seeder_count"))->create();
+        \App\Models\Order::factory(config("app.seeder_count"))->create();
+        \App\Models\OrderComment::factory(config("app.seeder_count"))->create();
 
     }
 }

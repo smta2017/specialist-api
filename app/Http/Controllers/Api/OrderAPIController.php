@@ -36,7 +36,7 @@ class OrderAPIController extends AppBaseController
      * @SWG\Get(
      *      path="/orders",
      *      summary="Get a listing of the Orders.",
-     *      tags={"Order-cust"},
+     *      tags={"Order"},
      *      description="Get all Orders",
      *      produces={"application/json"},
      *      security = {{"Bearer": {}}},
@@ -80,7 +80,7 @@ class OrderAPIController extends AppBaseController
      * @SWG\Post(
      *      path="/orders",
      *      summary="Store a newly created Order in storage",
-     *      tags={"Order-cust"},
+     *      tags={"Order"},
      *      description="Store Order",
      *      produces={"application/json"},
      *      security = {{"Bearer": {}}},
@@ -136,7 +136,7 @@ class OrderAPIController extends AppBaseController
      * @SWG\Get(
      *      path="/orders/{id}",
      *      summary="Display the specified Order",
-     *      tags={"Order-cust"},
+     *      tags={"Order"},
      *      description="Get Order",
      *      produces={"application/json"},
      *      security = {{"Bearer": {}}},
@@ -188,7 +188,7 @@ class OrderAPIController extends AppBaseController
      * @SWG\Put(
      *      path="/orders/{id}",
      *      summary="Update the specified Order in storage",
-     *      tags={"Order-cust"},
+     *      tags={"Order"},
      *      description="Update Order",
      *      produces={"application/json"},
      *      security = {{"Bearer": {}}},
@@ -250,7 +250,7 @@ class OrderAPIController extends AppBaseController
      * @SWG\Delete(
      *      path="/orders/{id}",
      *      summary="Remove the specified Order from storage",
-     *      tags={"Order-cust"},
+     *      tags={"Order"},
      *      description="Delete Order",
      *      produces={"application/json"},
      *      security = {{"Bearer": {}}},
@@ -305,7 +305,7 @@ class OrderAPIController extends AppBaseController
      * @SWG\put(
      *      path="/orders/complete/{id}",
      *      summary="Update status order to complete",
-     *      tags={"Order-cust"},
+     *      tags={"Order"},
      *      description="complete order",
      *      produces={"application/json"},
      *      security = {{"Bearer": {}}},
@@ -360,7 +360,7 @@ class OrderAPIController extends AppBaseController
      * @SWG\Get(
      *      path="/orders/detail/{id}",
      *      summary="Display Detail for specified Order",
-     *      tags={"Order-cust"},
+     *      tags={"Order"},
      *      description="Get details of Order",
      *      produces={"application/json"},
      *      security = {{"Bearer": {}}},

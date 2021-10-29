@@ -19,8 +19,9 @@ class CreateOrderCommentsTable extends Migration
             $table->integer('order_id');
             $table->integer('user_id');
             $table->text('body');
-            $table->float('offer');
-            $table->date('delivery_date');
+            $table->float('offer')->nullable();
+            $table->dateTime('selected_at')->nullable();
+            $table->date('delivery_date')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

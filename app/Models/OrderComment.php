@@ -59,7 +59,8 @@ class OrderComment extends Model
         'user_id',
         'body',
         'offer',
-        'delivery_date'
+        'delivery_date',
+        'selected_at'
     ];
 
     /**
@@ -72,7 +73,8 @@ class OrderComment extends Model
         'user_id' => 'integer',
         'body' => 'string',
         'offer' => 'float',
-        'delivery_date' => 'date'
+        'delivery_date' => 'date',
+        'selected_at'
     ];
 
     /**

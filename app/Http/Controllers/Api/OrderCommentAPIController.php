@@ -111,6 +111,10 @@ class OrderCommentAPIController extends AppBaseController
      */
     public function store(CreateOrderCommentAPIRequest $request)
     {
+        if (auth()->user()->user_type == 'customer') {
+            return $this->sendResponse('', 'Spesialist only can add order', false);
+        }
+        
         $input = $request->all();
 
         $orderComment = $this->orderCommentRepository->create($input);

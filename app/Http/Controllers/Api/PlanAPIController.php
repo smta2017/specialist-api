@@ -36,6 +36,7 @@ class PlanAPIController extends AppBaseController
      *      tags={"Plan"},
      *      description="Get all Plans",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Response(
      *          response=200,
      *          description="successful operation",
@@ -79,6 +80,7 @@ class PlanAPIController extends AppBaseController
      *      tags={"Plan"},
      *      description="Store Plan",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
@@ -126,6 +128,7 @@ class PlanAPIController extends AppBaseController
      *      tags={"Plan"},
      *      description="Get Plan",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of Plan",
@@ -177,6 +180,7 @@ class PlanAPIController extends AppBaseController
      *      tags={"Plan"},
      *      description="Update Plan",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of Plan",
@@ -238,6 +242,7 @@ class PlanAPIController extends AppBaseController
      *      tags={"Plan"},
      *      description="Delete Plan",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of Plan",
@@ -291,6 +296,7 @@ class PlanAPIController extends AppBaseController
      *      tags={"Plan"},
      *      description="Get Current user Plan",
      *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
      *      security = {{"Bearer": {}}},
      *      @SWG\Response(
      *          response=200,

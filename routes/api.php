@@ -103,17 +103,17 @@ Route::group(['prefix' => 'en'], function () {
 
 Route::group(['prefix' => 'en/v1', 'middleware' => 'auth:sanctum'], function () {
 
-    // Route::resource('specialTypes', SpecialTypesAPIController::class);
+    Route::resource('specialTypes', SpecialTypesAPIController::class);
     Route::get('/plan/specialist', [PlanApiController::class, 'subscripe']);
 
 
-    // Route::resource('plans', PlanAPIController::class);
+    Route::resource('plans', PlanAPIController::class);
 
 
-    // Route::resource('specialist_areas', SpecialistAreaAPIController::class);
+    Route::resource('specialist_areas', SpecialistAreaAPIController::class);
 
 
-    // Route::resource('specialistTypes', SpecialistTypeAPIController::class);
+    Route::resource('specialistTypes', SpecialistTypeAPIController::class);
 
 
     Route::put('/customerAddresses/default/{id}', [CustomerAddressAPIController::class,'setDefault']);
@@ -127,5 +127,5 @@ Route::group(['prefix' => 'en/v1', 'middleware' => 'auth:sanctum'], function () 
 
 
     Route::resource('orderComments', OrderCommentAPIController::class);
-    // Route::resource('subscriptions', SubscriptionAPIController::class);
+    Route::resource('subscriptions', SubscriptionAPIController::class);
 });

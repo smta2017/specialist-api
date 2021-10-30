@@ -2,17 +2,80 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use OwenIt\Auditing\Contracts\Auditable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class City extends Model implements Auditable
+/**
+ * @SWG\Definition(
+ *      definition="City",
+ *      required={"city_name_ar", "city_name_en", "active"},
+ *      @SWG\Property(
+ *          property="city_name_ar",
+ *          description="city_name_ar",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
+ *          property="city_name_en",
+ *          description="city_name_en",
+ *          type="string"
+ *      ),
+ *      @SWG\Property(
+ *          property="active",
+ *          description="active",
+ *          type="boolean"
+ *      ),
+ *      @SWG\Property(
+ *          property="delivery_fees",
+ *          description="delivery_fees",
+ *          type="number",
+ *          format="number"
+ *      )
+ * )
+ */
+class City extends Model
 {
     use HasFactory;
-    use \OwenIt\Auditing\Auditable;
 
-    public function Areas()
-    {
-        $this->hasMany(Area::class);
-    }
+    public $table = 'cities';
+    public $timestamps = false;
+
+
+
+
+
+
+
+    public $fillable = [
+        'city_name_ar',
+        'city_name_en',
+        'active',
+        'delivery_fees'
+    ];
+
+    /**
+     * The attributes that should be casted to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'id' => 'integer',
+        'city_name_ar' => 'string',
+        'city_name_en' => 'string',
+        'active' => 'boolean',
+        'delivery_fees' => 'decimal:2'
+    ];
+
+    /**
+     * Validation rules
+     *
+     * @var array
+     */
+    public static $rules = [
+        'city_name_ar' => 'required|string|max:50',
+        'city_name_en' => 'required|string|max:50',
+        'active' => 'required|boolean',
+        'delivery_fees' => 'nullable|numeric'
+    ];
+
+    
 }

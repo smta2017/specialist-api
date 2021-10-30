@@ -22,6 +22,5 @@ class DatabaseSeeder extends Seeder
         \App\Models\CustomerAddress::factory(config("app.seeder_count"))->create();
         \App\Models\Order::factory(config("app.seeder_count"))->create();
         \App\Models\OrderComment::factory(config("app.seeder_count"))->create();
-
     }
 }

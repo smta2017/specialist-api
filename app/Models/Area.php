@@ -13,6 +13,9 @@ class Area extends Model implements Auditable
     use \OwenIt\Auditing\Auditable;
 
     public $table = 'areas';
+    public $timestamps = false;
+
+
 
     public function City()
     {

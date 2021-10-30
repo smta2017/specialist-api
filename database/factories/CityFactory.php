@@ -22,7 +22,10 @@ class CityFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'city_name_ar' => $this->faker->word,
+        'city_name_en' => $this->faker->word,
+        'active' => $this->faker->boolean(),
+        'delivery_fees' => $this->faker->numberBetween($min = 1, $max = 300)
         ];
     }
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\Api\Auth\ForgotPasswordController;
 use App\Http\Controllers\Api\Auth\SocialAuthController;
 use App\Http\Controllers\Api\Auth\VerificationController;
 use App\Http\Controllers\Api\Authorize\AuthorizeController;
+use App\Http\Controllers\API\CityAPIController;
 use App\Http\Controllers\API\CustomerAddressAPIController;
 use App\Http\Controllers\API\OrderAPIController;
 use App\Http\Controllers\API\OrderCommentAPIController;
@@ -88,10 +89,8 @@ Route::group(['prefix' => 'en'], function () {
 
 
 
-        Route::apiResource('/cities', CityController::class);
+        Route::apiResource('/cities', CityAPIController::class);
 
-
-        Route::apiResource('/areas', AreaController::class);
     });
 });
 
@@ -129,3 +128,6 @@ Route::group(['prefix' => 'en/v1', 'middleware' => 'auth:sanctum'], function () 
     Route::resource('orderComments', OrderCommentAPIController::class);
     Route::resource('subscriptions', SubscriptionAPIController::class);
 });
+
+
+Route::resource('cities', App\Http\Controllers\API\CityAPIController::class);

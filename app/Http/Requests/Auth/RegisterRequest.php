@@ -25,10 +25,14 @@ class RegisterRequest extends FormRequest
      */
     public function rules()
     {
+        $unique = '';
+        if (env("APP_ENV") == 'production') {
+            $unique = '|unique:users';
+        }
         return [
             'name' => 'required|min:3|max:80',
             'email' => 'email|required|email|unique:users',
-            'phone' => 'required|size:11|unique:users',
+            'phone' => 'required|size:11'  . $unique,
             'password' => 'required|min:8',
             'user_type' => 'required'
         ];

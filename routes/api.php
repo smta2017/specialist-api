@@ -1,11 +1,11 @@
 <?php
 
 use App\Http\Controllers\API\AreaAPIController;
-use App\Http\Controllers\Api\Auth\AuthController;
-use App\Http\Controllers\Api\Auth\ForgotPasswordController;
-use App\Http\Controllers\Api\Auth\SocialAuthController;
-use App\Http\Controllers\Api\Auth\VerificationController;
-use App\Http\Controllers\Api\Authorize\AuthorizeController;
+use App\Http\Controllers\API\Auth\AuthController;
+use App\Http\Controllers\API\Auth\ForgotPasswordController;
+use App\Http\Controllers\API\Auth\SocialAuthController;
+use App\Http\Controllers\API\Auth\VerificationController;
+use App\Http\Controllers\API\Authorize\AuthorizeController;
 use App\Http\Controllers\API\CityAPIController;
 use App\Http\Controllers\API\CustomerAddressAPIController;
 use App\Http\Controllers\API\OrderAPIController;
@@ -15,7 +15,7 @@ use App\Http\Controllers\API\SpecialistAreaAPIController;
 use App\Http\Controllers\API\SpecialistTypeAPIController;
 use App\Http\Controllers\API\SpecialTypesAPIController;
 use App\Http\Controllers\API\SubscriptionAPIController;
-use App\Http\Controllers\Api\User\UserController;
+use App\Http\Controllers\API\User\UserController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\AreaController;
 use Illuminate\Http\Request;

@@ -31,10 +31,10 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
+// JwtClientAuth
 Route::group(['prefix' => 'en'], function () {
     Route::group(['prefix' => 'v1'], function () {
-        Route::group(['prefix' => 'auth','middleware' => 'api'], function () {
+        Route::group(['prefix' => 'auth'], function () {
             Route::post('login', [AuthController::class, 'login']);
             Route::post('register', [AuthController::class, 'register']);
             Route::post('logout', [AuthController::class, 'logout']);

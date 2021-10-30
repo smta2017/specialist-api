@@ -67,7 +67,7 @@ class AuthRepository extends BaseRepository implements IAuth
      * @param $request
      * @return JsonResponse
      */
-    public function registerUser($request): JsonResponse
+    public function registerUser($request)
     {
         $user = $this->create(array_merge(
             $request->all(),

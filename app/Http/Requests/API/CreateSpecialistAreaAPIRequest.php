@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\API;
 
+use App\Helpers\ApiResponse;
 use App\Models\SpecialistArea;
+use Illuminate\Contracts\Validation\Validator;
 use InfyOm\Generator\Request\APIRequest;
 
 class CreateSpecialistAreaAPIRequest extends APIRequest
@@ -25,5 +27,10 @@ class CreateSpecialistAreaAPIRequest extends APIRequest
     public function rules()
     {
         return SpecialistArea::$rules;
+    }
+    
+    protected function failedValidation(Validator $validator)
+    {
+        ApiResponse::apiFormatValidation($validator);
     }
 }

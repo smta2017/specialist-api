@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\API;
 
+use App\Helpers\ApiResponse;
 use App\Models\OrderComment;
+use Illuminate\Contracts\Validation\Validator;
 use InfyOm\Generator\Request\APIRequest;
 
 class UpdateOrderCommentAPIRequest extends APIRequest
@@ -27,5 +29,10 @@ class UpdateOrderCommentAPIRequest extends APIRequest
         $rules = OrderComment::$rules;
         
         return $rules;
+    }
+    
+    protected function failedValidation(Validator $validator)
+    {
+        ApiResponse::apiFormatValidation($validator);
     }
 }

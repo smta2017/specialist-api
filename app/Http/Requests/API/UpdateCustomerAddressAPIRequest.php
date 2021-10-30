@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\API;
 
+use App\Helpers\ApiResponse;
 use App\Models\CustomerAddress;
+use Illuminate\Contracts\Validation\Validator;
 use InfyOm\Generator\Request\APIRequest;
 
 class UpdateCustomerAddressAPIRequest extends APIRequest
@@ -27,5 +29,10 @@ class UpdateCustomerAddressAPIRequest extends APIRequest
         $rules = CustomerAddress::$rules;
         
         return $rules;
+    }
+    
+    protected function failedValidation(Validator $validator)
+    {
+        ApiResponse::apiFormatValidation($validator);
     }
 }

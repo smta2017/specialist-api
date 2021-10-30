@@ -5,7 +5,8 @@ namespace App\Helpers;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Http\JsonResponse;
 
-class ApiResponse{
+class ApiResponse
+{
     /**
      * @param null $message
      * @param null $data
@@ -17,14 +18,13 @@ class ApiResponse{
     public static function format(
         $message = null,
         $data = null,
-        $status=true,
+        $status = true,
         int $code = 200,
         $errors = null,
         $token = null
-    ): JsonResponse
-    {
+    ): JsonResponse {
         $response = [
-            'status'=>$status,
+            'status' => $status,
             'message' => $message,
             'errors' => $errors,
             'data' => $data
@@ -41,8 +41,17 @@ class ApiResponse{
      */
     public static function apiFormatValidation($validator)
     {
-        $errors = $validator->errors();
-        $response = self::format(false,'Invalid data send', null, 422, $errors->messages());
+        $errors = self::convertValidationErrors($validator->errors());
+        $response = self::format('Invalid data send', 'invalid_validation', false, 422, $errors);
         throw new HttpResponseException($response);
+    }
+
+    public static function convertValidationErrors($errors)
+    {
+        $err_msg = [];
+        foreach ($errors->messages() as $key => $value) {
+            $err_msg[$key] = $value[0];
+        };
+        return $err_msg;
     }
 }

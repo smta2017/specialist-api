@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\API;
 
+use App\Helpers\ApiResponse;
 use App\Models\Plan;
+use Illuminate\Contracts\Validation\Validator;
 use InfyOm\Generator\Request\APIRequest;
 
 class CreatePlanAPIRequest extends APIRequest
@@ -25,5 +27,10 @@ class CreatePlanAPIRequest extends APIRequest
     public function rules()
     {
         return Plan::$rules;
+    }
+    
+    protected function failedValidation(Validator $validator)
+    {
+        ApiResponse::apiFormatValidation($validator);
     }
 }

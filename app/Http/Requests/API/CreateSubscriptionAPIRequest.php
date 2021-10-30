@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests\API;
 
+use App\Helpers\ApiResponse;
 use App\Models\Subscription;
+use Illuminate\Contracts\Validation\Validator;
 use InfyOm\Generator\Request\APIRequest;
 
 class CreateSubscriptionAPIRequest extends APIRequest
@@ -25,5 +27,10 @@ class CreateSubscriptionAPIRequest extends APIRequest
     public function rules()
     {
         return Subscription::$rules;
+    }
+    
+    protected function failedValidation(Validator $validator)
+    {
+        ApiResponse::apiFormatValidation($validator);
     }
 }

@@ -25,6 +25,32 @@ use Illuminate\Http\JsonResponse;
  *  ),
  * 
  * 
+ *   @SWG\Tag(
+ *     name="Auth",
+ *     description="System users Auth"
+ *   ),
+ *   @SWG\Tag(
+ *     name="CustomerAddress",
+ *     description="Customer Address CRUD"
+ *   ),
+ *   @SWG\Tag(
+ *     name="Order",
+ *     description="Orders (requests) CRUD"
+ *   ),
+ *   @SWG\Tag(
+ *     name="Order-Specialist",
+ *     description="Orders for specialist"
+ *   ),
+ *   
+ *   @SWG\Tag(
+ *     name="OrderComment",
+ *     description="Order Comments CRUD"
+ *   ),
+ *    
+ *   @SWG\Tag(
+ *     name="City",
+ *     description="Cities CRUD"
+ *   ),
  *  
  *
  *   @SWG\Info(

@@ -19,6 +19,7 @@ class CreatePlansTable extends Migration
             $table->string('name')->nullable();
             $table->float('price')->nullable();
             $table->integer('request_counts')->nullable();
+            $table->integer('period_in_days')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

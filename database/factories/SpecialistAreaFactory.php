@@ -22,8 +22,8 @@ class SpecialistAreaFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => $this->faker->numberBetween($min = 1, $max = 300),
-        'area_id' => $this->faker->numberBetween($min = 1, $max = 300),
+            'user_id' => $this->faker->numberBetween(1, \config("app.seeder_count")),
+        'area_id' => $this->faker->numberBetween(1, \config("app.seeder_count")),
         'created_at' => $this->faker->dateTimeBetween($startDate = '-2 years', $endDate = '2years', $timezone = null), // DateTime('2003-03-15 02:00:49', 'Africa/Lagos'),
         'updated_at' => $this->faker->dateTimeBetween($startDate = '-2 years', $endDate = '2years', $timezone = null), // DateTime('2003-03-15 02:00:49', 'Africa/Lagos'),
         ];

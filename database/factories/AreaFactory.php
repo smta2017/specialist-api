@@ -22,7 +22,9 @@ class AreaFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'city_id' => $this->faker->randomDigitNotNull,
+        'area_name_ar' => $this->faker->word,
+        'area_name_en' => $this->faker->word
         ];
     }
 }

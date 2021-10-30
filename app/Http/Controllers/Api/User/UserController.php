@@ -85,4 +85,48 @@ class UserController extends AppBaseController
     {
         return $this->user->deleteUser($id);
     }
+
+    //------------customer--------
+
+
+    /**
+     * @param int $id
+     * @return Response
+     *
+     * @SWG\Get(
+     *      path="/specialist/{area_id}",
+     *      summary="Display the specialist by Area",
+     *      tags={"Order-Specialist"},
+     *      description="Get Area",
+     *      produces={"application/json"},
+     *      @SWG\Parameter(
+     *          name="area_id",
+     *          description="id of Area",
+     *          type="integer",
+     *          required=true,
+     *          in="path"
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
+     */
+
+    public function getSpcByArea($area_id)
+    {
+        $specialist = $this->user->getSpecialistByArea($area_id);
+        return ApiResponse::format("success", $specialist);
+    }
 }

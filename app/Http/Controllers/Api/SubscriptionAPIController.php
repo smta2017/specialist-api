@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Helpers\ApiResponse;
 use App\Http\Requests\API\CreateSubscriptionAPIRequest;
 use App\Http\Requests\API\UpdateSubscriptionAPIRequest;
 use App\Models\Subscription;
 use App\Repositories\SubscriptionRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use App\Http\Requests\IdRequest;
+use App\Http\Resources\Subscription\SubscriptionResource;
 use Response;
 
 /**
@@ -282,5 +285,55 @@ class SubscriptionAPIController extends AppBaseController
         $subscription->delete();
 
         return $this->sendSuccess('Subscription deleted successfully');
+    }
+
+
+
+
+    //=============================
+
+   /**
+     * @param int $id
+     * @return Response
+     *
+     * @SWG\Post(
+     *      path="/user-subscribe/{id}",
+     *      summary="Add Subscribe for user",
+     *      tags={"Subscription"},
+     *      description="create Subscription",
+     *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
+     *      @SWG\Parameter(
+     *          name="id",
+     *          description="id of Plan",
+     *          type="integer",
+     *          required=true,
+     *          in="path"
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  ref="#/definitions/Subscription"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
+     */
+    public function UserSubscribe($id)
+    {
+        $subscription = $this->subscriptionRepository->storeUserSubscribe($id);
+        return ApiResponse::format(new SubscriptionResource($subscription), 'Subscription added as successfully');
     }
 }

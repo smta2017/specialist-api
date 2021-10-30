@@ -16,5 +16,6 @@ interface IUser extends IBase
     public function createUser(Request $request);
     public function updateUser(Request $request,$id);
     public function deleteUser($id);
+    public function getSpecialistByArea($id);
 
 }

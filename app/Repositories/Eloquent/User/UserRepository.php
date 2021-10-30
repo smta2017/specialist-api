@@ -57,4 +57,14 @@ class UserRepository extends BaseRepository implements IUser
         $user = $this->delete($id);
         return ApiResponse::format("success", $user);
     }
+
+
+
+    public function getSpecialistByArea($area_id)
+    {
+        $user = User::where('user_type', 'specialist')->whereHas('SpecialistAreas', function ($q) use ($area_id) {
+            $q->where('area_id', $area_id);
+        })->get();
+        return $user;
+    }
 }

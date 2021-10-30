@@ -10,6 +10,205 @@
         "https"
     ],
     "paths": {
+        "/areas": {
+            "get": {
+                "tags": [
+                    "Area"
+                ],
+                "summary": "Get a listing of the Areas.",
+                "description": "Get all Areas",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Area"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Area"
+                ],
+                "summary": "Store a newly created Area in storage",
+                "description": "Store Area",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Area that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Area"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Area"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/areas/{id}": {
+            "get": {
+                "tags": [
+                    "Area"
+                ],
+                "summary": "Display the specified Area",
+                "description": "Get Area",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Area",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Area"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Area"
+                ],
+                "summary": "Update the specified Area in storage",
+                "description": "Update Area",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Area",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Area that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Area"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Area"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Area"
+                ],
+                "summary": "Remove the specified Area from storage",
+                "description": "Delete Area",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Area",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/auth/login": {
             "post": {
                 "tags": [
@@ -28,7 +227,7 @@
                         "required": false,
                         "schema": {
                             "example": {
-                                "email": "santina.veum@example.net",
+                                "email": "sameh@test.com",
                                 "password": "password"
                             }
                         }
@@ -1355,12 +1554,7 @@
                             "type": "object"
                         }
                     }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
+                }
             },
             "post": {
                 "tags": [
@@ -1445,12 +1639,7 @@
                             "type": "object"
                         }
                     }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
+                }
             },
             "put": {
                 "tags": [
@@ -2479,9 +2668,113 @@
                     }
                 ]
             }
+        },
+        "/user-subscribe/{id}": {
+            "post": {
+                "tags": [
+                    "Subscription"
+                ],
+                "summary": "Add Subscribe for user",
+                "description": "create Subscription",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Plan",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Subscription"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/specialist/{area_id}": {
+            "get": {
+                "tags": [
+                    "Order-Specialist"
+                ],
+                "summary": "Display the specialist by Area",
+                "description": "Get Area",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "area_id",
+                        "in": "path",
+                        "description": "id of Area",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
+        "Area": {
+            "required": [
+                "city_id",
+                "area_name_ar",
+                "area_name_en"
+            ],
+            "properties": {
+                "city_id": {
+                    "description": "city_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "area_name_ar": {
+                    "description": "area_name_ar",
+                    "type": "string"
+                },
+                "area_name_en": {
+                    "description": "area_name_en",
+                    "type": "string"
+                }
+            }
+        },
         "City": {
             "required": [
                 "city_name_ar",
@@ -2762,5 +3055,31 @@
             "name": "Authorization",
             "in": "header"
         }
-    }
+    },
+    "tags": [
+        {
+            "name": "Auth",
+            "description": "System users Auth"
+        },
+        {
+            "name": "CustomerAddress",
+            "description": "Customer Address CRUD"
+        },
+        {
+            "name": "Order",
+            "description": "Orders (requests) CRUD"
+        },
+        {
+            "name": "Order-Specialist",
+            "description": "Orders for specialist"
+        },
+        {
+            "name": "OrderComment",
+            "description": "Order Comments CRUD"
+        },
+        {
+            "name": "City",
+            "description": "Cities CRUD"
+        }
+    ]
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AreaAPIController;
 use App\Http\Controllers\Api\Auth\AuthController;
 use App\Http\Controllers\Api\Auth\ForgotPasswordController;
 use App\Http\Controllers\Api\Auth\SocialAuthController;
@@ -90,6 +91,8 @@ Route::group(['prefix' => 'en'], function () {
 
 
         Route::apiResource('/cities', CityAPIController::class);
+        Route::resource('areas', AreaAPIController::class);
+        Route::get('/specialist/{area_id}', [UserController::class, 'getSpcByArea']);
 
     });
 });
@@ -115,19 +118,17 @@ Route::group(['prefix' => 'en/v1', 'middleware' => 'auth:sanctum'], function () 
     Route::resource('specialistTypes', SpecialistTypeAPIController::class);
 
 
-    Route::put('/customerAddresses/default/{id}', [CustomerAddressAPIController::class,'setDefault']);
+    Route::put('/customerAddresses/default/{id}', [CustomerAddressAPIController::class, 'setDefault']);
     Route::resource('/customerAddresses', CustomerAddressAPIController::class);
 
-    Route::put('/orders/complete/{id}', [OrderAPIController::class,'complete']);
-    Route::get('/orders/detail/{id}', [OrderAPIController::class,'detail']);
-    Route::post('/orders/sp', [OrderAPIController::class,'spIndex']);
-    Route::get('/orders/sp-detail/{id}', [OrderAPIController::class,'spDetail']);
+    Route::put('/orders/complete/{id}', [OrderAPIController::class, 'complete']);
+    Route::get('/orders/detail/{id}', [OrderAPIController::class, 'detail']);
+    Route::post('/orders/sp', [OrderAPIController::class, 'spIndex']);
+    Route::get('/orders/sp-detail/{id}', [OrderAPIController::class, 'spDetail']);
     Route::resource('orders', OrderAPIController::class);
 
 
     Route::resource('orderComments', OrderCommentAPIController::class);
     Route::resource('subscriptions', SubscriptionAPIController::class);
+    Route::post('user-subscribe/{id}', [SubscriptionAPIController::class,'UserSubscribe']);
 });
-
-
-Route::resource('cities', App\Http\Controllers\API\CityAPIController::class);

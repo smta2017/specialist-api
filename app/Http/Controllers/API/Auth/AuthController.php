@@ -23,7 +23,7 @@ class AuthController extends AppBaseController
      */
     public function __construct(IAuth $auth)
     {
-        $this->middleware('auth:sanctum', ['except' => ['login', 'register']]);
+        $this->middleware('auth:api', ['except' => ['login', 'register']]);
         return $this->auth = $auth;
     }
 

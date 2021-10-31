@@ -57,11 +57,10 @@ class AuthRepository extends BaseRepository implements IAuth
      */
     public function loginUser($request)
     {
-        if (!$token = auth()->attempt($request)) {
+        if (!auth()->attempt($request)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
-
-        return  ApiResponse::format("success", $this->respondWithToken($token));
+        return  ApiResponse::format("success", $this->respondWithToken(auth()->user()->createToken('')->plainTextToken));
     }
 
     /**
@@ -76,8 +75,7 @@ class AuthRepository extends BaseRepository implements IAuth
         ));
 
         if ($user) {
-            $user['access_token'] = auth()->login($user);
-            $user['full_token'] = 'Bearer ' . auth()->login($user);
+            $user['access_token'] = $user->createToken('')->plainTextToken;
             //need db teansactions
             foreach ($request->areas as $area) {
                 $this->addUserArea($user->id, $area);
@@ -86,20 +84,16 @@ class AuthRepository extends BaseRepository implements IAuth
                 $this->addUserSpecial($user->id, $special);
             }
         }
-        try {
-            //need job
-            if (\config("app.enable_email_verification")) {
-                $user->sendEmailVerificationNotification();
-            }
 
-            //need job
-            if (\config("app.enable_phone_verification")) {
-                $user->sendPhoneVerificationOTP();
-            }
-        } catch (\Throwable $th) {
-            return $user;
+        //need job
+        if (\config("app.enable_email_verification")) {
+            $user->sendEmailVerificationNotification();
         }
 
+        //need job
+        if (\config("app.enable_phone_verification")) {
+            $user->sendPhoneVerificationOTP();
+        }
 
         return $user;
     }
@@ -130,11 +124,11 @@ class AuthRepository extends BaseRepository implements IAuth
      */
     public function forgotPassword(Request $request)
     {
-        $validator = \Validator::make($request->all(), ['email' => 'required|email']);
+       $validator = \Validator::make($request->all(), ['email' => 'required|email']);
 
-        if ($validator) {
-            return ApiResponse::apiFormatValidation($validator);
-        }
+       if ($validator) {
+          return ApiResponse::apiFormatValidation($validator);
+       }
 
         $status = Password::sendResetLink(
             $request->only('email')
@@ -157,7 +151,7 @@ class AuthRepository extends BaseRepository implements IAuth
 
         if ($validator) {
             return ApiResponse::apiFormatValidation($validator);
-        }
+         }
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function ($user, $password) {

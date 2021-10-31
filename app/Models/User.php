@@ -13,11 +13,7 @@ use Spatie\Permission\Traits\HasRoles;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-
-use Tymon\JWTAuth\Contracts\JWTSubject;
-
-
-class User extends Authenticatable implements Auditable, MustVerifyEmail, HasMedia, JWTSubject
+class User extends Authenticatable implements Auditable, MustVerifyEmail, HasMedia
 {
     use InteractsWithMedia;
     use HasApiTokens, HasFactory, Notifiable;
@@ -178,24 +174,4 @@ class User extends Authenticatable implements Auditable, MustVerifyEmail, HasMed
     | MUTATORS
     |--------------------------------------------------------------------------
     */
-
-    /**
-     * Get the identifier that will be stored in the subject claim of the JWT.
-     *
-     * @return mixed
-     */
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
-
-    /**
-     * Return a key value array, containing any custom claims to be added to the JWT.
-     *
-     * @return array
-     */
-    public function getJWTCustomClaims()
-    {
-        return [];
-    }
 }

@@ -18,6 +18,12 @@ use Response;
 
 class PlanAPIController extends AppBaseController
 {
+
+    public function test(Request $request)
+    {
+        return $request->header();
+    }
+
     /** @var  PlanRepository */
     private $planRepository;
 

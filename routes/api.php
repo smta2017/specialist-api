@@ -9,6 +9,7 @@ use App\Http\Controllers\API\Authorize\AuthorizeController;
 use App\Http\Controllers\API\CityAPIController;
 use App\Http\Controllers\API\CustomerAddressAPIController;
 use App\Http\Controllers\API\OrderAPIController;
+use App\Http\Controllers\API\UserTypesAPIController;
 use App\Http\Controllers\API\OrderCommentAPIController;
 use App\Http\Controllers\API\PlanAPIController;
 use App\Http\Controllers\API\SpecialistAreaAPIController;
@@ -77,6 +78,7 @@ Route::group(['prefix' => 'en'], function () {
             Route::group(['prefix' => 'users'], function () {
 
                 Route::get('/profile/{id}', [UserController::class, 'tuserProfile']);
+                Route::get('/', [UserController::class, 'tuserProfile']);
                 Route::get('/notifications', [CustomerController::class, 'notifications']);
                 Route::get('/unread-notifications', [CustomerController::class, 'unReadNotifications']);
                 Route::get('/notifications/{id}/mark-read', [CustomerController::class, 'markAsRead']);
@@ -103,8 +105,15 @@ Route::group(['prefix' => 'en'], function () {
 
 
 
-Route::group(['prefix' => 'en/v1', 'middleware' => 'auth:sanctum'], function () {
+Route::group(['prefix' => 'en/v1'], function () {
+    Route::resource('userTypes', UserTypesAPIController::class);
+    Route::get('/orders/status', [OrderAPIController::class, 'orderStatus']);
 
+    Route::group([ 'middleware' => 'auth:sanctum'], function () {
+
+    Route::post('/test2', [PlanApiController::class, 'test']);
+
+    
     Route::resource('specialTypes', SpecialTypesAPIController::class);
     Route::get('/plan/specialist', [PlanApiController::class, 'subscripe']);
 
@@ -126,9 +135,10 @@ Route::group(['prefix' => 'en/v1', 'middleware' => 'auth:sanctum'], function () 
     Route::post('/orders/sp', [OrderAPIController::class, 'spIndex']);
     Route::get('/orders/sp-detail/{id}', [OrderAPIController::class, 'spDetail']);
     Route::resource('orders', OrderAPIController::class);
-
+    
 
     Route::resource('orderComments', OrderCommentAPIController::class);
     Route::resource('subscriptions', SubscriptionAPIController::class);
     Route::post('user-subscribe/{id}', [SubscriptionAPIController::class,'UserSubscribe']);
+});
 });

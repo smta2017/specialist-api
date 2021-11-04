@@ -109,9 +109,9 @@ Route::group(['prefix' => 'en/v1'], function () {
     Route::resource('userTypes', UserTypesAPIController::class);
     Route::get('/orders/status', [OrderAPIController::class, 'orderStatus']);
 
+    Route::post('/test2', [PlanApiController::class, 'test']);
     Route::group([ 'middleware' => 'auth:sanctum'], function () {
 
-    Route::post('/test2', [PlanApiController::class, 'test']);
 
     
     Route::resource('specialTypes', SpecialTypesAPIController::class);

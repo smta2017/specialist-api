@@ -9,7 +9,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use OwenIt\Auditing\Contracts\Auditable;
-use Spatie\Permission\Traits\HasRoles;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
@@ -18,7 +17,6 @@ class User extends Authenticatable implements Auditable, MustVerifyEmail, HasMed
     use InteractsWithMedia;
     use HasApiTokens, HasFactory, Notifiable;
     use \OwenIt\Auditing\Auditable;
-    use HasRoles;
     use SMSTrait;
     use \Rinvex\Attributes\Traits\Attributable;
 

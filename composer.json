@@ -23,12 +23,6 @@
         "spatie/laravel-medialibrary": "^9.0.0",
         "tcg/voyager": "^1.5"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url":  "git@github.com:InfyOmLabs/swaggervel.git"
-        }
-    ],
     "require-dev": {
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",

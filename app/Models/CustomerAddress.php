@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *          property="is_default",
  *          description="is_default",
  *          type="boolean",
- *          default="false"
+ *          default="0"
  *      ),
  *      @SWG\Property(
  *          property="floor_no",

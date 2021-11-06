@@ -458,6 +458,109 @@
                 }
             }
         },
+        "/send-otp/{phone_number}": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Display the specified Subscription",
+                "description": "Send OTP phone verification",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "phone_number",
+                        "in": "path",
+                        "description": "phone to send OTP code",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "description": "send phone OTP.",
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "description": "send phone OTP.",
+                                    "$ref": "#"
+                                },
+                                "message": {
+                                    "description": "send phone OTP.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/sconfirm-otp/{phone_number}/{otp}": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Display the specified Subscription",
+                "description": "Verify OTP code",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "phone_number",
+                        "in": "path",
+                        "description": "Verify OTP code",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "otp",
+                        "in": "path",
+                        "description": "OTP code to verify",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "description": "verify phone OTP.",
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "description": "verify phone OTP.",
+                                    "$ref": "#"
+                                },
+                                "message": {
+                                    "description": "verify phone OTP.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
         "/cities": {
             "get": {
                 "tags": [
@@ -1200,7 +1303,7 @@
                 "tags": [
                     "Order"
                 ],
-                "summary": "Display Detail for specified Order",
+                "summary": "Display  Order Detail (specified or customer) ",
                 "description": "Get details of Order",
                 "produces": [
                     "application/json"
@@ -1238,6 +1341,23 @@
                         "Bearer": []
                     }
                 ]
+            }
+        },
+        "/orders/status": {
+            "get": {
+                "tags": [
+                    "Order"
+                ],
+                "summary": "list of statuses Order.",
+                "description": "Get all order status",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
             }
         },
         "/orders/sp": {
@@ -2750,6 +2870,23 @@
                     }
                 }
             }
+        },
+        "/userTypes": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Geting user types in system",
+                "description": "Get Subscription",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -2819,7 +2956,7 @@
                 "is_default": {
                     "description": "is_default",
                     "type": "boolean",
-                    "default": "false"
+                    "default": "0"
                 },
                 "floor_no": {
                     "description": "floor_no",
@@ -2849,11 +2986,6 @@
                     "description": "body",
                     "type": "string"
                 },
-                "user_id": {
-                    "description": "user_id",
-                    "type": "integer",
-                    "format": "int32"
-                },
                 "customer_address_id": {
                     "description": "customer_address_id",
                     "type": "integer",
@@ -2866,8 +2998,8 @@
                 },
                 "special_type_id": {
                     "description": "special_type_id",
-                    "type": "string",
-                    "default": "new"
+                    "type": "integer",
+                    "default": 1
                 }
             }
         },
@@ -2880,11 +3012,6 @@
             "properties": {
                 "order_id": {
                     "description": "order_id",
-                    "type": "integer",
-                    "format": "int32"
-                },
-                "user_id": {
-                    "description": "user_id",
                     "type": "integer",
                     "format": "int32"
                 },

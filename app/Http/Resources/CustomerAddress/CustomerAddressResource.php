@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\CustomerAddress;
 
+use App\Http\Resources\Area\AreaResource;
 use App\Http\Resources\User\UserMiniResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -19,7 +20,7 @@ class CustomerAddressResource extends JsonResource
         return [
             "id" => $this->id, // 4,
             "user" => new UserMiniResource($this->User), // 5,
-            "area_id" => $this->area_id, // 5,
+            "area" => new AreaResource($this->Area), // 5,
             "street" => $this->street, // "provident",
             "is_default" => $this->is_default, // false,
             "floor_no" => $this->floor_no, // "blanditiis",

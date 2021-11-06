@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\Auth;
 
+use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\User\IAuth;
 use Illuminate\Auth\Events\PasswordReset;
@@ -23,7 +24,7 @@ class ForgotPasswordController extends Controller
         return $this->auth = $auth;
     }
 
-   /**
+    /**
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -70,7 +71,9 @@ class ForgotPasswordController extends Controller
 
     public function forgotPassword(Request $request)
     {
-        return $this->auth->forgotPassword($request);
+        $data = $this->auth->forgotPassword($request);
+        return $data;
+        return  ApiResponse::format( "success", $data,'Email sent.');
     }
 
 

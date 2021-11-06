@@ -12,32 +12,47 @@ class VerificationController extends Controller
 {
     use SMSTrait;
 
-     /**
+    /**
      * send phone OTP.
      *
      * @return \Illuminate\Http\JsonResponse
-     
-     * @OA\get(
-     *   path="/verify/send-otp/{phone_number}",
-     *   tags={"system"},
-     *   summary="send OTP",
-     *  
-     *   @OA\Response(
-     *     response=200,
-     *     description="send OTP", @OA\JsonContent()
-     *   ),
      *
-     *   @OA\Parameter(
-     *name="phone_number",
-     *     in="path",
-     *     required=true,
-     *         @OA\Schema(
-     *           type="string",
-     *           maxLength=15,
-     *         )
-     *     ),
-     *  
-     * 
+     * @param int $id
+     * @return Response
+     *
+     * @SWG\Get(
+     *      path="/send-otp/{phone_number}",
+     *      summary="Display the specified Subscription",
+     *      tags={"Auth"},
+     *      description="Send OTP phone verification",
+     *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
+     *      @SWG\Parameter(
+     *          name="phone_number",
+     *          description="phone to send OTP code",
+     *          type="string",
+     *          required=true,
+     *          in="path"
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  ref="#"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
      * )
      */
     public function sendMobileOTP($phone_number)
@@ -50,47 +65,59 @@ class VerificationController extends Controller
      * verify phone OTP.
      *
      * @return \Illuminate\Http\JsonResponse
-     
-     * @OA\get(
-     *   path="/verify/confirm-otp/{phone_number}/{otp}",
-     *   tags={"system"},
-     *   summary="OTP verifitation",
-     *  
-     *   @OA\Response(
-     *     response=200,
-     *     description="OTP verifitation", @OA\JsonContent()
-     *   ),
      *
-     *   @OA\Parameter(
-     *name="phone_number",
-     *     in="path",
-     *     required=true,
-     *         @OA\Schema(
-     *           type="string",
-     *           maxLength=15,
-     *         )
-     *     ),
-     * 
-     *   @OA\Parameter(
-     *name="otp",
-     *     in="path",
-     *     required=true,
-     *         @OA\Schema(
-     *           type="string",
-     *           maxLength=15,
-     *         )
-     *     ),
-     *  
-     * 
+     * @param int $id
+     * @return Response
+     *
+     * @SWG\Get(
+     *      path="/sconfirm-otp/{phone_number}/{otp}",
+     *      summary="Display the specified Subscription",
+     *      tags={"Auth"},
+     *      description="Verify OTP code",
+     *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
+     *      @SWG\Parameter(
+     *          name="phone_number",
+     *          description="Verify OTP code",
+     *          type="string",
+     *          required=true,
+     *          in="path"
+     *      ),
+     *      @SWG\Parameter(
+     *          name="otp",
+     *          description="OTP code to verify",
+     *          type="string",
+     *          required=true,
+     *          in="path"
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  ref="#"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
      * )
      */
     public function confirmOTP($phone_number, $otp)
     {
         $res =  $this->verifyOTP($phone_number, $otp);
-        if ($res->valid==true) {
+        if ($res->valid == true) {
             return  ApiResponse::format("success", $res);
-        }else{
-            return  ApiResponse::format("fail", $res,false);
+        } else {
+            return  ApiResponse::format("fail", $res, false);
         }
     }
 

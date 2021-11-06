@@ -21,12 +21,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *          type="string"
  *      ),
  *      @SWG\Property(
- *          property="user_id",
- *          description="user_id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
  *          property="customer_address_id",
  *          description="customer_address_id",
  *          type="integer",
@@ -41,8 +35,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *      @SWG\Property(
  *          property="special_type_id",
  *          description="special_type_id",
- *          type="string",
- *          default="new"
+ *          type="integer",
+ *          default=1
  *      ),
 
  * )

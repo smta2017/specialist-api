@@ -124,17 +124,17 @@ class AuthRepository extends BaseRepository implements IAuth
      */
     public function forgotPassword(Request $request)
     {
-       $validator = \Validator::make($request->all(), ['email' => 'required|email']);
+        $validator = \Validator::make($request->all(), ['email' => 'required|email']);
 
-       if ($validator) {
-          return ApiResponse::apiFormatValidation($validator);
-       }
+        if ($validator) {
+            // return ApiResponse::apiFormatValidation($validator);
+        }
 
         $status = Password::sendResetLink(
-            $request->only('email')
+            ['email' => 'alysha57@example.net']
         );
 
-        return  ApiResponse::format("success", 'Email sent.');
+        return  "Email sent.";
     }
     public function resetView(Request $request)
     {
@@ -151,7 +151,7 @@ class AuthRepository extends BaseRepository implements IAuth
 
         if ($validator) {
             return ApiResponse::apiFormatValidation($validator);
-         }
+        }
         $status = Password::reset(
             $request->only('email', 'password', 'password_confirmation', 'token'),
             function ($user, $password) {

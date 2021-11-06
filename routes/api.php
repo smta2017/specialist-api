@@ -95,7 +95,6 @@ Route::group(['prefix' => 'en'], function () {
         Route::apiResource('/cities', CityAPIController::class);
         Route::resource('areas', AreaAPIController::class);
         Route::get('/specialist/{area_id}', [UserController::class, 'getSpcByArea']);
-
     });
 });
 
@@ -108,37 +107,37 @@ Route::group(['prefix' => 'en'], function () {
 Route::group(['prefix' => 'en/v1'], function () {
     Route::resource('userTypes', UserTypesAPIController::class);
     Route::get('/orders/status', [OrderAPIController::class, 'orderStatus']);
-
-    Route::post('/test2', [PlanApiController::class, 'test']);
-    Route::group([ 'middleware' => 'auth:sanctum'], function () {
-
-
-    
-    Route::resource('specialTypes', SpecialTypesAPIController::class);
-    Route::get('/plan/specialist', [PlanApiController::class, 'subscripe']);
-
-
     Route::resource('plans', PlanAPIController::class);
 
-
-    Route::resource('specialist_areas', SpecialistAreaAPIController::class);
-
-
-    Route::resource('specialistTypes', SpecialistTypeAPIController::class);
+    Route::post('/test2', [PlanApiController::class, 'test']);
+    Route::group(['middleware' => 'auth:sanctum'], function () {
 
 
-    Route::put('/customerAddresses/default/{id}', [CustomerAddressAPIController::class, 'setDefault']);
-    Route::resource('/customerAddresses', CustomerAddressAPIController::class);
 
-    Route::put('/orders/complete/{id}', [OrderAPIController::class, 'complete']);
-    Route::get('/orders/detail/{id}', [OrderAPIController::class, 'detail']);
-    Route::post('/orders/sp', [OrderAPIController::class, 'spIndex']);
-    Route::get('/orders/sp-detail/{id}', [OrderAPIController::class, 'spDetail']);
-    Route::resource('orders', OrderAPIController::class);
-    
+        Route::resource('specialTypes', SpecialTypesAPIController::class);
+        Route::get('/plan/specialist', [PlanApiController::class, 'subscripe']);
 
-    Route::resource('orderComments', OrderCommentAPIController::class);
-    Route::resource('subscriptions', SubscriptionAPIController::class);
-    Route::post('user-subscribe/{id}', [SubscriptionAPIController::class,'UserSubscribe']);
-});
+
+
+
+        Route::resource('specialist_areas', SpecialistAreaAPIController::class);
+
+
+        Route::resource('specialistTypes', SpecialistTypeAPIController::class);
+
+
+        Route::put('/customerAddresses/default/{id}', [CustomerAddressAPIController::class, 'setDefault']);
+        Route::resource('/customerAddresses', CustomerAddressAPIController::class);
+
+        Route::put('/orders/complete/{id}', [OrderAPIController::class, 'complete']);
+        Route::get('/orders/detail/{id}', [OrderAPIController::class, 'detail']);
+        Route::post('/orders/sp', [OrderAPIController::class, 'spIndex']);
+        Route::get('/orders/sp-detail/{id}', [OrderAPIController::class, 'spDetail']);
+        Route::resource('orders', OrderAPIController::class);
+
+
+        Route::resource('orderComments', OrderCommentAPIController::class);
+        Route::resource('subscriptions', SubscriptionAPIController::class);
+        Route::post('user-subscribe/{id}', [SubscriptionAPIController::class, 'UserSubscribe']);
+    });
 });

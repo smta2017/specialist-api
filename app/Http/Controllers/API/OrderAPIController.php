@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Helpers\ApiResponse;
 use App\Http\Requests\API\CreateOrderAPIRequest;
 use App\Http\Requests\API\UpdateOrderAPIRequest;
 use App\Models\Order;
@@ -359,7 +360,7 @@ class OrderAPIController extends AppBaseController
      *
      * @SWG\Get(
      *      path="/orders/detail/{id}",
-     *      summary="Display Detail for specified Order",
+     *      summary="Display  Order Detail (specified or customer) ",
      *      tags={"Order"},
      *      description="Get details of Order",
      *      produces={"application/json"},
@@ -410,6 +411,27 @@ class OrderAPIController extends AppBaseController
     }
 
 
+    /**
+     * @param Request $request
+     * @return Response
+     *
+     * @SWG\get(
+     *      path="/orders/status",
+     *      summary="list of statuses Order.",
+     *      tags={"Order"},
+     *      description="Get all order status",
+     *      produces={"application/json"},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *        
+     *      )
+     * )
+     */
+    public function orderStatus()
+    {
+       return ApiResponse::format('order statuss list',['new','pending','complete']);
+    }
 
 
     // ========================== SPECIALIST ======================================

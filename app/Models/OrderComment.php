@@ -17,12 +17,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="user_id",
- *          description="user_id",
- *          type="integer",
- *          format="int32"
- *      ),
- *      @SWG\Property(
  *          property="body",
  *          description="body",
  *          type="string"
@@ -84,7 +78,6 @@ class OrderComment extends Model
      */
     public static $rules = [
         'order_id' => 'required|numeric',
-        'user_id' => 'required|numeric',
         'body' => 'required',
         'offer' => 'required'
     ];

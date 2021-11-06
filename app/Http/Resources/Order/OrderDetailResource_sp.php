@@ -20,7 +20,7 @@ class OrderDetailResource_sp extends JsonResource
       
         return [
             'order' => new OrderResource($this),
-            'customer_address' => $this["CustomerAddress"]['Area']['name'],
+            'customer_address' => $this["CustomerAddress"]['Area']['area_name_en'],
             'OrderComments' =>  OrderCommentResource::collection($this->OrderComments)
         ];
     }

@@ -24,6 +24,17 @@ class CreateCitiesTable extends Migration
             $table->decimal("delivery_fees", 8, 2)->nullable();
         //     $table->timestamps();
         });
+
+
+        Schema::table('areas', function (Blueprint $table) {
+        //     $table->id();
+        //     $table->string("name");
+        //     $table->string("name_ar")->nullable();
+            $table->boolean("active")->default(1);
+        //     $table->text("deactivation_notes")->nullable();
+            $table->decimal("delivery_fees", 8, 2)->nullable();
+        //     $table->timestamps();
+        });
     }
 
     // /**

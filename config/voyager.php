@@ -42,7 +42,7 @@ return [
     */
 
     'models' => [
-       // 'namespace' => 'App\\Models\\',
+       'namespace' => 'App\\Models\\',
     ],
 
     /*
@@ -181,7 +181,7 @@ return [
     |
     */
 
-    'primary_color' => '#22A7F0',
+    'primary_color' => '1D3B61',
 
     'show_dev_tips' => true, // Show development tip "How To Use:" in Menu and Settings
 

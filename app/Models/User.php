@@ -12,7 +12,7 @@ use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 
-class User extends Authenticatable implements Auditable, MustVerifyEmail, HasMedia
+class User extends \TCG\Voyager\Models\User implements Auditable, MustVerifyEmail, HasMedia
 {
     use InteractsWithMedia;
     use HasApiTokens, HasFactory, Notifiable;

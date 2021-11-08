@@ -115,11 +115,6 @@ class OrderAPIController extends AppBaseController
      */
     public function store(CreateOrderAPIRequest $request)
     {
-        // return auth()->user()->user_type;
-        if (!auth()->user()->user_type == 'customer') {
-            return $this->sendResponse('', 'Customer only can add order', false);
-        }
-
         $input = array_merge(
             $request->all(),
             ['user_id' => auth()->user()->id],
@@ -430,7 +425,7 @@ class OrderAPIController extends AppBaseController
      */
     public function orderStatus()
     {
-       return ApiResponse::format('order statuss list',['new','pending','complete']);
+        return ApiResponse::format('order statuss list', ['new', 'pending', 'complete']);
     }
 
 
@@ -478,13 +473,22 @@ class OrderAPIController extends AppBaseController
      */
     public function spIndex(Request $request)
     {
-        $specialist = ($request->special_type_id) ? $request->special_type_id : auth()->user()->SpecialistTypes->pluck('id');
-        $areas = ($request->area_id) ? $request->area_id : auth()->user()->SpecialistAreas->pluck('id');
+        $specialist = ($request->special_type_id) ? $request->special_type_id : auth()->user()->SpecialistTypes->pluck('special_type_id');
+        $areas = ($request->area_id) ? $request->area_id : auth()->user()->SpecialistAreas->pluck('area_id');
 
-        $orders = Order::whereIn('special_type_id', $specialist)->whereHas('CustomerAddress', function ($q) use ($areas) {
+        $orders = Order::query();
+        $orders =  $orders->whereIn('special_type_id', $specialist);
+
+        $orders = $orders->whereHas('CustomerAddress', function ($q) use ($areas) {
             $q->whereIn('area_id', $areas);
-        })->get();
+        });
 
+        if (auth()->user()->user_type == 'specialist' || auth()->user()->user_type == 'center') {
+            $orders = $orders->userType(['customer']);
+        } else if (auth()->user()->user_type == 'libirary') {
+            $orders = $orders->userType(['specialist', 'center']);
+        }
+        $orders = $orders->get();
         return $this->sendResponse(OrderResource::collection($orders), 'Orders retrieved successfully');
     }
 }

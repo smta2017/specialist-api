@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Order;
 use App\Models\OrderComment;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class OrderCommentFactory extends Factory
@@ -22,8 +24,8 @@ class OrderCommentFactory extends Factory
     public function definition()
     {
         return [
-            'order_id' => $this->faker->numberBetween($min = 1, $max = 300),
-        'user_id' => $this->faker->numberBetween($min = 1, $max = 300),
+            'order_id' => Order::pluck('id')->random(),
+        'user_id' => User::pluck('id')->random(),
         'body' => $this->faker->text,
         'offer' => $this->faker->numberBetween($min = 1, $max = 300),
         'delivery_date' => $this->faker->date('Y-m-d'),

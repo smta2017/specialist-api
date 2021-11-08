@@ -2,7 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\CustomerAddress;
 use App\Models\Order;
+use App\Models\SpecialTypes;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class OrderFactory extends Factory
@@ -24,10 +27,10 @@ class OrderFactory extends Factory
         return [
             'title' => $this->faker->word,
             'body' => $this->faker->text,
-            'user_id' => $this->faker->numberBetween($min = 1, $max = 300),
+            'user_id' => User::pluck('id')->random(),
             'status_id' => 'new',
-            "customer_address_id" => $this->faker->numberBetween($min = 1, $max = 300),
-            "special_type_id" => $this->faker->numberBetween($min = 1, $max = 300),
+            "customer_address_id" =>  CustomerAddress::pluck('id')->random() ,
+            "special_type_id" => SpecialTypes::pluck('id')->random(),
             'created_at' => $this->faker->dateTimeBetween($startDate = '-2 years', $endDate = '2years', $timezone = null), // DateTime('2003-03-15 02:00:49', 'Africa/Lagos'),
             'updated_at' => $this->faker->dateTimeBetween($startDate = '-2 years', $endDate = '2years', $timezone = null) // DateTime('2003-03-15 02:00:49', 'Africa/Lagos')
         ];

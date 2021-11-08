@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'ar',
 
     /*
     |--------------------------------------------------------------------------
@@ -123,7 +123,7 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-    'user_types' => ['customer', 'specialist','libirary'],
+    'user_types' => ['customer', 'specialist','libirary','center'],
 
     'enable_email_verification' => env('EMAIL_VERIFICATION', true),
 

@@ -89,7 +89,12 @@ class Order extends Model
     ];
 
     
-
+public function scopeUserType($query ,$user_type = [])
+{
+    return $query->whereHas('User', function ($q) use($user_type) {
+        $q->whereIn('user_type', $user_type);
+    });
+}
 
 
     public function CustomerAddress()

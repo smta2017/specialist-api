@@ -118,6 +118,10 @@ Route::group(['prefix' => 'en', 'middleware' => 'suspension'], function () {
 
         Route::resource('countries', App\Http\Controllers\API\CountryAPIController::class);
 
+        Route::resource('sliders', App\Http\Controllers\API\SliderAPIController::class);
+
+        Route::resource('sliderImages', App\Http\Controllers\API\SliderImageAPIController::class);
+        
 
         Route::apiResource('/cities', CityAPIController::class);
         Route::resource('areas', AreaAPIController::class);
@@ -132,7 +136,5 @@ Route::group(['prefix' => 'en', 'middleware' => 'suspension'], function () {
 });
 
 
-Route::resource('sliders', App\Http\Controllers\API\SliderAPIController::class);
 
 
-Route::resource('slider_images', App\Http\Controllers\API\SliderImageAPIController::class);

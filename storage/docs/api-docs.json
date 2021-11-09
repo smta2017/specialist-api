@@ -2323,6 +2323,404 @@
                 ]
             }
         },
+        "/sliders": {
+            "get": {
+                "tags": [
+                    "Slider"
+                ],
+                "summary": "Get a listing of the Sliders.",
+                "description": "Get all Sliders",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Slider"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Slider"
+                ],
+                "summary": "Store a newly created Slider in storage",
+                "description": "Store Slider",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Slider that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Slider"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Slider"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/sliders/{id}": {
+            "get": {
+                "tags": [
+                    "Slider"
+                ],
+                "summary": "Display the specified Slider",
+                "description": "Get Slider",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Slider",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Slider"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Slider"
+                ],
+                "summary": "Update the specified Slider in storage",
+                "description": "Update Slider",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Slider",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Slider that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Slider"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Slider"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Slider"
+                ],
+                "summary": "Remove the specified Slider from storage",
+                "description": "Delete Slider",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Slider",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/sliderImages": {
+            "get": {
+                "tags": [
+                    "SliderImage"
+                ],
+                "summary": "Get a listing of the SliderImages.",
+                "description": "Get all SliderImages",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SliderImage"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "SliderImage"
+                ],
+                "summary": "Store a newly created SliderImage in storage",
+                "description": "Store SliderImage",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "SliderImage that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/SliderImage"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/SliderImage"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/sliderImages/{id}": {
+            "get": {
+                "tags": [
+                    "SliderImage"
+                ],
+                "summary": "Display the specified SliderImage",
+                "description": "Get SliderImage",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of SliderImage",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/SliderImage"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "SliderImage"
+                ],
+                "summary": "Update the specified SliderImage in storage",
+                "description": "Update SliderImage",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of SliderImage",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "SliderImage that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/SliderImage"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/SliderImage"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "SliderImage"
+                ],
+                "summary": "Remove the specified SliderImage from storage",
+                "description": "Delete SliderImage",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of SliderImage",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/specialTypes": {
             "get": {
                 "tags": [
@@ -3522,6 +3920,100 @@
                     "description": "can_supscribing_count",
                     "type": "integer",
                     "format": "int32"
+                }
+            }
+        },
+        "Slider": {
+            "required": [
+                "name",
+                "slider_type"
+            ],
+            "properties": {
+                "name": {
+                    "description": "name",
+                    "type": "string"
+                },
+                "slider_type": {
+                    "description": "slider_type",
+                    "type": "string"
+                },
+                "slides_per_page": {
+                    "description": "slides_per_page",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "auto_play": {
+                    "description": "auto_play",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "slider_width": {
+                    "description": "slider_width",
+                    "type": "string"
+                },
+                "slider_height": {
+                    "description": "slider_height",
+                    "type": "string"
+                },
+                "is_active": {
+                    "description": "is_active",
+                    "type": "boolean"
+                }
+            }
+        },
+        "SliderImage": {
+            "required": [
+                "slider_id"
+            ],
+            "properties": {
+                "title": {
+                    "description": "title",
+                    "type": "string"
+                },
+                "description": {
+                    "description": "description",
+                    "type": "string"
+                },
+                "caption": {
+                    "description": "caption",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "url",
+                    "type": "string"
+                },
+                "image_name": {
+                    "description": "image_name",
+                    "type": "string"
+                },
+                "start_date": {
+                    "description": "start_date",
+                    "type": "string",
+                    "format": "date"
+                },
+                "end_date": {
+                    "description": "end_date",
+                    "type": "string",
+                    "format": "date"
+                },
+                "is_active": {
+                    "description": "is_active",
+                    "type": "boolean"
+                },
+                "slider_id": {
+                    "description": "slider_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "created_at": {
+                    "description": "created_at",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updated_at": {
+                    "description": "updated_at",
+                    "type": "string",
+                    "format": "date-time"
                 }
             }
         },

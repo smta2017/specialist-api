@@ -32,7 +32,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         app('rinvex.attributes.entities')->push(App\Models\User::class);
-        Voyager::addAction(\App\Actions\MyAction::class);
         \Route::prefix('api')
         ->middleware('api')
         ->as('api.')

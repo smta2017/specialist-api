@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(config("app.seeder_count"))->create();
         \App\Models\SpecialTypes::factory(config("app.seeder_count"))->create();
         \App\Models\Plan::factory(config("app.seeder_count"))->create();
+        \App\Models\OrderState::factory(config("app.seeder_count"))->create();
         \App\Models\SpecialistArea::factory(config("app.seeder_count"))->create();
         \App\Models\SpecialistType::factory(config("app.seeder_count"))->create();
         \App\Models\Subscription::factory(config("app.seeder_count"))->create();

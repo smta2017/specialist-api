@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\IdRequest;
 use App\Http\Resources\Subscription\SubscriptionResource;
+use App\Models\Plan;
 use Response;
 
 /**
@@ -292,7 +293,7 @@ class SubscriptionAPIController extends AppBaseController
 
     //=============================
 
-   /**
+    /**
      * @param int $id
      * @return Response
      *
@@ -334,6 +335,10 @@ class SubscriptionAPIController extends AppBaseController
     public function UserSubscribe($id)
     {
         $subscription = $this->subscriptionRepository->storeUserSubscribe($id);
-        return ApiResponse::format(new SubscriptionResource($subscription), 'Subscription added as successfully');
+
+        if (!$subscription) {
+            ApiResponse::format('subscribe is out of count.', new SubscriptionResource($subscription));
+        }
+        return ApiResponse::format('Subscription added as successfully', new SubscriptionResource($subscription));
     }
 }

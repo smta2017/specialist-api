@@ -47,6 +47,13 @@ class SubscriptionRepository extends BaseRepository
     public function storeUserSubscribe($id)
     {
         $plan = Plan::findOrFail($id);
+
+        // return $plan->can_supscribing_count .'-'. auth()->user()->Subscriptions->count();
+        if ($plan->can_supscribing_count <= auth()->user()->Subscriptions->count()) {
+
+            return false;
+        }
+
         $data =   [
             'user_id' => auth()->user()->id,
             'plan_id' => $plan->id,
@@ -54,6 +61,6 @@ class SubscriptionRepository extends BaseRepository
             'end_at' => Carbon::now()->addDays($plan->period_in_days),
             'order_count' => $plan->request_counts
         ];
-       return Subscription::create($data);
+        return Subscription::create($data);
     }
 }

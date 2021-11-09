@@ -19,6 +19,7 @@ use App\Http\Controllers\API\SubscriptionAPIController;
 use App\Http\Controllers\API\User\UserController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\AreaController;
+use GuzzleHttp\Middleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -33,7 +34,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => 'en'], function () {
+Route::group(['prefix' => 'en', 'middleware' => 'suspension'], function () {
     Route::group(['prefix' => 'v1'], function () {
         Route::group(['prefix' => 'auth'], function () {
             Route::post('login', [AuthController::class, 'login']);
@@ -73,71 +74,65 @@ Route::group(['prefix' => 'en'], function () {
         });
 
 
-
         Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::group(['prefix' => 'users'], function () {
 
                 Route::get('/profile/{id}', [UserController::class, 'tuserProfile']);
                 Route::get('/', [UserController::class, 'tuserProfile']);
-                Route::get('/notifications', [CustomerController::class, 'notifications']);
-                Route::get('/unread-notifications', [CustomerController::class, 'unReadNotifications']);
-                Route::get('/notifications/{id}/mark-read', [CustomerController::class, 'markAsRead']);
+                // Route::get('/notifications', [CustomerController::class, 'notifications']);
+                // Route::get('/unread-notifications', [CustomerController::class, 'unReadNotifications']);
+                // Route::get('/notifications/{id}/mark-read', [CustomerController::class, 'markAsRead']);
             });
             Route::apiResource('/users', UserController::class);
 
             Route::group(['prefix' => 'plans'], function () {
                 Route::get('/all', [PlanAPIController::class, 'getAllPlans']);
             });
+
+
+            Route::resource('specialTypes', SpecialTypesAPIController::class);
+            Route::get('/plan/specialist', [PlanApiController::class, 'subscripe'])->name('testing');
+
+
+
+            Route::resource('specialist_areas', SpecialistAreaAPIController::class);
+
+            Route::resource('orderStates', App\Http\Controllers\API\OrderStateAPIController::class);
+
+            Route::resource('specialistTypes', SpecialistTypeAPIController::class);
+
+            Route::put('/customerAddresses/default/{id}', [CustomerAddressAPIController::class, 'setDefault']);
+            Route::resource('/customerAddresses', CustomerAddressAPIController::class);
+
+            Route::put('/orders/complete/{id}', [OrderAPIController::class, 'complete']);
+            Route::get('/orders/detail/{id}', [OrderAPIController::class, 'detail']);
+            Route::post('/orders/sp', [OrderAPIController::class, 'spIndex']);
+            Route::get('/orders/sp-detail/{id}', [OrderAPIController::class, 'spDetail']);
+            Route::resource('orders', OrderAPIController::class);
+
+
+            Route::resource('orderComments', OrderCommentAPIController::class);
+            Route::resource('subscriptions', SubscriptionAPIController::class);
+            Route::post('user-subscribe/{id}', [SubscriptionAPIController::class, 'UserSubscribe']);
         });
 
+        Route::resource('countries', App\Http\Controllers\API\CountryAPIController::class);
 
 
         Route::apiResource('/cities', CityAPIController::class);
         Route::resource('areas', AreaAPIController::class);
         Route::get('/specialist/{area_id}', [UserController::class, 'getSpcByArea']);
+
+
+        Route::resource('userTypes', UserTypesAPIController::class);
+        Route::resource('plans', PlanAPIController::class);
+
+        Route::post('/test2', [PlanApiController::class, 'test']);
     });
 });
 
 
+Route::resource('sliders', App\Http\Controllers\API\SliderAPIController::class);
 
 
-
-
-
-Route::group(['prefix' => 'en/v1'], function () {
-    Route::resource('userTypes', UserTypesAPIController::class);
-    Route::get('/orders/status', [OrderAPIController::class, 'orderStatus']);
-    Route::resource('plans', PlanAPIController::class);
-
-    Route::post('/test2', [PlanApiController::class, 'test']);
-    Route::group(['middleware' => 'auth:sanctum'], function () {
-
-
-
-        Route::resource('specialTypes', SpecialTypesAPIController::class);
-        Route::get('/plan/specialist', [PlanApiController::class, 'subscripe']);
-
-
-
-
-        Route::resource('specialist_areas', SpecialistAreaAPIController::class);
-
-
-        Route::resource('specialistTypes', SpecialistTypeAPIController::class);
-
-
-        Route::put('/customerAddresses/default/{id}', [CustomerAddressAPIController::class, 'setDefault']);
-        Route::resource('/customerAddresses', CustomerAddressAPIController::class);
-
-        Route::put('/orders/complete/{id}', [OrderAPIController::class, 'complete']);
-        Route::get('/orders/detail/{id}', [OrderAPIController::class, 'detail']);
-        Route::post('/orders/sp', [OrderAPIController::class, 'spIndex']);
-        Route::get('/orders/sp-detail/{id}', [OrderAPIController::class, 'spDetail']);
-        Route::resource('orders', OrderAPIController::class);
-
-
-        Route::resource('orderComments', OrderCommentAPIController::class);
-        Route::resource('subscriptions', SubscriptionAPIController::class);
-        Route::post('user-subscribe/{id}', [SubscriptionAPIController::class, 'UserSubscribe']);
-    });
-});
+Route::resource('slider_images', App\Http\Controllers\API\SliderImageAPIController::class);

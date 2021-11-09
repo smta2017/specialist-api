@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\CustomerAddress;
 use App\Models\Order;
+use App\Models\OrderState;
 use App\Models\SpecialTypes;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -28,7 +29,7 @@ class OrderFactory extends Factory
             'title' => $this->faker->word,
             'body' => $this->faker->text,
             'user_id' => User::pluck('id')->random(),
-            'status_id' => 'new',
+            'order_state_id' => OrderState::pluck('id')->random(),
             "customer_address_id" =>  CustomerAddress::pluck('id')->random() ,
             "special_type_id" => SpecialTypes::pluck('id')->random(),
             'created_at' => $this->faker->dateTimeBetween($startDate = '-2 years', $endDate = '2years', $timezone = null), // DateTime('2003-03-15 02:00:49', 'Africa/Lagos'),

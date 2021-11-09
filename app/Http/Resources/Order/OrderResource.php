@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Order;
 
+use App\Http\Resources\OrderState\OrderStateResource;
 use App\Http\Resources\User\UserMiniResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -21,7 +22,7 @@ class OrderResource extends JsonResource
             "title" => $this->title, // "saepe",
             "body" => $this->body, // "Sit deserunt deleniti et officiis. Atque quia cum et quam minus sit eveniet et. Fugiat nesciunt et id in molestiae ut aut corporis.",
             "user" => new UserMiniResource($this->User), // 5,
-            "status" => $this->status_id, // 5,
+            "status" => new OrderStateResource($this->OrderState), // 5,
         ];
     }
 }

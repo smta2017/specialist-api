@@ -42,7 +42,7 @@ class OrderComment extends Model
     use HasFactory;
 
     public $table = 'order_comments';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -82,12 +82,14 @@ class OrderComment extends Model
         'offer' => 'required'
     ];
 
-    
 
-
-
-
-
+    public function scopeOrderComment($query)
+    {
+        $order_id= \request('order_id');
+        if ($order_id) {
+            return $query->where('order_id', \request('order_id'));
+        }
+    }
 
 
     public function User()
@@ -99,6 +101,4 @@ class OrderComment extends Model
     {
         return $this->belongsTo(Order::class);
     }
-
-
 }

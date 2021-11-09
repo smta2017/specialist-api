@@ -20,6 +20,8 @@ class CreatePlansTable extends Migration
             $table->float('price')->nullable();
             $table->integer('request_counts')->nullable();
             $table->integer('period_in_days')->nullable();
+            $table->enum('user_type', config("app.user_types"))->nullable();
+            $table->integer('can_supscribing_count')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

@@ -4,7 +4,8 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Rinvex\Attributes\Models\Attribute;
-
+use TCG\Voyager\Facades\Voyager;
+use Illuminate\Events\Dispatcher;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -31,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         app('rinvex.attributes.entities')->push(App\Models\User::class);
-        
+        Voyager::addAction(\App\Actions\MyAction::class);
         \Route::prefix('api')
         ->middleware('api')
         ->as('api.')

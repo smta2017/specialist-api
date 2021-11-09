@@ -41,7 +41,7 @@
                     <span style="font-size: 140px;">أخصائي</span>
                     <br>
                     <br>
-                    <span style="font-size: 60px;">a5essai.com</span>
+                  <a href="/admin">  <span style="font-size: 60px;">a5essai.com</span></a>
                 </div>
 
         </div>

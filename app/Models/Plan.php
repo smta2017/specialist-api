@@ -28,17 +28,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *          format="int32"
  *      ),
  *      @SWG\Property(
- *          property="created_at",
- *          description="created_at",
+ *          property="user_type",
+ *          description="user_type",
  *          type="string",
- *          format="date-time"
  *      ),
  *      @SWG\Property(
- *          property="updated_at",
- *          description="updated_at",
- *          type="string",
- *          format="date-time"
- *      )
+ *          property="can_supscribing_count",
+ *          description="can_supscribing_count",
+ *          type="integer",
+ *          format="int32"
+ *      ),
+ *
  * )
  */
 class Plan extends Model
@@ -48,7 +48,7 @@ class Plan extends Model
     use HasFactory;
 
     public $table = 'plans';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -57,7 +57,9 @@ class Plan extends Model
     public $fillable = [
         'name',
         'price',
-        'request_counts'
+        'request_counts',
+        'user_type',
+        'can_supscribing_count'
     ];
 
     /**
@@ -68,7 +70,9 @@ class Plan extends Model
     protected $casts = [
         'name' => 'string',
         'price' => 'float',
-        'request_counts' => 'integer'
+        'request_counts' => 'integer',
+        'user_type',
+        'can_supscribing_count'
     ];
 
     /**
@@ -79,6 +83,7 @@ class Plan extends Model
     public static $rules = [
         'name' => 'required',
         'price' => 'required',
+        'user_type' => 'required',
         'request_counts' => 'required numeric'
     ];
 
@@ -86,5 +91,4 @@ class Plan extends Model
     {
         return $this->hasMany(Subscription::class);
     }
-
 }

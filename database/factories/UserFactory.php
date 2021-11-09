@@ -31,6 +31,7 @@ class UserFactory extends Factory
             'user_type' =>  $this->faker->randomElement(\config("app.user_types")),
             'gender' =>  $this->faker->randomElement(['mail','femail']),
             'phone' =>  $this->faker->phoneNumber,
+            'role_id'=>$this->faker->randomElement([1,2]),
         ];
     }
 

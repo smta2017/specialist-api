@@ -760,6 +760,205 @@
                 }
             }
         },
+        "/countries": {
+            "get": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Get a listing of the Countries.",
+                "description": "Get all Countries",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Country"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Store a newly created Country in storage",
+                "description": "Store Country",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Country that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Country"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Country"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/countries/{id}": {
+            "get": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Display the specified Country",
+                "description": "Get Country",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Country",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Country"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Update the specified Country in storage",
+                "description": "Update Country",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Country",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Country that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Country"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Country"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Country"
+                ],
+                "summary": "Remove the specified Country from storage",
+                "description": "Delete Country",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Country",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/customerAddresses": {
             "get": {
                 "tags": [
@@ -1038,6 +1237,15 @@
                 "description": "Get all Orders",
                 "produces": [
                     "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "order_status_id",
+                        "in": "query",
+                        "description": "id of Order status",
+                        "required": false,
+                        "type": "integer"
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -1343,23 +1551,6 @@
                 ]
             }
         },
-        "/orders/status": {
-            "get": {
-                "tags": [
-                    "Order"
-                ],
-                "summary": "list of statuses Order.",
-                "description": "Get all order status",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation"
-                    }
-                }
-            }
-        },
         "/orders/sp": {
             "post": {
                 "tags": [
@@ -1643,6 +1834,230 @@
                 ]
             }
         },
+        "/orderStates": {
+            "get": {
+                "tags": [
+                    "OrderState"
+                ],
+                "summary": "Get a listing of the OrderStates.",
+                "description": "Get all OrderStates",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/OrderState"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "OrderState"
+                ],
+                "summary": "Store a newly created OrderState in storage",
+                "description": "Store OrderState",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "OrderState that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/OrderState"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/OrderState"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/orderStates/{id}": {
+            "get": {
+                "tags": [
+                    "OrderState"
+                ],
+                "summary": "Display the specified OrderState",
+                "description": "Get OrderState",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of OrderState",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/OrderState"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "OrderState"
+                ],
+                "summary": "Update the specified OrderState in storage",
+                "description": "Update OrderState",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of OrderState",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "OrderState that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/OrderState"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/OrderState"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "OrderState"
+                ],
+                "summary": "Remove the specified OrderState from storage",
+                "description": "Delete OrderState",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of OrderState",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
         "/plans": {
             "get": {
                 "tags": [
@@ -1652,6 +2067,21 @@
                 "description": "Get all Plans",
                 "produces": [
                     "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user_type",
+                        "required": false,
+                        "type": "string",
+                        "enum": [
+                            "customer",
+                            "specialist",
+                            "libirary",
+                            "center"
+                        ]
+                    }
                 ],
                 "responses": {
                     "200": {
@@ -2938,6 +3368,27 @@
                 }
             }
         },
+        "Country": {
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "description": "name",
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "created_at",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updated_at": {
+                    "description": "updated_at",
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
         "CustomerAddress": {
             "required": [
                 "user_id",
@@ -3031,6 +3482,17 @@
                 }
             }
         },
+        "OrderState": {
+            "required": [
+                "name"
+            ],
+            "properties": {
+                "name": {
+                    "description": "name",
+                    "type": "string"
+                }
+            }
+        },
         "Plan": {
             "required": [
                 "name",
@@ -3052,15 +3514,14 @@
                     "type": "integer",
                     "format": "int32"
                 },
-                "created_at": {
-                    "description": "created_at",
-                    "type": "string",
-                    "format": "date-time"
+                "user_type": {
+                    "description": "user_type",
+                    "type": "string"
                 },
-                "updated_at": {
-                    "description": "updated_at",
-                    "type": "string",
-                    "format": "date-time"
+                "can_supscribing_count": {
+                    "description": "can_supscribing_count",
+                    "type": "integer",
+                    "format": "int32"
                 }
             }
         },

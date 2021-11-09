@@ -112,6 +112,11 @@ public function scopeUserType($query ,$user_type = [])
         return $this->belongsTo(User::class);
     }
 
+    public function OrderState()
+    {
+        return $this->belongsTo(OrderState::class);
+    }
+
 
     
     public function OrderComments()

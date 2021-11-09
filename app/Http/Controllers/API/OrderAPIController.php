@@ -41,6 +41,13 @@ class OrderAPIController extends AppBaseController
      *      description="Get all Orders",
      *      produces={"application/json"},
      *      security = {{"Bearer": {}}},
+     * *      @SWG\Parameter(
+     *          name="order_status_id",
+     *          description="id of Order status",
+     *          type="integer",
+     *          required=false,
+     *          in="query"
+     *      ),
      *      @SWG\Response(
      *          response=200,
      *          description="successful operation",
@@ -65,8 +72,13 @@ class OrderAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
+
+        if (auth()->check()) {
+                $request['user_id'] = auth()->user()->id;
+        }
+
         $orders = $this->orderRepository->all(
-            auth()->check() ? ['user_id' => auth()->user()->id] : [],
+            $request->except(['skip', 'limit']),
             $request->get('skip'),
             $request->get('limit')
         );
@@ -406,27 +418,6 @@ class OrderAPIController extends AppBaseController
     }
 
 
-    /**
-     * @param Request $request
-     * @return Response
-     *
-     * @SWG\get(
-     *      path="/orders/status",
-     *      summary="list of statuses Order.",
-     *      tags={"Order"},
-     *      description="Get all order status",
-     *      produces={"application/json"},
-     *      @SWG\Response(
-     *          response=200,
-     *          description="successful operation",
-     *        
-     *      )
-     * )
-     */
-    public function orderStatus()
-    {
-        return ApiResponse::format('order statuss list', ['new', 'pending', 'complete']);
-    }
 
 
     // ========================== SPECIALIST ======================================

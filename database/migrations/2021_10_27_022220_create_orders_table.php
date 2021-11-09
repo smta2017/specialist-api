@@ -21,7 +21,7 @@ class CreateOrdersTable extends Migration
             $table->integer('user_id')->nullable();
             $table->integer('customer_address_id')->nullable();
             $table->integer('special_type_id')->nullable();
-            $table->enum('status_id',['new','pending','complete'])->nullable();
+            $table->integer('order_state_id')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

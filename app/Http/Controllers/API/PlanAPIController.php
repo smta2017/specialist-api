@@ -42,6 +42,15 @@ class PlanAPIController extends AppBaseController
      *      tags={"Plan"},
      *      description="Get all Plans",
      *      produces={"application/json"},
+     *    @SWG\Parameter(
+     *          name="id",
+     *          description="user_type",
+     *          type="string",
+	 *     enum={"customer", "specialist","libirary","center"},
+     * 
+     *          required=false,
+     *          in="path"
+     *      ),
      *      @SWG\Response(
      *          response=200,
      *          description="successful operation",
@@ -325,9 +334,7 @@ class PlanAPIController extends AppBaseController
      */
     public function subscripe()
     {
-        $subscriptions= auth()->user()['subscriptions'];
+        $subscriptions = auth()->user()['subscriptions'];
         return $this->sendResponse(SubscriptionResource::collection($subscriptions), 'Subscripe retrieved successfully');
-
     }
-
 }

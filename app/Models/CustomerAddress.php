@@ -91,6 +91,13 @@ class CustomerAddress extends Model
         'area_id' => 'required|numeric',
     ];
 
+    public function scopeCustomerAddress($query)
+    {
+        $order_id= \request('user_id');
+        if ($order_id) {
+            return $query->where('user_id', \request('user_id'));
+        }
+    }
         
     public function Orders()
     {

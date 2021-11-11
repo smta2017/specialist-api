@@ -31,6 +31,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Voyager::addAction(\App\Actions\orderShowComments::class);
+        Voyager::addAction(\App\Actions\CustomerAddress::class);
+
+
+
         app('rinvex.attributes.entities')->push(App\Models\User::class);
         \Route::prefix('api')
         ->middleware('api')

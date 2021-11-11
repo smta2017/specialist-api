@@ -48,6 +48,7 @@ class City extends Model
     public $fillable = [
         'city_name_ar',
         'city_name_en',
+        'country_id',
         'active',
         'delivery_fees'
     ];

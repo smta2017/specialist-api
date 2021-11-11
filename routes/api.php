@@ -14,6 +14,7 @@ use App\Http\Controllers\API\UserTypesAPIController;
 use App\Http\Controllers\API\OrderCommentAPIController;
 use App\Http\Controllers\API\PlanAPIController;
 use App\Http\Controllers\API\SliderAPIController;
+use App\Http\Controllers\API\SliderImageAPIController;
 use App\Http\Controllers\API\SpecialistAreaAPIController;
 use App\Http\Controllers\API\SpecialistTypeAPIController;
 use App\Http\Controllers\API\SpecialTypesAPIController;

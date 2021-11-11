@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -57,18 +57,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *          description="slider_id",
  *          type="integer",
  *          format="int32"
- *      ),
- *      @SWG\Property(
- *          property="created_at",
- *          description="created_at",
- *          type="string",
- *          format="date-time"
- *      ),
- *      @SWG\Property(
- *          property="updated_at",
- *          description="updated_at",
- *          type="string",
- *          format="date-time"
  *      )
  * )
  */
@@ -125,5 +113,14 @@ class SliderImage extends Model
         'slider_id' => 'required'
     ];
 
-    
+
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', 1);
+    }
+
+    public function Slider()
+    {
+        return $this->belongsTo(Slider::class);
+    }
 }

@@ -8,6 +8,7 @@ use App\Models\Plan;
 use App\Repositories\PlanRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use App\Http\Resources\Plan\PlanResource;
 use App\Http\Resources\Subscription\SubscriptionResource;
 use Response;
 
@@ -42,15 +43,6 @@ class PlanAPIController extends AppBaseController
      *      tags={"Plan"},
      *      description="Get all Plans",
      *      produces={"application/json"},
-     *    @SWG\Parameter(
-     *          name="id",
-     *          description="user_type",
-     *          type="string",
-	 *     enum={"customer", "specialist","libirary","center"},
-     * 
-     *          required=false,
-     *          in="path"
-     *      ),
      *      @SWG\Response(
      *          response=200,
      *          description="successful operation",
@@ -259,9 +251,9 @@ class PlanAPIController extends AppBaseController
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of Plan",
-     *          type="integer",
+     *          type="file",
      *          required=true,
-     *          in="path"
+     *          in="formData"
      *      ),
      *      @SWG\Response(
      *          response=200,
@@ -310,7 +302,6 @@ class PlanAPIController extends AppBaseController
      *      description="Get Current user Plan",
      *      produces={"application/json"},
      *      security = {{"Bearer": {}}},
-     *      security = {{"Bearer": {}}},
      *      @SWG\Response(
      *          response=200,
      *          description="successful operation",
@@ -336,5 +327,45 @@ class PlanAPIController extends AppBaseController
     {
         $subscriptions = auth()->user()['subscriptions'];
         return $this->sendResponse(SubscriptionResource::collection($subscriptions), 'Subscripe retrieved successfully');
+    }
+
+    /**
+     * @param int $id
+     * @return Response
+     *
+     * @SWG\Get(
+     *      path="/plans/user",
+     *      summary="get auth avilable plans",
+     *      tags={"Plan"},
+     *      description="Get Current user Plan",
+     *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="string"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
+     */
+
+    public function userPlans()
+    {
+        $user_type = auth()->user()->user_type;
+        $plans = Plan::where('user_type', $user_type)->get();
+        return $this->sendResponse(PlanResource::collection($plans), 'Plans retrieved successfully');
     }
 }

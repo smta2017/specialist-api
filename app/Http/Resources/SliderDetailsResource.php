@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class SliderResource extends JsonResource
+class SliderDetailsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -22,7 +22,7 @@ class SliderResource extends JsonResource
             'auto_play' => $this->auto_play,
             'slider_width' => $this->slider_width,
             'slider_height' => $this->slider_height,
-            'is_active' => $this->is_active
+            'slides' => SliderImageResource::collection($this->SliderImages->where('is_active',1))
         ];
     }
 }

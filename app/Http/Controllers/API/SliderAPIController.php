@@ -8,6 +8,7 @@ use App\Models\Slider;
 use App\Repositories\SliderRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use App\Http\Resources\SliderDetailsResource;
 use App\Http\Resources\SliderResource;
 use Response;
 
@@ -279,4 +280,51 @@ class SliderAPIController extends AppBaseController
 
         return $this->sendSuccess('Slider deleted successfully');
     }
+
+
+
+    /**
+     * @param int $id
+     * @return Response
+     *
+     * @SWG\Get(
+     *      path="/sliderDetails/{slider_id}",
+     *      summary="Display the specified Slider with details",
+     *      tags={"Slider"},
+     *      description="Get Slider",
+     *      produces={"application/json"},
+     *      @SWG\Parameter(
+     *          name="slider_id",
+     *          description="id of Slider",
+     *          type="integer",
+     *          required=true,
+     *          in="path"
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  ref="#/definitions/Slider"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
+     */
+    public function sliderDetails($id)
+    {
+        $slider = $this->sliderRepository->find($id);
+        return $this->sendResponse(new SliderDetailsResource($slider), 'Geting Slider successfully');
+    }
+    
 }

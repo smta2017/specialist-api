@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -99,5 +99,14 @@ class Slider extends Model
         'auto_play' => 'required'
     ];
 
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', 1);
+    }
+
+    public function SliderImages()
+    {
+        return $this->hasMany(SliderImage::class);
+    }
     
 }

@@ -142,7 +142,7 @@ class AuthController extends AppBaseController
 
 
 
-   
+
     /**
      *
      * @param  \Illuminate\Http\Request  $request

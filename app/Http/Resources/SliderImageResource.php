@@ -24,9 +24,7 @@ class SliderImageResource extends JsonResource
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
             'is_active' => $this->is_active,
-            'slider_id' => $this->slider_id,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
+            'slider_id' => $this->slider_id
         ];
     }
 }

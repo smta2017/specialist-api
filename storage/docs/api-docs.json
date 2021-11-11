@@ -2068,21 +2068,6 @@
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "user_type",
-                        "required": false,
-                        "type": "string",
-                        "enum": [
-                            "customer",
-                            "specialist",
-                            "libirary",
-                            "center"
-                        ]
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "successful operation",
@@ -2255,10 +2240,10 @@
                 "parameters": [
                     {
                         "name": "id",
-                        "in": "path",
+                        "in": "formData",
                         "description": "id of Plan",
                         "required": true,
-                        "type": "integer"
+                        "type": "file"
                     }
                 ],
                 "responses": {
@@ -2293,6 +2278,42 @@
                     "Plan"
                 ],
                 "summary": "get user subscripe",
+                "description": "Get Current user Plan",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/plans/user": {
+            "get": {
+                "tags": [
+                    "Plan"
+                ],
+                "summary": "get auth avilable plans",
                 "description": "Get Current user Plan",
                 "produces": [
                     "application/json"
@@ -2511,6 +2532,46 @@
                                 },
                                 "data": {
                                     "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/sliderDetails/{slider_id}": {
+            "get": {
+                "tags": [
+                    "Slider"
+                ],
+                "summary": "Display the specified Slider with details",
+                "description": "Get Slider",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "slider_id",
+                        "in": "path",
+                        "description": "id of Slider",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Slider"
                                 },
                                 "message": {
                                     "type": "string"
@@ -4004,16 +4065,6 @@
                     "description": "slider_id",
                     "type": "integer",
                     "format": "int32"
-                },
-                "created_at": {
-                    "description": "created_at",
-                    "type": "string",
-                    "format": "date-time"
-                },
-                "updated_at": {
-                    "description": "updated_at",
-                    "type": "string",
-                    "format": "date-time"
                 }
             }
         },

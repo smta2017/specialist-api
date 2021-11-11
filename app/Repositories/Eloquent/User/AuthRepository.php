@@ -47,6 +47,7 @@ class AuthRepository extends BaseRepository implements IAuth
             'access_token' => $token,
             'token_type' => 'Bearer',
             'full_token' => 'Bearer ' . $token,
+            'user' => auth()->user()
         ]);
     }
 

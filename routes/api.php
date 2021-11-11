@@ -7,11 +7,13 @@ use App\Http\Controllers\API\Auth\SocialAuthController;
 use App\Http\Controllers\API\Auth\VerificationController;
 use App\Http\Controllers\API\Authorize\AuthorizeController;
 use App\Http\Controllers\API\CityAPIController;
+use App\Http\Controllers\API\CountryAPIController;
 use App\Http\Controllers\API\CustomerAddressAPIController;
 use App\Http\Controllers\API\OrderAPIController;
 use App\Http\Controllers\API\UserTypesAPIController;
 use App\Http\Controllers\API\OrderCommentAPIController;
 use App\Http\Controllers\API\PlanAPIController;
+use App\Http\Controllers\API\SliderAPIController;
 use App\Http\Controllers\API\SpecialistAreaAPIController;
 use App\Http\Controllers\API\SpecialistTypeAPIController;
 use App\Http\Controllers\API\SpecialTypesAPIController;
@@ -86,7 +88,7 @@ Route::group(['prefix' => 'en', 'middleware' => 'suspension'], function () {
             Route::apiResource('/users', UserController::class);
 
             Route::group(['prefix' => 'plans'], function () {
-                Route::get('/all', [PlanAPIController::class, 'getAllPlans']);
+                Route::get('/user', [PlanAPIController::class, 'userPlans']);
             });
 
 
@@ -116,11 +118,12 @@ Route::group(['prefix' => 'en', 'middleware' => 'suspension'], function () {
             Route::post('user-subscribe/{id}', [SubscriptionAPIController::class, 'UserSubscribe']);
         });
 
-        Route::resource('countries', App\Http\Controllers\API\CountryAPIController::class);
+        Route::resource('countries', CountryAPIController::class);
 
-        Route::resource('sliders', App\Http\Controllers\API\SliderAPIController::class);
+        Route::resource('sliders', SliderAPIController::class);
 
-        Route::resource('sliderImages', App\Http\Controllers\API\SliderImageAPIController::class);
+        Route::get('/sliderDetails/{slider_id}', [SliderAPIController::class, 'sliderDetails']);
+        Route::resource('sliderImages', SliderImageAPIController::class);
         
 
         Route::apiResource('/cities', CityAPIController::class);

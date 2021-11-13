@@ -33,6 +33,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Voyager::addAction(\App\Actions\orderShowComments::class);
         Voyager::addAction(\App\Actions\CustomerAddress::class);
+        Voyager::addAction(\App\Actions\SliderImages::class);
 
 
 

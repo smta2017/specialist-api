@@ -3,176 +3,141 @@
         "id": 1,
         "key": "browse_admin",
         "table_name": null,
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 2,
         "key": "browse_bread",
         "table_name": null,
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 3,
         "key": "browse_database",
         "table_name": null,
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 4,
         "key": "browse_media",
         "table_name": null,
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 5,
         "key": "browse_compass",
         "table_name": null,
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 6,
         "key": "browse_menus",
         "table_name": "menus",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 7,
         "key": "read_menus",
         "table_name": "menus",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 8,
         "key": "edit_menus",
         "table_name": "menus",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 9,
         "key": "add_menus",
         "table_name": "menus",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 10,
         "key": "delete_menus",
         "table_name": "menus",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 11,
         "key": "browse_roles",
         "table_name": "roles",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 12,
         "key": "read_roles",
         "table_name": "roles",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 13,
         "key": "edit_roles",
         "table_name": "roles",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 14,
         "key": "add_roles",
         "table_name": "roles",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 15,
         "key": "delete_roles",
         "table_name": "roles",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
-    },
-    {
-        "id": 16,
-        "key": "browse_users",
-        "table_name": "users",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
-    },
-    {
-        "id": 17,
-        "key": "read_users",
-        "table_name": "users",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
-    },
-    {
-        "id": 18,
-        "key": "edit_users",
-        "table_name": "users",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
-    },
-    {
-        "id": 19,
-        "key": "add_users",
-        "table_name": "users",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
-    },
-    {
-        "id": 20,
-        "key": "delete_users",
-        "table_name": "users",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 21,
         "key": "browse_settings",
         "table_name": "settings",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 22,
         "key": "read_settings",
         "table_name": "settings",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 23,
         "key": "edit_settings",
         "table_name": "settings",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 24,
         "key": "add_settings",
         "table_name": "settings",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 25,
         "key": "delete_settings",
         "table_name": "settings",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 26,
@@ -488,5 +453,75 @@
         "table_name": "sliders",
         "created_at": "2021-11-11 02:57:20",
         "updated_at": "2021-11-11 02:57:20"
+    },
+    {
+        "id": 81,
+        "key": "browse_slider_images",
+        "table_name": "slider_images",
+        "created_at": "2021-11-13 17:26:47",
+        "updated_at": "2021-11-13 17:26:47"
+    },
+    {
+        "id": 82,
+        "key": "read_slider_images",
+        "table_name": "slider_images",
+        "created_at": "2021-11-13 17:26:47",
+        "updated_at": "2021-11-13 17:26:47"
+    },
+    {
+        "id": 83,
+        "key": "edit_slider_images",
+        "table_name": "slider_images",
+        "created_at": "2021-11-13 17:26:47",
+        "updated_at": "2021-11-13 17:26:47"
+    },
+    {
+        "id": 84,
+        "key": "add_slider_images",
+        "table_name": "slider_images",
+        "created_at": "2021-11-13 17:26:47",
+        "updated_at": "2021-11-13 17:26:47"
+    },
+    {
+        "id": 85,
+        "key": "delete_slider_images",
+        "table_name": "slider_images",
+        "created_at": "2021-11-13 17:26:47",
+        "updated_at": "2021-11-13 17:26:47"
+    },
+    {
+        "id": 86,
+        "key": "browse_users",
+        "table_name": "users",
+        "created_at": "2021-11-13 17:57:11",
+        "updated_at": "2021-11-13 17:57:11"
+    },
+    {
+        "id": 87,
+        "key": "read_users",
+        "table_name": "users",
+        "created_at": "2021-11-13 17:57:11",
+        "updated_at": "2021-11-13 17:57:11"
+    },
+    {
+        "id": 88,
+        "key": "edit_users",
+        "table_name": "users",
+        "created_at": "2021-11-13 17:57:11",
+        "updated_at": "2021-11-13 17:57:11"
+    },
+    {
+        "id": 89,
+        "key": "add_users",
+        "table_name": "users",
+        "created_at": "2021-11-13 17:57:11",
+        "updated_at": "2021-11-13 17:57:11"
+    },
+    {
+        "id": 90,
+        "key": "delete_users",
+        "table_name": "users",
+        "created_at": "2021-11-13 17:57:11",
+        "updated_at": "2021-11-13 17:57:11"
     }
 ]

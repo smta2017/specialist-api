@@ -1,22 +1,5 @@
 [
     {
-        "id": 1,
-        "name": "users",
-        "slug": "users",
-        "display_name_singular": "User",
-        "display_name_plural": "Users",
-        "icon": "voyager-person",
-        "model_name": "TCG\\Voyager\\Models\\User",
-        "policy_name": "TCG\\Voyager\\Policies\\UserPolicy",
-        "controller": "TCG\\Voyager\\Http\\Controllers\\VoyagerUserController",
-        "description": null,
-        "generate_permissions": 1,
-        "server_side": 0,
-        "details": "{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}",
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-11 02:33:32"
-    },
-    {
         "id": 2,
         "name": "menus",
         "slug": "menus",
@@ -30,8 +13,8 @@
         "generate_permissions": 1,
         "server_side": 0,
         "details": null,
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 3,
@@ -47,8 +30,8 @@
         "generate_permissions": 1,
         "server_side": 0,
         "details": null,
-        "created_at": "2021-11-10 22:39:34",
-        "updated_at": "2021-11-10 22:39:34"
+        "created_at": "2021-11-13 17:06:48",
+        "updated_at": "2021-11-13 17:06:48"
     },
     {
         "id": 4,
@@ -107,7 +90,7 @@
         "slug": "order-comments",
         "display_name_singular": "\u0627\u0644\u0639\u0631\u0648\u0636",
         "display_name_plural": "\u0627\u0644\u0639\u0631\u0636",
-        "icon": "voyager-chat",
+        "icon": "voyager-megaphone",
         "model_name": "App\\Models\\OrderComment",
         "policy_name": null,
         "controller": null,
@@ -116,7 +99,7 @@
         "server_side": 0,
         "details": "{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":\"orderComment\"}",
         "created_at": "2021-11-06 22:13:20",
-        "updated_at": "2021-11-11 02:51:27"
+        "updated_at": "2021-11-13 17:44:11"
     },
     {
         "id": 12,
@@ -148,9 +131,9 @@
         "description": null,
         "generate_permissions": 1,
         "server_side": 0,
-        "details": "{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}",
+        "details": "{\"order_column\":\"id\",\"order_display_column\":null,\"order_direction\":\"desc\",\"default_search_key\":null,\"scope\":null}",
         "created_at": "2021-11-06 22:35:16",
-        "updated_at": "2021-11-11 03:01:53"
+        "updated_at": "2021-11-13 17:16:39"
     },
     {
         "id": 14,
@@ -202,5 +185,39 @@
         "details": "{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null}",
         "created_at": "2021-11-11 02:57:19",
         "updated_at": "2021-11-11 02:57:19"
+    },
+    {
+        "id": 18,
+        "name": "slider_images",
+        "slug": "slider-images",
+        "display_name_singular": "Slider Image",
+        "display_name_plural": "Slider Images",
+        "icon": null,
+        "model_name": "App\\Models\\SliderImage",
+        "policy_name": null,
+        "controller": null,
+        "description": null,
+        "generate_permissions": 1,
+        "server_side": 0,
+        "details": "{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":\"sliderImages\"}",
+        "created_at": "2021-11-13 17:26:47",
+        "updated_at": "2021-11-13 17:39:07"
+    },
+    {
+        "id": 19,
+        "name": "users",
+        "slug": "users",
+        "display_name_singular": "\u0645\u0633\u062a\u062e\u062f\u0645",
+        "display_name_plural": "\u0627\u0644\u0645\u0633\u062a\u062e\u062f\u0645\u064a\u0646",
+        "icon": "voyager-people",
+        "model_name": "App\\Models\\User",
+        "policy_name": null,
+        "controller": null,
+        "description": null,
+        "generate_permissions": 1,
+        "server_side": 0,
+        "details": "{\"order_column\":null,\"order_display_column\":null,\"order_direction\":\"asc\",\"default_search_key\":null,\"scope\":null}",
+        "created_at": "2021-11-13 17:57:11",
+        "updated_at": "2021-11-13 19:01:00"
     }
 ]

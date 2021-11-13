@@ -4,11 +4,11 @@ namespace App\Actions;
 
 use TCG\Voyager\Actions\AbstractAction;
 
-class orderShowComments extends AbstractAction
+class SliderImages extends AbstractAction
 {
     public function getTitle()
     {
-        return 'العروض';
+        return 'التفاصيل';
     }
 
     public function getIcon()
@@ -30,11 +30,17 @@ class orderShowComments extends AbstractAction
 
     public function getDefaultRoute()
     {
-        return route('voyager.order-comments.index') . '?order_id=' . $this->data->id;
+        return route('voyager.slider-images.index') . '?slider_id=' . $this->data->id;
     }
 
     public function shouldActionDisplayOnDataType()
     {
-        return $this->dataType->slug == 'orders';
+        return $this->dataType->slug == 'sliders';
+    }
+
+    public function massAction($ids, $comingFrom)
+    {
+        // Do something with the IDs
+        return ($ids);
     }
 }

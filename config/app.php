@@ -80,7 +80,7 @@ return [
     |
     */
 
-    'locale' => env('LANG','en'),
+    'locale' => env('LANG', 'en'),
 
     /*
     |--------------------------------------------------------------------------
@@ -123,7 +123,7 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-    'user_types' => ['customer', 'specialist','libirary','center'],
+    'user_types' => ['customer' => 'customer', 'specialist' => 'specialist', 'libirary' => 'libirary', 'center' => 'center'],
 
     'enable_email_verification' => env('EMAIL_VERIFICATION', true),
 
@@ -136,7 +136,7 @@ return [
     'Form'      => Collective\Html\FormFacade::class,
     'Html'      => Collective\Html\HtmlFacade::class,
     'Flash'     => Laracasts\Flash\Flash::class,
-    
+
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers

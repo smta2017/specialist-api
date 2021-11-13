@@ -81,7 +81,7 @@ Route::group(['prefix' => 'en', 'middleware' => 'suspension'], function () {
             Route::group(['prefix' => 'users'], function () {
 
                 Route::get('/profile/{id}', [UserController::class, 'tuserProfile']);
-                Route::get('/', [UserController::class, 'tuserProfile']);
+                // Route::get('/', [UserController::class, 'tuserProfile']);
                 // Route::get('/notifications', [CustomerController::class, 'notifications']);
                 // Route::get('/unread-notifications', [CustomerController::class, 'unReadNotifications']);
                 // Route::get('/notifications/{id}/mark-read', [CustomerController::class, 'markAsRead']);

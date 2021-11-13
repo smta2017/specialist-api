@@ -34,11 +34,58 @@ class UserController extends AppBaseController
         return $this->user->userProfile($id);
     }
     /**
+     * verify phone OTP.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @param int $id
      * @return mixed
+     *
+     * @SWG\Get(
+     *      path="/users",
+     *      summary="Display the specified Subscription",
+     *      tags={"Auth"},
+     *      description="Verify OTP code",
+     *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
+     *      @SWG\Parameter(
+     *          name="user_type",
+     *          description="user_type",
+     *          type="string",
+	 *     enum={"customer", "specialist","libirary","center"},
+     * 
+     *          required=false,
+     *          in="query"
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  ref="#"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $this->user->allUsers();
+        // return $request->all();
+        $user = User::query();
+        if ($request->user_type) {
+            $user = $user->where('user_type',$request->user_type);
+        }
+        return $user->get();
     }
 
     /**

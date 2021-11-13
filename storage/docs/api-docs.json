@@ -458,7 +458,7 @@
                 }
             }
         },
-        "/send-otp/{phone_number}": {
+        "/verify/send-otp/{phone_number}": {
             "get": {
                 "tags": [
                     "Auth"
@@ -506,7 +506,7 @@
                 ]
             }
         },
-        "/sconfirm-otp/{phone_number}/{otp}": {
+        "/verify/sconfirm-otp/{phone_number}/{otp}": {
             "get": {
                 "tags": [
                     "Auth"
@@ -3709,6 +3709,60 @@
                                     "$ref": "#/definitions/Subscription"
                                 },
                                 "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "Auth"
+                ],
+                "summary": "Display the specified Subscription",
+                "description": "Verify OTP code",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_type",
+                        "in": "query",
+                        "description": "user_type",
+                        "required": false,
+                        "type": "string",
+                        "enum": [
+                            "customer",
+                            "specialist",
+                            "libirary",
+                            "center"
+                        ]
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "description": "verify phone OTP.",
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "description": "verify phone OTP.",
+                                    "$ref": "#"
+                                },
+                                "message": {
+                                    "description": "verify phone OTP.",
                                     "type": "string"
                                 }
                             },

@@ -21,7 +21,7 @@ class VerificationController extends Controller
      * @return Response
      *
      * @SWG\Get(
-     *      path="/send-otp/{phone_number}",
+     *      path="/verify/send-otp/{phone_number}",
      *      summary="Display the specified Subscription",
      *      tags={"Auth"},
      *      description="Send OTP phone verification",
@@ -70,7 +70,7 @@ class VerificationController extends Controller
      * @return Response
      *
      * @SWG\Get(
-     *      path="/sconfirm-otp/{phone_number}/{otp}",
+     *      path="/verify/sconfirm-otp/{phone_number}/{otp}",
      *      summary="Display the specified Subscription",
      *      tags={"Auth"},
      *      description="Verify OTP code",

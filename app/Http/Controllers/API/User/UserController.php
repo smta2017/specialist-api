@@ -52,7 +52,7 @@ class UserController extends AppBaseController
      *          name="user_type",
      *          description="user_type",
      *          type="string",
-	 *     enum={"customer", "specialist","libirary","center"},
+     *     enum={"customer", "specialist","libirary","center"},
      * 
      *          required=false,
      *          in="query"
@@ -83,9 +83,11 @@ class UserController extends AppBaseController
         // return $request->all();
         $user = User::query();
         if ($request->user_type) {
-            $user = $user->where('user_type',$request->user_type);
+            $user = $user->where('user_type', $request->user_type);
         }
-        return $user->get();
+        $users =  $user->get();
+
+        return ApiResponse::format('Users geting successfully', $users);
     }
 
     /**

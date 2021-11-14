@@ -26,7 +26,6 @@ class VerificationController extends Controller
      *      tags={"Auth"},
      *      description="Send OTP phone verification",
      *      produces={"application/json"},
-     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="phone_number",
      *          description="phone to send OTP code",
@@ -70,12 +69,11 @@ class VerificationController extends Controller
      * @return Response
      *
      * @SWG\Get(
-     *      path="/verify/sconfirm-otp/{phone_number}/{otp}",
+     *      path="/verify/confirm-otp/{phone_number}/{otp}",
      *      summary="Display the specified Subscription",
      *      tags={"Auth"},
      *      description="Verify OTP code",
      *      produces={"application/json"},
-     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="phone_number",
      *          description="Verify OTP code",

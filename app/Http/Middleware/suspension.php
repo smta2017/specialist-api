@@ -17,8 +17,8 @@ class suspension
      */
     public function handle(Request $request, Closure $next)
     {
-        if (setting('admin.suspension')) {
-            return ApiResponse::format('SORRY...The system is in development mode, please try again later', '', false);
+        if (setting('site.suspension')) {
+            return ApiResponse::format(setting('site.suspension'), '', false);
         }
         return $next($request);
     }

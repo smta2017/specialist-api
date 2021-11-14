@@ -86,16 +86,18 @@ class AuthRepository extends BaseRepository implements IAuth
             }
         }
 
-        //need job
-        if (\config("app.enable_email_verification")) {
-            $user->sendEmailVerificationNotification();
+        try {
+            //need job
+            if (\config("app.enable_email_verification")) {
+                $user->sendEmailVerificationNotification();
+            }
+            //need job
+            if (\config("app.enable_phone_verification")) {
+                $user->sendPhoneVerificationOTP();
+            }
+        } catch (\Throwable $th) {
+            return $user;
         }
-
-        //need job
-        if (\config("app.enable_phone_verification")) {
-            $user->sendPhoneVerificationOTP();
-        }
-
         return $user;
     }
 

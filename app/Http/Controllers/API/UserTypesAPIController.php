@@ -27,11 +27,12 @@ class UserTypesAPIController extends Controller
      */
     public function index()
     {
-        $user_types = config('app.user_types');
-        // $user_type = json_decode(,true);
-        // foreach (config('app.user_types') as $value) {
-        //     $user_types =[$value];
-        // }
+        $user_types = [
+                ['customer'=>'customer'],
+                ['specialist'=>'specialist'],
+                ['libirary'=>'libirary'],
+                ['center'=>'center'],
+        ];
 
         return ApiResponse::format("user types list", $user_types);
     }

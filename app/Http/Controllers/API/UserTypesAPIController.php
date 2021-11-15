@@ -28,10 +28,10 @@ class UserTypesAPIController extends Controller
     public function index()
     {
         $user_types = [
-                ['customer'=>'customer'],
-                ['specialist'=>'specialist'],
-                ['libirary'=>'libirary'],
-                ['center'=>'center'],
+                ['name'=>'customer'],
+                ['name'=>'specialist'],
+                ['name'=>'libirary'],
+                ['name'=>'center'],
         ];
 
         return ApiResponse::format("user types list", $user_types);

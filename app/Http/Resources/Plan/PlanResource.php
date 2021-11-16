@@ -28,7 +28,7 @@ class PlanResource extends JsonResource
             "can_supscribing_count" => $this->can_supscribing_count, //null,
             'end_at' => $this->end_at,
             'user_in_plane' => $subscripetions ? 1 : 0,
-            'subscription_id' => $subscripetionsArray ? $subscripetionsArray->id: 0
+            'subscription_id' => $subscripetionsArray ? new SubscriptionResource($subscripetionsArray): 0
         ];
     }
 }

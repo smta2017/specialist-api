@@ -25,7 +25,7 @@ class PlanResource extends JsonResource
             "user_type" => $this->user_type, //"center",
             "can_supscribing_count" => $this->can_supscribing_count, //null,
             'end_at' => $this->end_at,
-            'user_in_plane' => auth()->user()->subscriptions->where('plan_id', $this->id)->where('end_at', '>=', date("Y-m-d"))->toArray()
+            'user_in_plane' => SubscriptionResource::collection(auth()->user()->subscriptions->where('plan_id', $this->id)->where('end_at', '>=', date("Y-m-d")))
         ];
     }
 }

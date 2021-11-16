@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Resources\CustomerAddress\CustomerAddressResource;
 use App\Http\Resources\Subscription\SubscriptionResource;
+use App\Http\Resources\User\UserResource;
 
 class UserController extends AppBaseController
 {
@@ -87,11 +88,11 @@ class UserController extends AppBaseController
 
 
         // $user = $this->model->findUser($id);
-        $rate = $user->averageRating(1, true);
+        // $rate = $user->averageRating(1, true);
         // $ApprovedRatings = ReviewResource::collection($user->getApprovedRatings($id, 'desc'));
 
 
-        return ApiResponse::format('Users geting successfully', $users);
+        return ApiResponse::format('Users geting successfully', UserResource::collection($users));
     }
 
     /**

@@ -90,7 +90,6 @@ Route::group(['prefix' => 'en', 'middleware' => 'suspension'], function () {
             });
 
 
-            Route::resource('specialTypes', SpecialTypesAPIController::class);
             Route::get('/plan/specialist', [PlanApiController::class, 'subscripe'])->name('testing');
 
 
@@ -119,6 +118,8 @@ Route::group(['prefix' => 'en', 'middleware' => 'suspension'], function () {
             Route::post('/user/rate/{id}', [RatingAPIController::class, 'store']);
             Route::put('/user/rate/{user_id}/{rate_id}', [RatingAPIController::class, 'update']);
         });
+        Route::resource('specialTypes', SpecialTypesAPIController::class);
+
 
         Route::resource('countries', CountryAPIController::class);
 

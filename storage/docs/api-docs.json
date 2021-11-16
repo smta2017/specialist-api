@@ -2980,12 +2980,7 @@
                             "type": "object"
                         }
                     }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
+                }
             },
             "post": {
                 "tags": [
@@ -3904,15 +3899,9 @@
                     {
                         "name": "user_type",
                         "in": "query",
-                        "description": "user_type",
+                        "description": "user_type_id",
                         "required": false,
-                        "type": "string",
-                        "enum": [
-                            "customer",
-                            "specialist",
-                            "libirary",
-                            "center"
-                        ]
+                        "type": "integer"
                     }
                 ],
                 "responses": {

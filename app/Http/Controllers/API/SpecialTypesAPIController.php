@@ -78,7 +78,6 @@ class SpecialTypesAPIController extends AppBaseController
      *      tags={"SpecialTypes"},
      *      description="Store SpecialTypes",
      *      produces={"application/json"},
-     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
@@ -126,7 +125,6 @@ class SpecialTypesAPIController extends AppBaseController
      *      tags={"SpecialTypes"},
      *      description="Get SpecialTypes",
      *      produces={"application/json"},
-     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of SpecialTypes",
@@ -178,7 +176,6 @@ class SpecialTypesAPIController extends AppBaseController
      *      tags={"SpecialTypes"},
      *      description="Update SpecialTypes",
      *      produces={"application/json"},
-     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of SpecialTypes",
@@ -240,7 +237,6 @@ class SpecialTypesAPIController extends AppBaseController
      *      tags={"SpecialTypes"},
      *      description="Delete SpecialTypes",
      *      produces={"application/json"},
-     *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="id",
      *          description="id of SpecialTypes",

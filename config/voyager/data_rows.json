@@ -71,7 +71,7 @@
         "edit": 0,
         "add": 0,
         "delete": 0,
-        "details": null,
+        "details": "{}",
         "order": 1
     },
     {
@@ -86,7 +86,7 @@
         "edit": 1,
         "add": 1,
         "delete": 1,
-        "details": null,
+        "details": "{}",
         "order": 2
     },
     {
@@ -101,7 +101,7 @@
         "edit": 0,
         "add": 0,
         "delete": 0,
-        "details": null,
+        "details": "{}",
         "order": 3
     },
     {
@@ -116,7 +116,7 @@
         "edit": 0,
         "add": 0,
         "delete": 0,
-        "details": null,
+        "details": "{}",
         "order": 4
     },
     {
@@ -131,7 +131,7 @@
         "edit": 1,
         "add": 1,
         "delete": 1,
-        "details": null,
+        "details": "{}",
         "order": 5
     },
     {
@@ -156,11 +156,11 @@
         "type": "text",
         "display_name": "City Id",
         "required": 1,
-        "browse": 0,
-        "read": 0,
-        "edit": 0,
-        "add": 0,
-        "delete": 0,
+        "browse": 1,
+        "read": 1,
+        "edit": 1,
+        "add": 1,
+        "delete": 1,
         "details": "{}",
         "order": 2
     },
@@ -261,11 +261,11 @@
         "type": "text",
         "display_name": "User Id",
         "required": 1,
-        "browse": 0,
-        "read": 0,
-        "edit": 0,
-        "add": 0,
-        "delete": 0,
+        "browse": 1,
+        "read": 1,
+        "edit": 1,
+        "add": 1,
+        "delete": 1,
         "details": "{}",
         "order": 2
     },
@@ -276,11 +276,11 @@
         "type": "text",
         "display_name": "Area Id",
         "required": 1,
-        "browse": 0,
-        "read": 0,
-        "edit": 0,
-        "add": 0,
-        "delete": 0,
+        "browse": 1,
+        "read": 1,
+        "edit": 1,
+        "add": 1,
+        "delete": 1,
         "details": "{}",
         "order": 5
     },
@@ -897,13 +897,13 @@
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 4
+        "order": 3
     },
     {
         "id": 81,
         "data_type_id": 13,
         "field": "body",
-        "type": "text",
+        "type": "text_area",
         "display_name": "\u0627\u0644\u0648\u0635\u0641",
         "required": 1,
         "browse": 0,
@@ -912,21 +912,21 @@
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 5
+        "order": 4
     },
     {
         "id": 82,
         "data_type_id": 13,
         "field": "user_id",
-        "type": "text",
+        "type": "select_dropdown",
         "display_name": "User Id",
         "required": 0,
-        "browse": 0,
-        "read": 0,
-        "edit": 0,
-        "add": 0,
-        "delete": 0,
-        "details": "{}",
+        "browse": 1,
+        "read": 1,
+        "edit": 1,
+        "add": 1,
+        "delete": 1,
+        "details": "{\"default\":\"option1\",\"options\":{\"option1\":\"Option 1 Text\",\"option2\":\"Option 2 Text\"}}",
         "order": 7
     },
     {
@@ -1005,21 +1005,6 @@
         "order": 13
     },
     {
-        "id": 89,
-        "data_type_id": 13,
-        "field": "order_belongsto_user_relationship",
-        "type": "relationship",
-        "display_name": "\u0627\u0644\u0645\u0633\u062a\u062e\u062f\u0645",
-        "required": 1,
-        "browse": 1,
-        "read": 1,
-        "edit": 1,
-        "add": 1,
-        "delete": 1,
-        "details": "{\"model\":\"App\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"user_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"areas\",\"pivot\":\"0\",\"taggable\":\"0\"}",
-        "order": 2
-    },
-    {
         "id": 90,
         "data_type_id": 13,
         "field": "order_belongsto_customer_address_relationship",
@@ -1032,7 +1017,7 @@
         "add": 1,
         "delete": 1,
         "details": "{\"display\":{\"width\":\"3\"},\"model\":\"App\\\\Models\\\\CustomerAddress\",\"table\":\"customer_addresses\",\"type\":\"belongsTo\",\"column\":\"customer_address_id\",\"key\":\"id\",\"label\":\"street\",\"pivot_table\":\"areas\",\"pivot\":\"0\",\"taggable\":\"0\"}",
-        "order": 3
+        "order": 5
     },
     {
         "id": 104,
@@ -1041,11 +1026,11 @@
         "type": "text",
         "display_name": "Order State Id",
         "required": 0,
-        "browse": 0,
-        "read": 0,
-        "edit": 0,
-        "add": 0,
-        "delete": 0,
+        "browse": 1,
+        "read": 1,
+        "edit": 1,
+        "add": 1,
+        "delete": 1,
         "details": "{}",
         "order": 8
     },
@@ -1188,7 +1173,7 @@
         "id": 120,
         "data_type_id": 16,
         "field": "active",
-        "type": "text",
+        "type": "checkbox",
         "display_name": "\u0641\u0639\u0627\u0644",
         "required": 1,
         "browse": 1,
@@ -1206,11 +1191,11 @@
         "type": "text",
         "display_name": "Country Id",
         "required": 1,
-        "browse": 0,
-        "read": 0,
-        "edit": 0,
-        "add": 0,
-        "delete": 0,
+        "browse": 1,
+        "read": 1,
+        "edit": 1,
+        "add": 1,
+        "delete": 1,
         "details": "{}",
         "order": 6
     },
@@ -1235,7 +1220,7 @@
         "field": "city_belongsto_country_relationship",
         "type": "relationship",
         "display_name": "\u0627\u0644\u062f\u0648\u0644\u0629",
-        "required": 0,
+        "required": 1,
         "browse": 1,
         "read": 1,
         "edit": 1,
@@ -1656,13 +1641,13 @@
         "type": "text",
         "display_name": "Role Id",
         "required": 0,
-        "browse": 0,
+        "browse": 1,
         "read": 1,
         "edit": 1,
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 3
+        "order": 4
     },
     {
         "id": 152,
@@ -1677,7 +1662,7 @@
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 4
+        "order": 5
     },
     {
         "id": 153,
@@ -1692,7 +1677,7 @@
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 5
+        "order": 6
     },
     {
         "id": 154,
@@ -1722,7 +1707,7 @@
         "add": 0,
         "delete": 0,
         "details": "{}",
-        "order": 6
+        "order": 7
     },
     {
         "id": 156,
@@ -1737,7 +1722,7 @@
         "add": 0,
         "delete": 0,
         "details": "{}",
-        "order": 7
+        "order": 8
     },
     {
         "id": 157,
@@ -1752,7 +1737,7 @@
         "add": 0,
         "delete": 0,
         "details": "{}",
-        "order": 8
+        "order": 9
     },
     {
         "id": 158,
@@ -1767,7 +1752,7 @@
         "add": 0,
         "delete": 0,
         "details": "{}",
-        "order": 9
+        "order": 10
     },
     {
         "id": 159,
@@ -1782,7 +1767,7 @@
         "add": 0,
         "delete": 0,
         "details": "{}",
-        "order": 10
+        "order": 11
     },
     {
         "id": 160,
@@ -1797,7 +1782,7 @@
         "add": 0,
         "delete": 0,
         "details": "{}",
-        "order": 11
+        "order": 12
     },
     {
         "id": 161,
@@ -1812,7 +1797,7 @@
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 12
+        "order": 13
     },
     {
         "id": 162,
@@ -1827,7 +1812,7 @@
         "add": 0,
         "delete": 0,
         "details": "{}",
-        "order": 13
+        "order": 14
     },
     {
         "id": 163,
@@ -1842,7 +1827,7 @@
         "add": 0,
         "delete": 0,
         "details": "{}",
-        "order": 14
+        "order": 15
     },
     {
         "id": 164,
@@ -1857,7 +1842,7 @@
         "add": 0,
         "delete": 0,
         "details": "{}",
-        "order": 15
+        "order": 16
     },
     {
         "id": 165,
@@ -1872,7 +1857,7 @@
         "add": 0,
         "delete": 0,
         "details": "{}",
-        "order": 16
+        "order": 17
     },
     {
         "id": 166,
@@ -1887,7 +1872,7 @@
         "add": 0,
         "delete": 0,
         "details": "{}",
-        "order": 17
+        "order": 18
     },
     {
         "id": 167,
@@ -1902,7 +1887,7 @@
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 18
+        "order": 19
     },
     {
         "id": 168,
@@ -1917,7 +1902,7 @@
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 19
+        "order": 20
     },
     {
         "id": 169,
@@ -1932,7 +1917,7 @@
         "add": 0,
         "delete": 0,
         "details": "{}",
-        "order": 20
+        "order": 21
     },
     {
         "id": 170,
@@ -1947,7 +1932,7 @@
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 21
+        "order": 22
     },
     {
         "id": 171,
@@ -1962,7 +1947,7 @@
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 22
+        "order": 23
     },
     {
         "id": 172,
@@ -1977,6 +1962,321 @@
         "add": 1,
         "delete": 1,
         "details": "{}",
-        "order": 23
+        "order": 24
+    },
+    {
+        "id": 173,
+        "data_type_id": 19,
+        "field": "user_belongsto_role_relationship",
+        "type": "relationship",
+        "display_name": "\u0627\u0644\u0635\u0644\u0627\u062d\u064a\u0629",
+        "required": 0,
+        "browse": 1,
+        "read": 1,
+        "edit": 1,
+        "add": 1,
+        "delete": 1,
+        "details": "{\"model\":\"App\\\\Models\\\\Role\",\"table\":\"roles\",\"type\":\"belongsTo\",\"column\":\"role_id\",\"key\":\"id\",\"label\":\"display_name\",\"pivot_table\":\"areas\",\"pivot\":\"0\",\"taggable\":\"0\"}",
+        "order": 3
+    },
+    {
+        "id": 174,
+        "data_type_id": 18,
+        "field": "slider_image_belongsto_slider_relationship",
+        "type": "relationship",
+        "display_name": "sliders",
+        "required": 0,
+        "browse": 1,
+        "read": 1,
+        "edit": 1,
+        "add": 1,
+        "delete": 1,
+        "details": "{\"model\":\"App\\\\Models\\\\Slider\",\"table\":\"sliders\",\"type\":\"belongsTo\",\"column\":\"slider_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"areas\",\"pivot\":\"0\",\"taggable\":null}",
+        "order": 14
+    },
+    {
+        "id": 175,
+        "data_type_id": 21,
+        "field": "id",
+        "type": "text",
+        "display_name": "Id",
+        "required": 1,
+        "browse": 0,
+        "read": 0,
+        "edit": 0,
+        "add": 0,
+        "delete": 0,
+        "details": "{}",
+        "order": 1
+    },
+    {
+        "id": 176,
+        "data_type_id": 21,
+        "field": "rating",
+        "type": "text",
+        "display_name": "Rating",
+        "required": 1,
+        "browse": 1,
+        "read": 1,
+        "edit": 1,
+        "add": 1,
+        "delete": 1,
+        "details": "{}",
+        "order": 2
+    },
+    {
+        "id": 177,
+        "data_type_id": 21,
+        "field": "customer_service_rating",
+        "type": "text",
+        "display_name": "Customer Service Rating",
+        "required": 0,
+        "browse": 0,
+        "read": 0,
+        "edit": 0,
+        "add": 0,
+        "delete": 0,
+        "details": "{}",
+        "order": 3
+    },
+    {
+        "id": 178,
+        "data_type_id": 21,
+        "field": "quality_rating",
+        "type": "text",
+        "display_name": "Quality Rating",
+        "required": 0,
+        "browse": 0,
+        "read": 0,
+        "edit": 0,
+        "add": 0,
+        "delete": 0,
+        "details": "{}",
+        "order": 4
+    },
+    {
+        "id": 179,
+        "data_type_id": 21,
+        "field": "friendly_rating",
+        "type": "text",
+        "display_name": "Friendly Rating",
+        "required": 0,
+        "browse": 0,
+        "read": 0,
+        "edit": 0,
+        "add": 0,
+        "delete": 0,
+        "details": "{}",
+        "order": 5
+    },
+    {
+        "id": 180,
+        "data_type_id": 21,
+        "field": "pricing_rating",
+        "type": "text",
+        "display_name": "Pricing Rating",
+        "required": 0,
+        "browse": 0,
+        "read": 0,
+        "edit": 0,
+        "add": 0,
+        "delete": 0,
+        "details": "{}",
+        "order": 6
+    },
+    {
+        "id": 181,
+        "data_type_id": 21,
+        "field": "recommend",
+        "type": "text",
+        "display_name": "Recommend",
+        "required": 1,
+        "browse": 1,
+        "read": 1,
+        "edit": 1,
+        "add": 1,
+        "delete": 1,
+        "details": "{}",
+        "order": 7
+    },
+    {
+        "id": 182,
+        "data_type_id": 21,
+        "field": "department",
+        "type": "text",
+        "display_name": "Department",
+        "required": 1,
+        "browse": 0,
+        "read": 0,
+        "edit": 0,
+        "add": 0,
+        "delete": 0,
+        "details": "{}",
+        "order": 8
+    },
+    {
+        "id": 183,
+        "data_type_id": 21,
+        "field": "title",
+        "type": "text",
+        "display_name": "Title",
+        "required": 1,
+        "browse": 1,
+        "read": 1,
+        "edit": 1,
+        "add": 1,
+        "delete": 1,
+        "details": "{}",
+        "order": 9
+    },
+    {
+        "id": 184,
+        "data_type_id": 21,
+        "field": "body",
+        "type": "text_area",
+        "display_name": "Body",
+        "required": 1,
+        "browse": 0,
+        "read": 1,
+        "edit": 1,
+        "add": 1,
+        "delete": 1,
+        "details": "{}",
+        "order": 10
+    },
+    {
+        "id": 185,
+        "data_type_id": 21,
+        "field": "approved",
+        "type": "checkbox",
+        "display_name": "Approved",
+        "required": 1,
+        "browse": 1,
+        "read": 1,
+        "edit": 1,
+        "add": 1,
+        "delete": 1,
+        "details": "{}",
+        "order": 11
+    },
+    {
+        "id": 186,
+        "data_type_id": 21,
+        "field": "reviewrateable_type",
+        "type": "text",
+        "display_name": "Reviewrateable Type",
+        "required": 1,
+        "browse": 0,
+        "read": 0,
+        "edit": 0,
+        "add": 0,
+        "delete": 0,
+        "details": "{}",
+        "order": 12
+    },
+    {
+        "id": 187,
+        "data_type_id": 21,
+        "field": "reviewrateable_id",
+        "type": "text",
+        "display_name": "Reviewrateable Id",
+        "required": 1,
+        "browse": 1,
+        "read": 1,
+        "edit": 1,
+        "add": 1,
+        "delete": 1,
+        "details": "{}",
+        "order": 13
+    },
+    {
+        "id": 188,
+        "data_type_id": 21,
+        "field": "author_type",
+        "type": "text",
+        "display_name": "Author Type",
+        "required": 1,
+        "browse": 0,
+        "read": 0,
+        "edit": 0,
+        "add": 0,
+        "delete": 0,
+        "details": "{}",
+        "order": 14
+    },
+    {
+        "id": 189,
+        "data_type_id": 21,
+        "field": "author_id",
+        "type": "text",
+        "display_name": "Author Id",
+        "required": 1,
+        "browse": 1,
+        "read": 1,
+        "edit": 1,
+        "add": 1,
+        "delete": 1,
+        "details": "{}",
+        "order": 15
+    },
+    {
+        "id": 190,
+        "data_type_id": 21,
+        "field": "created_at",
+        "type": "timestamp",
+        "display_name": "\u0641\u064a",
+        "required": 0,
+        "browse": 0,
+        "read": 1,
+        "edit": 1,
+        "add": 0,
+        "delete": 1,
+        "details": "{}",
+        "order": 18
+    },
+    {
+        "id": 191,
+        "data_type_id": 21,
+        "field": "updated_at",
+        "type": "timestamp",
+        "display_name": "Updated At",
+        "required": 0,
+        "browse": 0,
+        "read": 0,
+        "edit": 0,
+        "add": 0,
+        "delete": 0,
+        "details": "{}",
+        "order": 19
+    },
+    {
+        "id": 192,
+        "data_type_id": 21,
+        "field": "review_belongsto_user_relationship",
+        "type": "relationship",
+        "display_name": "\u0627\u0644\u0645\u0642\u064a\u0645",
+        "required": 0,
+        "browse": 1,
+        "read": 1,
+        "edit": 1,
+        "add": 1,
+        "delete": 1,
+        "details": "{\"model\":\"App\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"reviewrateable_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"areas\",\"pivot\":\"0\",\"taggable\":\"0\"}",
+        "order": 16
+    },
+    {
+        "id": 193,
+        "data_type_id": 21,
+        "field": "review_belongsto_user_relationship_1",
+        "type": "relationship",
+        "display_name": "\u0627\u0644\u0645\u0639\u0644\u0642",
+        "required": 0,
+        "browse": 1,
+        "read": 1,
+        "edit": 1,
+        "add": 1,
+        "delete": 1,
+        "details": "{\"model\":\"App\\\\Models\\\\User\",\"table\":\"users\",\"type\":\"belongsTo\",\"column\":\"author_id\",\"key\":\"id\",\"label\":\"name\",\"pivot_table\":\"areas\",\"pivot\":\"0\",\"taggable\":\"0\"}",
+        "order": 17
     }
 ]

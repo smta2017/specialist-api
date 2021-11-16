@@ -33,7 +33,7 @@
         "id": 4,
         "key": "site.google_analytics_tracking_id",
         "display_name": "Google Analytics Tracking ID",
-        "value": "",
+        "value": null,
         "details": "",
         "type": "text",
         "order": 4,
@@ -93,20 +93,20 @@
         "id": 10,
         "key": "admin.google_analytics_client_id",
         "display_name": "Google Analytics Client ID (used for admin dashboard)",
-        "value": "",
+        "value": null,
         "details": "",
         "type": "text",
         "order": 1,
         "group": "Admin"
     },
     {
-        "id": 11,
-        "key": "admin.suspension",
+        "id": 12,
+        "key": "site.suspension",
         "display_name": "suspension",
-        "value": "0",
+        "value": null,
         "details": null,
-        "type": "checkbox",
+        "type": "text",
         "order": 6,
-        "group": "Admin"
+        "group": "Site"
     }
 ]

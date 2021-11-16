@@ -89,10 +89,10 @@ class Order extends Model
     ];
 
     
-public function scopeUserType($query ,$user_type = [])
+public function scopeUserType($query ,$user_type_id = [])
 {
-    return $query->whereHas('User', function ($q) use($user_type) {
-        $q->whereIn('user_type', $user_type);
+    return $query->whereHas('User', function ($q) use($user_type_id) {
+        $q->whereIn('user_type_id', $user_type_id);
     });
 }
 

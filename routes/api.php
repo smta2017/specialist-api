@@ -10,9 +10,9 @@ use App\Http\Controllers\API\CityAPIController;
 use App\Http\Controllers\API\CountryAPIController;
 use App\Http\Controllers\API\CustomerAddressAPIController;
 use App\Http\Controllers\API\OrderAPIController;
-use App\Http\Controllers\API\UserTypesAPIController;
 use App\Http\Controllers\API\OrderCommentAPIController;
 use App\Http\Controllers\API\PlanAPIController;
+use App\Http\Controllers\API\RatingAPIController;
 use App\Http\Controllers\API\SliderAPIController;
 use App\Http\Controllers\API\SliderImageAPIController;
 use App\Http\Controllers\API\SpecialistAreaAPIController;
@@ -20,10 +20,7 @@ use App\Http\Controllers\API\SpecialistTypeAPIController;
 use App\Http\Controllers\API\SpecialTypesAPIController;
 use App\Http\Controllers\API\SubscriptionAPIController;
 use App\Http\Controllers\API\User\UserController;
-use App\Http\Controllers\CityController;
-use App\Http\Controllers\AreaController;
-use GuzzleHttp\Middleware;
-use Illuminate\Http\Request;
+use App\Http\Controllers\API\UserTypeAPIController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -117,6 +114,10 @@ Route::group(['prefix' => 'en', 'middleware' => 'suspension'], function () {
             Route::resource('orderComments', OrderCommentAPIController::class);
             Route::resource('subscriptions', SubscriptionAPIController::class);
             Route::post('user-subscribe/{id}', [SubscriptionAPIController::class, 'UserSubscribe']);
+
+            Route::get('/user/rate/{id}', [RatingAPIController::class, 'getRate']);
+            Route::post('/user/rate/{id}', [RatingAPIController::class, 'store']);
+            Route::put('/user/rate/{user_id}/{rate_id}', [RatingAPIController::class, 'update']);
         });
 
         Route::resource('countries', CountryAPIController::class);
@@ -125,20 +126,17 @@ Route::group(['prefix' => 'en', 'middleware' => 'suspension'], function () {
 
         Route::get('/sliderDetails/{slider_id}', [SliderAPIController::class, 'sliderDetails']);
         Route::resource('sliderImages', SliderImageAPIController::class);
-        
+
 
         Route::apiResource('/cities', CityAPIController::class);
         Route::resource('areas', AreaAPIController::class);
         Route::get('/specialist/{area_id}', [UserController::class, 'getSpcByArea']);
 
 
-        Route::resource('userTypes', UserTypesAPIController::class);
+        Route::resource('userTypes', UserTypeAPIController::class);
+
         Route::resource('plans', PlanAPIController::class);
 
         Route::post('/test2', [PlanApiController::class, 'test']);
     });
 });
-
-
-
-

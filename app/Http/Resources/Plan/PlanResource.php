@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Plan;
 
+use App\Http\Resources\Subscription\SubscriptionResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class PlanResource extends JsonResource
@@ -23,6 +24,8 @@ class PlanResource extends JsonResource
             "period_in_days" => $this->period_in_days, //null,
             "user_type" => $this->user_type, //"center",
             "can_supscribing_count" => $this->can_supscribing_count, //null,
+            'end_at'=>$this->end_at,
+            'user_in_plane' => auth()->user()->subscriptions->where('end_date','2021-12-17T00:00:00.000000Z')
         ];
     }
 }

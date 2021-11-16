@@ -28,6 +28,12 @@ class UserRepository extends BaseRepository implements IUser
         return ApiResponse::format('success', $user);
     }
 
+    public function findUser($id)
+    {
+        $user = $this->find($id);
+        return $user;
+    }
+
     public function allUsers()
     {
         $users = $this->all();
@@ -62,7 +68,7 @@ class UserRepository extends BaseRepository implements IUser
 
     public function getSpecialistByArea($area_id)
     {
-        $user = User::where('user_type', 'specialist')->whereHas('SpecialistAreas', function ($q) use ($area_id) {
+        $user = User::where('user_type_id', 2)->whereHas('SpecialistAreas', function ($q) use ($area_id) {
             $q->where('area_id', $area_id);
         })->get();
         return $user;

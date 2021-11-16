@@ -58,7 +58,7 @@ class Plan extends Model
         'name',
         'price',
         'request_counts',
-        'user_type',
+        'user_type_id',
         'can_supscribing_count'
     ];
 
@@ -71,7 +71,7 @@ class Plan extends Model
         'name' => 'string',
         'price' => 'float',
         'request_counts' => 'integer',
-        'user_type',
+        'user_type_id',
         'can_supscribing_count'
     ];
 
@@ -83,7 +83,7 @@ class Plan extends Model
     public static $rules = [
         'name' => 'required',
         'price' => 'required',
-        'user_type' => 'required',
+        'user_type_id' => 'required',
         'request_counts' => 'required numeric'
     ];
 

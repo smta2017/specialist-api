@@ -38,9 +38,9 @@ class SliderImages extends AbstractAction
         return $this->dataType->slug == 'sliders';
     }
 
-    public function massAction($ids, $comingFrom)
-    {
-        // Do something with the IDs
-        return ($ids);
-    }
+    // public function massAction($ids, $comingFrom)
+    // {
+    //     // Do something with the IDs
+    //     return ($ids);
+    // }
 }

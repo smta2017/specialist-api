@@ -364,8 +364,8 @@ class PlanAPIController extends AppBaseController
 
     public function userPlans()
     {
-        $user_type = auth()->user()->user_type;
-        $plans = Plan::where('user_type', $user_type)->get();
+        $user_type_id = auth()->user()->user_type_id;
+        $plans = Plan::where('user_type_id', $user_type_id)->get();
         return $this->sendResponse(PlanResource::collection($plans), 'Plans retrieved successfully');
     }
 }

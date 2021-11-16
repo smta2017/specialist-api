@@ -123,8 +123,6 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-    'user_types' => ['customer' => 'customer', 'specialist' => 'specialist', 'libirary' => 'libirary', 'center' => 'center'],
-
     'enable_email_verification' => env('EMAIL_VERIFICATION', true),
 
     'enable_phone_verification' => env('PHONE_VERIFICATION', true),

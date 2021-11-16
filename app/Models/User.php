@@ -11,14 +11,17 @@ use Laravel\Sanctum\HasApiTokens;
 use OwenIt\Auditing\Contracts\Auditable;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
+use Codebyray\ReviewRateable\Contracts\ReviewRateable;
+use Codebyray\ReviewRateable\Traits\ReviewRateable as ReviewRateableTrait;
 
-class User extends \TCG\Voyager\Models\User implements Auditable, MustVerifyEmail, HasMedia
+class User extends \TCG\Voyager\Models\User implements Auditable, MustVerifyEmail, HasMedia, ReviewRateable
 {
     use InteractsWithMedia;
     use HasApiTokens, HasFactory, Notifiable;
     use \OwenIt\Auditing\Auditable;
     use SMSTrait;
     use \Rinvex\Attributes\Traits\Attributable;
+    use ReviewRateableTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -32,7 +35,7 @@ class User extends \TCG\Voyager\Models\User implements Auditable, MustVerifyEmai
         'phone',
         'facebook_id',
         'goolge_id',
-        'user_type',
+        'user_type_id',
     ];
 
     /**
@@ -101,16 +104,6 @@ class User extends \TCG\Voyager\Models\User implements Auditable, MustVerifyEmai
         return $query->where('is_active', 1);
     }
 
-    public function scopeSpecialist($query)
-    {
-        return $query->where('user_type', 'specialist');
-    }
-
-    public function scopeCustomer($query)
-    {
-        return $query->where('user_type', 'customer');
-    }
-
     public function scopeHasSub($query)
     {
         return $query
@@ -122,6 +115,9 @@ class User extends \TCG\Voyager\Models\User implements Auditable, MustVerifyEmai
     }
 
 
+    public function authorIdList(){
+        return User::where('active', 1)->orderBy('created_at')->get();
+    }
 
 
 
@@ -159,6 +155,11 @@ class User extends \TCG\Voyager\Models\User implements Auditable, MustVerifyEmai
     public function SpecialistTypes()
     {
         return $this->hasMany(SpecialistType::class);
+    }
+
+    public function UserType()
+    {
+        return $this->belongsTo(UserType::class);
     }
 
     /*

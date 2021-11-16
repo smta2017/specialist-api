@@ -19,10 +19,10 @@ class AddCustomeColumnAtToUsersTable extends Migration
             $table->string('google_id')->nullable();
             $table->string('firebase_token')->nullable();
             $table->timestamp('phone_verified_at')->nullable();
-            $table->tinyInteger('is_active')->nullable();
-            $table->tinyInteger('is_admin')->nullable();
+            $table->tinyInteger('is_active')->nullable()->default(1);
+            $table->tinyInteger('is_admin')->nullable()->default(0);
             $table->enum('gender', ['mail','femail'])->nullable();
-            $table->enum('user_type', config("app.user_types"))->nullable();
+            $table->enum('user_type_id', config("app.user_types"))->nullable();
             $table->date('dop')->nullable();
             $table->tinyInteger('sms_notification')->nullable();
             $table->string('lang')->nullable();
@@ -45,7 +45,7 @@ class AddCustomeColumnAtToUsersTable extends Migration
             $table->dropColumn('is_active');
             $table->dropColumn('is_admin');
             $table->dropColumn('gender');
-            $table->dropColumn('user_type');
+            $table->dropColumn('user_type_id');
             $table->dropColumn('dop');
             $table->dropColumn('sms_notification');
             $table->dropColumn('lang');

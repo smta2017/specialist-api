@@ -34,7 +34,7 @@ class RegisterRequest extends FormRequest
             'email' => 'email|required|email|unique:users',
             'phone' => 'required|size:11'  . $unique,
             'password' => 'required|min:8',
-            'user_type' => 'required'
+            'user_type_id' => 'required'
         ];
     }
 

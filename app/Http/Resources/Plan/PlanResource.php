@@ -15,7 +15,8 @@ class PlanResource extends JsonResource
      */
     public function toArray($request)
     {
-        $subscripetions = auth()->user()->subscriptions->where('plan_id', $this->id)->where('end_at', '>=', date("Y-m-d"));
+        $subscripetions = auth()->user()->subscriptions->where('plan_id', $this->id)->where('end_at', '>=', date("Y-m-d"))->first();
+      $subscripetionsArray =   $subscripetions;
         // return parent::toArray($request);
         return [
             "id" => $this->id, //1,
@@ -26,8 +27,8 @@ class PlanResource extends JsonResource
             "user_type" => $this->user_type, //"center",
             "can_supscribing_count" => $this->can_supscribing_count, //null,
             'end_at' => $this->end_at,
-            'user_in_plane' => $subscripetions->count() ? 1 : 0,
-            'subscription_id' => $subscripetions->toArray() ? $subscripetions->toArray() : 0
+            'user_in_plane' => $subscripetions ? 1 : 0,
+            'subscription_id' => $subscripetionsArray ? $subscripetionsArray->id: 0
         ];
     }
 }

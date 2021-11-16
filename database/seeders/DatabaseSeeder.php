@@ -13,8 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        
-        \App\Models\UserType::factory()->create();
+
+        $this->call(UserType::class);
         \App\Models\User::factory(config("app.seeder_count"))->create();
         \App\Models\SpecialTypes::factory(config("app.seeder_count"))->create();
         \App\Models\Plan::factory(config("app.seeder_count"))->create();

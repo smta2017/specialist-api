@@ -64,7 +64,7 @@ class RatingAPIController extends Controller
     public function getRate($id)
     {
         $user = $this->model->findUser($id);
-        $rate = $user->averageRating(1, true);
+        $rate = $user->averageRating(1, true)[0];
         $ApprovedRatings = ReviewResource::collection($user->getApprovedRatings($id, 'desc'));
         return ApiResponse::format("success", ['rate' => $rate, 'approvedRatings' => $ApprovedRatings]);
     }

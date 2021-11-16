@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\User;
 
+use App\Http\Resources\Rate\ReviewResource;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
@@ -31,6 +32,7 @@ class UserResource extends JsonResource
             "dop" => $this->dop, // null,
             "sms_notification" => $this->sms_notification, // null,
             "lang" => $this->lang, // null
+            "rate" => $this->averageRating(1, true)[0]
         ];
     }
 }

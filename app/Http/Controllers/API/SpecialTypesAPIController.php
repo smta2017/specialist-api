@@ -35,7 +35,6 @@ class SpecialTypesAPIController extends AppBaseController
      *      tags={"SpecialTypes"},
      *      description="Get all SpecialTypes",
      *      produces={"application/json"},
-     *      security = {{"Bearer": {}}},
      *      @SWG\Response(
      *          response=200,
      *          description="successful operation",

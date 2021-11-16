@@ -50,10 +50,8 @@ class UserController extends AppBaseController
      *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
      *          name="user_type",
-     *          description="user_type",
-     *          type="string",
-     *     enum={"customer", "specialist","libirary","center"},
-     * 
+     *          description="user_type_id",
+     *          type="integer",
      *          required=false,
      *          in="query"
      *      ),
@@ -86,6 +84,12 @@ class UserController extends AppBaseController
             $user = $user->where('user_type_id', $request->user_type_id);
         }
         $users =  $user->get();
+
+
+        // $user = $this->model->findUser($id);
+        $rate = $user->averageRating(1, true);
+        // $ApprovedRatings = ReviewResource::collection($user->getApprovedRatings($id, 'desc'));
+
 
         return ApiResponse::format('Users geting successfully', $users);
     }

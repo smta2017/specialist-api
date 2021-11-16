@@ -48,8 +48,7 @@ class SubscriptionRepository extends BaseRepository
     {
         $plan = Plan::findOrFail($id);
 
-        // return $plan->can_supscribing_count .'-'. auth()->user()->Subscriptions->count();
-        if ($plan->can_supscribing_count <= auth()->user()->Subscriptions->count()) {
+        if ($plan->can_supscribing_count <= auth()->user()->Subscriptions->count() && !is_null($plan->can_supscribing_count)) {
 
             return false;
         }

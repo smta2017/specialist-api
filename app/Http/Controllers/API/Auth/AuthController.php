@@ -123,7 +123,7 @@ class AuthController extends AppBaseController
      *                "phone":"01274200778",
      *                "password":"password",
      *                "firebase_token":"2986tGfr56hb5tg6r6f6",
-     *                "user_type":"specialist",
+     *                "user_type_id":2,
      *                "areas":{2,5,1},
      *                "specials":{3,1,2},
      *               }

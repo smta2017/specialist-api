@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Plan;
+use App\Models\UserType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PlanFactory extends Factory
@@ -25,7 +26,7 @@ class PlanFactory extends Factory
             'name' => $this->faker->word,
         'price' => $this->faker->numberBetween($min = 1, $max = 300),
         'request_counts' => $this->faker->numberBetween($min = 1, $max = 300),
-        'user_type' => $this->faker->randomElement(["customer", "specialist","libirary","center"]),
+        'user_type_id' => UserType::pluck('id')->random(),
         'created_at' => $this->faker->dateTimeBetween($startDate = '-2 years', $endDate = '2years', $timezone = null), // DateTime('2003-03-15 02:00:49', 'Africa/Lagos'),,
         'updated_at' => $this->faker->dateTimeBetween($startDate = '-2 years', $endDate = '2years', $timezone = null), // DateTime('2003-03-15 02:00:49', 'Africa/Lagos'),
         ];

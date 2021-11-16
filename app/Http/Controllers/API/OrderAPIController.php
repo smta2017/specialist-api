@@ -474,10 +474,10 @@ class OrderAPIController extends AppBaseController
             $q->whereIn('area_id', $areas);
         });
 
-        if (auth()->user()->user_type == 'specialist' || auth()->user()->user_type == 'center') {
-            $orders = $orders->userType(['customer']);
+        if (auth()->user()->user_type_id == 2 || auth()->user()->user_type_id == 3) {
+            $orders = $orders->userType(1);
         } else if (auth()->user()->user_type == 'libirary') {
-            $orders = $orders->userType(['specialist', 'center']);
+            $orders = $orders->userType([2, 3]);
         }
         $orders = $orders->get();
         return $this->sendResponse(OrderResource::collection($orders), 'Orders retrieved successfully');

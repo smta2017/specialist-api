@@ -22,7 +22,7 @@ class AddCustomeColumnAtToUsersTable extends Migration
             $table->tinyInteger('is_active')->nullable()->default(1);
             $table->tinyInteger('is_admin')->nullable()->default(0);
             $table->enum('gender', ['mail','femail'])->nullable();
-            $table->enum('user_type_id', config("app.user_types"))->nullable();
+            $table->integer('user_type_id')->nullable();
             $table->date('dop')->nullable();
             $table->tinyInteger('sms_notification')->nullable();
             $table->string('lang')->nullable();

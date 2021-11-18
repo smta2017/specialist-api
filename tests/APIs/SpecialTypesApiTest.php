@@ -4,9 +4,9 @@ use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 use Tests\ApiTestTrait;
-use App\Models\SpecialTypes;
+use App\Models\SpecialType;
 
-class SpecialTypesApiTest extends TestCase
+class SpecialTypeApiTest extends TestCase
 {
     use ApiTestTrait, WithoutMiddleware, DatabaseTransactions;
 
@@ -15,14 +15,14 @@ class SpecialTypesApiTest extends TestCase
      */
     public function test_create_special_types()
     {
-        $specialTypes = SpecialTypes::factory()->make()->toArray();
+        $SpecialType = SpecialType::factory()->make()->toArray();
 
         $this->response = $this->json(
             'POST',
-            '/api/special_types', $specialTypes
+            '/api/special_types', $SpecialType
         );
 
-        $this->assertApiResponse($specialTypes);
+        $this->assertApiResponse($SpecialType);
     }
 
     /**
@@ -30,14 +30,14 @@ class SpecialTypesApiTest extends TestCase
      */
     public function test_read_special_types()
     {
-        $specialTypes = SpecialTypes::factory()->create();
+        $SpecialType = SpecialType::factory()->create();
 
         $this->response = $this->json(
             'GET',
-            '/api/special_types/'.$specialTypes->id
+            '/api/special_types/'.$SpecialType->id
         );
 
-        $this->assertApiResponse($specialTypes->toArray());
+        $this->assertApiResponse($SpecialType->toArray());
     }
 
     /**
@@ -45,16 +45,16 @@ class SpecialTypesApiTest extends TestCase
      */
     public function test_update_special_types()
     {
-        $specialTypes = SpecialTypes::factory()->create();
-        $editedSpecialTypes = SpecialTypes::factory()->make()->toArray();
+        $SpecialType = SpecialType::factory()->create();
+        $editedSpecialType = SpecialType::factory()->make()->toArray();
 
         $this->response = $this->json(
             'PUT',
-            '/api/special_types/'.$specialTypes->id,
-            $editedSpecialTypes
+            '/api/special_types/'.$SpecialType->id,
+            $editedSpecialType
         );
 
-        $this->assertApiResponse($editedSpecialTypes);
+        $this->assertApiResponse($editedSpecialType);
     }
 
     /**
@@ -62,17 +62,17 @@ class SpecialTypesApiTest extends TestCase
      */
     public function test_delete_special_types()
     {
-        $specialTypes = SpecialTypes::factory()->create();
+        $SpecialType = SpecialType::factory()->create();
 
         $this->response = $this->json(
             'DELETE',
-             '/api/special_types/'.$specialTypes->id
+             '/api/special_types/'.$SpecialType->id
          );
 
         $this->assertApiSuccess();
         $this->response = $this->json(
             'GET',
-            '/api/special_types/'.$specialTypes->id
+            '/api/special_types/'.$SpecialType->id
         );
 
         $this->response->assertStatus(404);

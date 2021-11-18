@@ -16,6 +16,8 @@ use Codebyray\ReviewRateable\Traits\ReviewRateable as ReviewRateableTrait;
 
 class User extends \TCG\Voyager\Models\User implements Auditable, MustVerifyEmail, HasMedia, ReviewRateable
 {
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
+
     use InteractsWithMedia;
     use HasApiTokens, HasFactory, Notifiable;
     use \OwenIt\Auditing\Auditable;

@@ -2,13 +2,13 @@
 
 namespace App\Models;
 
-use Eloquent as Model;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 /**
  * @SWG\Definition(
- *      definition="SpecialTypes",
+ *      definition="SpecialType",
  *      required={"name"},
  *      @SWG\Property(
  *          property="name",
@@ -29,7 +29,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  *      )
  * )
  */
-class SpecialTypes extends Model
+class SpecialType extends Model
 {
     use SoftDeletes;
 

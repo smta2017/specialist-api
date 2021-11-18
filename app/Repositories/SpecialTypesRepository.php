@@ -2,16 +2,16 @@
 
 namespace App\Repositories;
 
-use App\Models\SpecialTypes;
+use App\Models\SpecialType;
 use App\Repositories\BaseRepository;
 
 /**
- * Class SpecialTypesRepository
+ * Class SpecialTypeRepository
  * @package App\Repositories
  * @version October 27, 2021, 12:47 am UTC
 */
 
-class SpecialTypesRepository extends BaseRepository
+class SpecialTypeRepository extends BaseRepository
 {
     /**
      * @var array
@@ -35,6 +35,6 @@ class SpecialTypesRepository extends BaseRepository
      **/
     public function model()
     {
-        return SpecialTypes::class;
+        return SpecialType::class;
     }
 }

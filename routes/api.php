@@ -17,7 +17,7 @@ use App\Http\Controllers\API\SliderAPIController;
 use App\Http\Controllers\API\SliderImageAPIController;
 use App\Http\Controllers\API\SpecialistAreaAPIController;
 use App\Http\Controllers\API\SpecialistTypeAPIController;
-use App\Http\Controllers\API\SpecialTypesAPIController;
+use App\Http\Controllers\API\SpecialTypeAPIController;
 use App\Http\Controllers\API\SubscriptionAPIController;
 use App\Http\Controllers\API\User\UserController;
 use App\Http\Controllers\API\UserTypeAPIController;
@@ -118,7 +118,7 @@ Route::group(['prefix' => 'en', 'middleware' => 'suspension'], function () {
             Route::post('/user/rate/{id}', [RatingAPIController::class, 'store']);
             Route::put('/user/rate/{user_id}/{rate_id}', [RatingAPIController::class, 'update']);
         });
-        Route::resource('specialTypes', SpecialTypesAPIController::class);
+        Route::resource('SpecialType', SpecialTypeAPIController::class);
 
 
         Route::resource('countries', CountryAPIController::class);

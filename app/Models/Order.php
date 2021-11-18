@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-
 /**
  * @SWG\Definition(
  *      definition="Order",
@@ -43,6 +42,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class Order extends Model
 {
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
+
     use SoftDeletes;
 
     use HasFactory;
@@ -58,7 +59,7 @@ class Order extends Model
         'title',
         'body',
         'user_id',
-        'status_id',
+        'order_status_id',
         'customer_address_id',
         'special_type_id'
     ];

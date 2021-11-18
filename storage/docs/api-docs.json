@@ -2949,13 +2949,13 @@
                 }
             }
         },
-        "/specialTypes": {
+        "/SpecialType": {
             "get": {
                 "tags": [
-                    "SpecialTypes"
+                    "SpecialType"
                 ],
-                "summary": "Get a listing of the SpecialTypes.",
-                "description": "Get all SpecialTypes",
+                "summary": "Get a listing of the SpecialType.",
+                "description": "Get all SpecialType",
                 "produces": [
                     "application/json"
                 ],
@@ -2970,7 +2970,7 @@
                                 "data": {
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/SpecialTypes"
+                                        "$ref": "#/definitions/SpecialType"
                                     }
                                 },
                                 "message": {
@@ -2984,10 +2984,10 @@
             },
             "post": {
                 "tags": [
-                    "SpecialTypes"
+                    "SpecialType"
                 ],
-                "summary": "Store a newly created SpecialTypes in storage",
-                "description": "Store SpecialTypes",
+                "summary": "Store a newly created SpecialType in storage",
+                "description": "Store SpecialType",
                 "produces": [
                     "application/json"
                 ],
@@ -2995,10 +2995,10 @@
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "SpecialTypes that should be stored",
+                        "description": "SpecialType that should be stored",
                         "required": false,
                         "schema": {
-                            "$ref": "#/definitions/SpecialTypes"
+                            "$ref": "#/definitions/SpecialType"
                         }
                     }
                 ],
@@ -3011,7 +3011,7 @@
                                     "type": "boolean"
                                 },
                                 "data": {
-                                    "$ref": "#/definitions/SpecialTypes"
+                                    "$ref": "#/definitions/SpecialType"
                                 },
                                 "message": {
                                     "type": "string"
@@ -3028,13 +3028,13 @@
                 ]
             }
         },
-        "/specialTypes/{id}": {
+        "/SpecialType/{id}": {
             "get": {
                 "tags": [
-                    "SpecialTypes"
+                    "SpecialType"
                 ],
-                "summary": "Display the specified SpecialTypes",
-                "description": "Get SpecialTypes",
+                "summary": "Display the specified SpecialType",
+                "description": "Get SpecialType",
                 "produces": [
                     "application/json"
                 ],
@@ -3042,7 +3042,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "id of SpecialTypes",
+                        "description": "id of SpecialType",
                         "required": true,
                         "type": "integer"
                     }
@@ -3056,7 +3056,7 @@
                                     "type": "boolean"
                                 },
                                 "data": {
-                                    "$ref": "#/definitions/SpecialTypes"
+                                    "$ref": "#/definitions/SpecialType"
                                 },
                                 "message": {
                                     "type": "string"
@@ -3074,10 +3074,10 @@
             },
             "put": {
                 "tags": [
-                    "SpecialTypes"
+                    "SpecialType"
                 ],
-                "summary": "Update the specified SpecialTypes in storage",
-                "description": "Update SpecialTypes",
+                "summary": "Update the specified SpecialType in storage",
+                "description": "Update SpecialType",
                 "produces": [
                     "application/json"
                 ],
@@ -3085,17 +3085,17 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "id of SpecialTypes",
+                        "description": "id of SpecialType",
                         "required": true,
                         "type": "integer"
                     },
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "SpecialTypes that should be updated",
+                        "description": "SpecialType that should be updated",
                         "required": false,
                         "schema": {
-                            "$ref": "#/definitions/SpecialTypes"
+                            "$ref": "#/definitions/SpecialType"
                         }
                     }
                 ],
@@ -3108,7 +3108,7 @@
                                     "type": "boolean"
                                 },
                                 "data": {
-                                    "$ref": "#/definitions/SpecialTypes"
+                                    "$ref": "#/definitions/SpecialType"
                                 },
                                 "message": {
                                     "type": "string"
@@ -3126,10 +3126,10 @@
             },
             "delete": {
                 "tags": [
-                    "SpecialTypes"
+                    "SpecialType"
                 ],
-                "summary": "Remove the specified SpecialTypes from storage",
-                "description": "Delete SpecialTypes",
+                "summary": "Remove the specified SpecialType from storage",
+                "description": "Delete SpecialType",
                 "produces": [
                     "application/json"
                 ],
@@ -3137,7 +3137,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "id of SpecialTypes",
+                        "description": "id of SpecialType",
                         "required": true,
                         "type": "integer"
                     }
@@ -4460,7 +4460,7 @@
                 }
             }
         },
-        "SpecialTypes": {
+        "SpecialType": {
             "required": [
                 "name"
             ],

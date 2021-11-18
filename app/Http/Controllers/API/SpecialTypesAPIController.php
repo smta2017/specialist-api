@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Requests\API\CreateSpecialTypesAPIRequest;
-use App\Http\Requests\API\UpdateSpecialTypesAPIRequest;
-use App\Models\SpecialTypes;
-use App\Repositories\SpecialTypesRepository;
+use App\Http\Requests\API\CreateSpecialTypeAPIRequest;
+use App\Http\Requests\API\UpdateSpecialTypeAPIRequest;
+use App\Models\SpecialType;
+use App\Repositories\SpecialTypeRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
 use Response;
 
 /**
- * Class SpecialTypesController
+ * Class SpecialTypeController
  * @package App\Http\Controllers\API
  */
 
-class SpecialTypesAPIController extends AppBaseController
+class SpecialTypeAPIController extends AppBaseController
 {
-    /** @var  SpecialTypesRepository */
-    private $specialTypesRepository;
+    /** @var  SpecialTypeRepository */
+    private $SpecialTypeRepository;
 
-    public function __construct(SpecialTypesRepository $specialTypesRepo)
+    public function __construct(SpecialTypeRepository $SpecialTypeRepo)
     {
-        $this->specialTypesRepository = $specialTypesRepo;
+        $this->SpecialTypeRepository = $SpecialTypeRepo;
     }
 
     /**
@@ -30,10 +30,10 @@ class SpecialTypesAPIController extends AppBaseController
      * @return Response
      *
      * @SWG\Get(
-     *      path="/specialTypes",
-     *      summary="Get a listing of the SpecialTypes.",
-     *      tags={"SpecialTypes"},
-     *      description="Get all SpecialTypes",
+     *      path="/SpecialType",
+     *      summary="Get a listing of the SpecialType.",
+     *      tags={"SpecialType"},
+     *      description="Get all SpecialType",
      *      produces={"application/json"},
      *      @SWG\Response(
      *          response=200,
@@ -47,7 +47,7 @@ class SpecialTypesAPIController extends AppBaseController
      *              @SWG\Property(
      *                  property="data",
      *                  type="array",
-     *                  @SWG\Items(ref="#/definitions/SpecialTypes")
+     *                  @SWG\Items(ref="#/definitions/SpecialType")
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -59,31 +59,31 @@ class SpecialTypesAPIController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $specialTypes = $this->specialTypesRepository->all(
+        $SpecialType = $this->SpecialTypeRepository->all(
             $request->except(['skip', 'limit']),
             $request->get('skip'),
             $request->get('limit')
         );
 
-        return $this->sendResponse($specialTypes->toArray(), 'Special Types retrieved successfully');
+        return $this->sendResponse($SpecialType->toArray(), 'Special Types retrieved successfully');
     }
 
     /**
-     * @param CreateSpecialTypesAPIRequest $request
+     * @param CreateSpecialTypeAPIRequest $request
      * @return Response
      *
      * @SWG\Post(
-     *      path="/specialTypes",
-     *      summary="Store a newly created SpecialTypes in storage",
-     *      tags={"SpecialTypes"},
-     *      description="Store SpecialTypes",
+     *      path="/SpecialType",
+     *      summary="Store a newly created SpecialType in storage",
+     *      tags={"SpecialType"},
+     *      description="Store SpecialType",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
-     *          description="SpecialTypes that should be stored",
+     *          description="SpecialType that should be stored",
      *          required=false,
-     *          @SWG\Schema(ref="#/definitions/SpecialTypes")
+     *          @SWG\Schema(ref="#/definitions/SpecialType")
      *      ),
      *      @SWG\Response(
      *          response=200,
@@ -96,7 +96,7 @@ class SpecialTypesAPIController extends AppBaseController
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/SpecialTypes"
+     *                  ref="#/definitions/SpecialType"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -106,13 +106,13 @@ class SpecialTypesAPIController extends AppBaseController
      *      )
      * )
      */
-    public function store(CreateSpecialTypesAPIRequest $request)
+    public function store(CreateSpecialTypeAPIRequest $request)
     {
         $input = $request->all();
 
-        $specialTypes = $this->specialTypesRepository->create($input);
+        $SpecialType = $this->SpecialTypeRepository->create($input);
 
-        return $this->sendResponse($specialTypes->toArray(), 'Special Types saved successfully');
+        return $this->sendResponse($SpecialType->toArray(), 'Special Types saved successfully');
     }
 
     /**
@@ -120,14 +120,14 @@ class SpecialTypesAPIController extends AppBaseController
      * @return Response
      *
      * @SWG\Get(
-     *      path="/specialTypes/{id}",
-     *      summary="Display the specified SpecialTypes",
-     *      tags={"SpecialTypes"},
-     *      description="Get SpecialTypes",
+     *      path="/SpecialType/{id}",
+     *      summary="Display the specified SpecialType",
+     *      tags={"SpecialType"},
+     *      description="Get SpecialType",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of SpecialTypes",
+     *          description="id of SpecialType",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -143,7 +143,7 @@ class SpecialTypesAPIController extends AppBaseController
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/SpecialTypes"
+     *                  ref="#/definitions/SpecialType"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -155,30 +155,30 @@ class SpecialTypesAPIController extends AppBaseController
      */
     public function show($id)
     {
-        /** @var SpecialTypes $specialTypes */
-        $specialTypes = $this->specialTypesRepository->find($id);
+        /** @var SpecialType $SpecialType */
+        $SpecialType = $this->SpecialTypeRepository->find($id);
 
-        if (empty($specialTypes)) {
+        if (empty($SpecialType)) {
             return $this->sendError('Special Types not found');
         }
 
-        return $this->sendResponse($specialTypes->toArray(), 'Special Types retrieved successfully');
+        return $this->sendResponse($SpecialType->toArray(), 'Special Types retrieved successfully');
     }
 
     /**
      * @param int $id
-     * @param UpdateSpecialTypesAPIRequest $request
+     * @param UpdateSpecialTypeAPIRequest $request
      * @return Response
      *
      * @SWG\Put(
-     *      path="/specialTypes/{id}",
-     *      summary="Update the specified SpecialTypes in storage",
-     *      tags={"SpecialTypes"},
-     *      description="Update SpecialTypes",
+     *      path="/SpecialType/{id}",
+     *      summary="Update the specified SpecialType in storage",
+     *      tags={"SpecialType"},
+     *      description="Update SpecialType",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of SpecialTypes",
+     *          description="id of SpecialType",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -186,9 +186,9 @@ class SpecialTypesAPIController extends AppBaseController
      *      @SWG\Parameter(
      *          name="body",
      *          in="body",
-     *          description="SpecialTypes that should be updated",
+     *          description="SpecialType that should be updated",
      *          required=false,
-     *          @SWG\Schema(ref="#/definitions/SpecialTypes")
+     *          @SWG\Schema(ref="#/definitions/SpecialType")
      *      ),
      *      @SWG\Response(
      *          response=200,
@@ -201,7 +201,7 @@ class SpecialTypesAPIController extends AppBaseController
      *              ),
      *              @SWG\Property(
      *                  property="data",
-     *                  ref="#/definitions/SpecialTypes"
+     *                  ref="#/definitions/SpecialType"
      *              ),
      *              @SWG\Property(
      *                  property="message",
@@ -211,20 +211,20 @@ class SpecialTypesAPIController extends AppBaseController
      *      )
      * )
      */
-    public function update($id, UpdateSpecialTypesAPIRequest $request)
+    public function update($id, UpdateSpecialTypeAPIRequest $request)
     {
         $input = $request->all();
 
-        /** @var SpecialTypes $specialTypes */
-        $specialTypes = $this->specialTypesRepository->find($id);
+        /** @var SpecialType $SpecialType */
+        $SpecialType = $this->SpecialTypeRepository->find($id);
 
-        if (empty($specialTypes)) {
+        if (empty($SpecialType)) {
             return $this->sendError('Special Types not found');
         }
 
-        $specialTypes = $this->specialTypesRepository->update($input, $id);
+        $SpecialType = $this->SpecialTypeRepository->update($input, $id);
 
-        return $this->sendResponse($specialTypes->toArray(), 'SpecialTypes updated successfully');
+        return $this->sendResponse($SpecialType->toArray(), 'SpecialType updated successfully');
     }
 
     /**
@@ -232,14 +232,14 @@ class SpecialTypesAPIController extends AppBaseController
      * @return Response
      *
      * @SWG\Delete(
-     *      path="/specialTypes/{id}",
-     *      summary="Remove the specified SpecialTypes from storage",
-     *      tags={"SpecialTypes"},
-     *      description="Delete SpecialTypes",
+     *      path="/SpecialType/{id}",
+     *      summary="Remove the specified SpecialType from storage",
+     *      tags={"SpecialType"},
+     *      description="Delete SpecialType",
      *      produces={"application/json"},
      *      @SWG\Parameter(
      *          name="id",
-     *          description="id of SpecialTypes",
+     *          description="id of SpecialType",
      *          type="integer",
      *          required=true,
      *          in="path"
@@ -267,14 +267,14 @@ class SpecialTypesAPIController extends AppBaseController
      */
     public function destroy($id)
     {
-        /** @var SpecialTypes $specialTypes */
-        $specialTypes = $this->specialTypesRepository->find($id);
+        /** @var SpecialType $SpecialType */
+        $SpecialType = $this->SpecialTypeRepository->find($id);
 
-        if (empty($specialTypes)) {
+        if (empty($SpecialType)) {
             return $this->sendError('Special Types not found');
         }
 
-        $specialTypes->delete();
+        $SpecialType->delete();
 
         return $this->sendSuccess('Special Types deleted successfully');
     }

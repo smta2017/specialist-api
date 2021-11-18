@@ -3,11 +3,11 @@
 namespace App\Http\Requests\API;
 
 use App\Helpers\ApiResponse;
-use App\Models\SpecialTypes;
+use App\Models\SpecialType;
 use Illuminate\Contracts\Validation\Validator;
 use InfyOm\Generator\Request\APIRequest;
 
-class UpdateSpecialTypesAPIRequest extends APIRequest
+class UpdateSpecialTypeAPIRequest extends APIRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class UpdateSpecialTypesAPIRequest extends APIRequest
      */
     public function rules()
     {
-        $rules = SpecialTypes::$rules;
+        $rules = SpecialType::$rules;
         
         return $rules;
     }

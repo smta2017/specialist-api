@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\SpecialTypes;
+use App\Models\SpecialType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class SpecialTypesFactory extends Factory
+class SpecialTypeFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = SpecialTypes::class;
+    protected $model = SpecialType::class;
 
     /**
      * Define the model's default state.

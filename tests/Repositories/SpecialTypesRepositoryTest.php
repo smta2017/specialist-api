@@ -1,24 +1,24 @@
 <?php namespace Tests\Repositories;
 
-use App\Models\SpecialTypes;
-use App\Repositories\SpecialTypesRepository;
+use App\Models\SpecialType;
+use App\Repositories\SpecialTypeRepository;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 use Tests\ApiTestTrait;
 
-class SpecialTypesRepositoryTest extends TestCase
+class SpecialTypeRepositoryTest extends TestCase
 {
     use ApiTestTrait, DatabaseTransactions;
 
     /**
-     * @var SpecialTypesRepository
+     * @var SpecialTypeRepository
      */
-    protected $specialTypesRepo;
+    protected $SpecialTypeRepo;
 
     public function setUp() : void
     {
         parent::setUp();
-        $this->specialTypesRepo = \App::make(SpecialTypesRepository::class);
+        $this->SpecialTypeRepo = \App::make(SpecialTypeRepository::class);
     }
 
     /**
@@ -26,15 +26,15 @@ class SpecialTypesRepositoryTest extends TestCase
      */
     public function test_create_special_types()
     {
-        $specialTypes = SpecialTypes::factory()->make()->toArray();
+        $SpecialType = SpecialType::factory()->make()->toArray();
 
-        $createdSpecialTypes = $this->specialTypesRepo->create($specialTypes);
+        $createdSpecialType = $this->SpecialTypeRepo->create($SpecialType);
 
-        $createdSpecialTypes = $createdSpecialTypes->toArray();
-        $this->assertArrayHasKey('id', $createdSpecialTypes);
-        $this->assertNotNull($createdSpecialTypes['id'], 'Created SpecialTypes must have id specified');
-        $this->assertNotNull(SpecialTypes::find($createdSpecialTypes['id']), 'SpecialTypes with given id must be in DB');
-        $this->assertModelData($specialTypes, $createdSpecialTypes);
+        $createdSpecialType = $createdSpecialType->toArray();
+        $this->assertArrayHasKey('id', $createdSpecialType);
+        $this->assertNotNull($createdSpecialType['id'], 'Created SpecialType must have id specified');
+        $this->assertNotNull(SpecialType::find($createdSpecialType['id']), 'SpecialType with given id must be in DB');
+        $this->assertModelData($SpecialType, $createdSpecialType);
     }
 
     /**
@@ -42,12 +42,12 @@ class SpecialTypesRepositoryTest extends TestCase
      */
     public function test_read_special_types()
     {
-        $specialTypes = SpecialTypes::factory()->create();
+        $SpecialType = SpecialType::factory()->create();
 
-        $dbSpecialTypes = $this->specialTypesRepo->find($specialTypes->id);
+        $dbSpecialType = $this->SpecialTypeRepo->find($SpecialType->id);
 
-        $dbSpecialTypes = $dbSpecialTypes->toArray();
-        $this->assertModelData($specialTypes->toArray(), $dbSpecialTypes);
+        $dbSpecialType = $dbSpecialType->toArray();
+        $this->assertModelData($SpecialType->toArray(), $dbSpecialType);
     }
 
     /**
@@ -55,14 +55,14 @@ class SpecialTypesRepositoryTest extends TestCase
      */
     public function test_update_special_types()
     {
-        $specialTypes = SpecialTypes::factory()->create();
-        $fakeSpecialTypes = SpecialTypes::factory()->make()->toArray();
+        $SpecialType = SpecialType::factory()->create();
+        $fakeSpecialType = SpecialType::factory()->make()->toArray();
 
-        $updatedSpecialTypes = $this->specialTypesRepo->update($fakeSpecialTypes, $specialTypes->id);
+        $updatedSpecialType = $this->SpecialTypeRepo->update($fakeSpecialType, $SpecialType->id);
 
-        $this->assertModelData($fakeSpecialTypes, $updatedSpecialTypes->toArray());
-        $dbSpecialTypes = $this->specialTypesRepo->find($specialTypes->id);
-        $this->assertModelData($fakeSpecialTypes, $dbSpecialTypes->toArray());
+        $this->assertModelData($fakeSpecialType, $updatedSpecialType->toArray());
+        $dbSpecialType = $this->SpecialTypeRepo->find($SpecialType->id);
+        $this->assertModelData($fakeSpecialType, $dbSpecialType->toArray());
     }
 
     /**
@@ -70,11 +70,11 @@ class SpecialTypesRepositoryTest extends TestCase
      */
     public function test_delete_special_types()
     {
-        $specialTypes = SpecialTypes::factory()->create();
+        $SpecialType = SpecialType::factory()->create();
 
-        $resp = $this->specialTypesRepo->delete($specialTypes->id);
+        $resp = $this->SpecialTypeRepo->delete($SpecialType->id);
 
         $this->assertTrue($resp);
-        $this->assertNull(SpecialTypes::find($specialTypes->id), 'SpecialTypes should not exist in DB');
+        $this->assertNull(SpecialType::find($SpecialType->id), 'SpecialType should not exist in DB');
     }
 }

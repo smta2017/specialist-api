@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\SpecialistType;
-use App\Models\SpecialTypes;
+use App\Models\SpecialType;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -25,7 +25,7 @@ class SpecialistTypeFactory extends Factory
     {
         return [
             'user_id' => User::pluck('id')->random(),
-        'special_type_id' => SpecialTypes::pluck('id')->random(),
+        'special_type_id' => SpecialType::pluck('id')->random(),
         'created_at' => $this->faker->dateTimeBetween($startDate = '-2 years', $endDate = '2years', $timezone = null), // DateTime('2003-03-15 02:00:49', 'Africa/Lagos'),
         'updated_at' => $this->faker->dateTimeBetween($startDate = '-2 years', $endDate = '2years', $timezone = null), // DateTime('2003-03-15 02:00:49', 'Africa/Lagos'),
         ];

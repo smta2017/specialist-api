@@ -43,7 +43,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Order extends Model
 {
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
-
     use SoftDeletes;
 
     use HasFactory;
@@ -59,7 +58,7 @@ class Order extends Model
         'title',
         'body',
         'user_id',
-        'order_status_id',
+        'order_state_id',
         'customer_address_id',
         'special_type_id'
     ];

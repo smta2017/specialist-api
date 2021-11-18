@@ -42,7 +42,23 @@ class OrderCrudController extends CrudController
         CRUD::column('title');
         CRUD::column('body');
         CRUD::column('user_id');
-        CRUD::column('status_id');
+
+        $room = [ 
+            // any type of relationship
+            'name'         => 'order_state_id', // name of relationship method in the model
+            'type'         => 'relationship',
+            'label'        => 'Status', // Table column heading
+            // OPTIONAL
+            'entity'    => 'OrderState', // the method that defines the relationship in your Model
+            'attribute' => 'name', // foreign key attribute that is shown to user
+            'model'     => App\Models\OrderState::class, // foreign key model
+
+        ];
+
+        $this->crud->addColumns($room);
+
+
+        // CRUD::column('order_state_id');
         CRUD::column('customer_address_id');
         CRUD::column('special_type_id');
 
@@ -66,7 +82,7 @@ class OrderCrudController extends CrudController
         CRUD::field('title');
         CRUD::field('body');
         CRUD::field('user_id');
-        CRUD::field('status_id');
+        CRUD::field('order_state_id');
         CRUD::field('customer_address_id');
         CRUD::field('special_type_id');
 

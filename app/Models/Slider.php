@@ -52,6 +52,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class Slider extends Model
 {
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use SoftDeletes;
 
     use HasFactory;

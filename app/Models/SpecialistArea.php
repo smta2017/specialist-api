@@ -26,12 +26,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class SpecialistArea extends Model
 {
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use SoftDeletes;
 
     use HasFactory;
 
     public $table = 'specialist_areas';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -47,9 +48,16 @@ class SpecialistArea extends Model
      *
      * @var array
      */
-    protected $casts = [
-        
-    ];
+    protected $casts = [];
+
+
+    public function scopeWorkArea($query)
+    {
+        $user_id = \request('user_id');
+        if ($user_id) {
+            return $query->where('user_id', \request('user_id'));
+        }
+    }
 
     /**
      * Validation rules
@@ -70,6 +78,4 @@ class SpecialistArea extends Model
     {
         return $this->belongsTo(User::class);
     }
-
-    
 }

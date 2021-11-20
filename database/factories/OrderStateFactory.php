@@ -22,7 +22,7 @@ class OrderStateFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->randomElement(['revisioning', 'new', 'busy', 'complete']),
+            'name' => $this->faker->randomElement(['pending', 'new', 'busy', 'complete']),
             'created_at' => $this->faker->date('Y-m-d H:i:s'),
             'updated_at' => $this->faker->date('Y-m-d H:i:s')
         ];

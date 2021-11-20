@@ -175,7 +175,7 @@
 	/* datatable search overwrites */
 
 	.dataTables_filter {
-		text-align: right;
+		text-align: left;
 	}
 
 	.dataTables_filter label {

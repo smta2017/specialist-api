@@ -10,7 +10,9 @@ expired order date
 
 ============users============
 
-user filter working city-areas on [addresses] -> user_type -> plane -> pulk notification (sms-email)
+user filter working city-areas on [addresses] -> user_type -> plane 
+
+**** pulk notification (sms-email)
 
 gender + type edit - dropdown list
 
@@ -51,7 +53,7 @@ filter -> status
 add slide to slider
 
 
-================payment method=============
+================ payment method =============
 
 return msg while subscribe (options [select,one]) -> save on subscribe data as info
 

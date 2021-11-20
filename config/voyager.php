@@ -14,7 +14,7 @@ return [
         'add_default_role_on_register' => true,
         'default_role'                 => 'user',
         'default_avatar'               => 'users/default.png',
-        'redirect'                     => '/admin',
+        'redirect'                     => '/d_old_old',
     ],
 
     /*
@@ -163,13 +163,13 @@ return [
         'add_menu_item' => true,
 
         // which menu add item to
-        'default_menu' => 'admin',
+        'default_menu' => 'd_old',
 
         // When a BREAD is added, create the related Permission.
         'add_permission' => true,
 
         // which role add premissions to
-        'default_role' => 'admin',
+        'default_role' => 'd_old',
     ],
 
     /*

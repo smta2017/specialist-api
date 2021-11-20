@@ -31,6 +31,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class UserType extends Model
 {
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use SoftDeletes;
 
     use HasFactory;
@@ -68,5 +69,10 @@ class UserType extends Model
     public function Users()
     {
         return $this->hasMany(User::class);
+    }
+
+    public function Plans()
+    {
+        return $this->hasMany(Plan::class);
     }
 }

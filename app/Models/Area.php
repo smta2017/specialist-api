@@ -29,6 +29,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class Area extends Model
 {
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
 
     public $table = 'areas';
@@ -66,5 +67,9 @@ class Area extends Model
         'area_name_en' => 'required|string|max:200'
     ];
 
-    
+
+  public function City()
+  {
+    return $this->belongsTo(City::class);
+  }
 }

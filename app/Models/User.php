@@ -14,7 +14,7 @@ use Spatie\MediaLibrary\InteractsWithMedia;
 use Codebyray\ReviewRateable\Contracts\ReviewRateable;
 use Codebyray\ReviewRateable\Traits\ReviewRateable as ReviewRateableTrait;
 
-class User extends \TCG\Voyager\Models\User implements Auditable, MustVerifyEmail, HasMedia, ReviewRateable
+class User extends Authenticatable implements Auditable, MustVerifyEmail, HasMedia, ReviewRateable
 {
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
 
@@ -37,6 +37,14 @@ class User extends \TCG\Voyager\Models\User implements Auditable, MustVerifyEmai
         'phone',
         'facebook_id',
         'goolge_id',
+        'is_active',
+        'is_admin',
+        'email_verified_at',
+        'phone_verified_at',
+        'sms_notification',
+        'dop',
+        'gender',
+        'lang',
         'user_type_id',
     ];
 
@@ -96,6 +104,13 @@ class User extends \TCG\Voyager\Models\User implements Auditable, MustVerifyEmai
      * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
+
+
+    public function getNameIdAttribute($value)
+    {
+        return  $this->id .' - '.  $this->name ;
+    }
+
     public function scopeAdmin($query)
     {
         return $query->where('is_admin', 1);
@@ -121,7 +136,11 @@ class User extends \TCG\Voyager\Models\User implements Auditable, MustVerifyEmai
         return User::where('active', 1)->orderBy('created_at')->get();
     }
 
-
+    
+    public function workArea($crud = false)
+    {
+        return '<a class="btn btn-sm btn-link" target="_blank" href="specialist-area?user_id='.urlencode($this->id).'" data-toggle="tooltip" title="Just a demo custom button."><i class="la la-map-marker-alt"></i> '.trans('backpack::crud.model.areas').' </a>';
+    }
 
     /*
     |--------------------------------------------------------------------------

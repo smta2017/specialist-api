@@ -34,15 +34,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class City extends Model
 {
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
 
     public $table = 'cities';
     public $timestamps = false;
-
-
-
-
-
 
 
     public $fillable = [
@@ -78,5 +74,14 @@ class City extends Model
         'delivery_fees' => 'nullable|numeric'
     ];
 
-    
+    public function Areas()
+    {
+        return $this->hasMany(Area::class);
+    }
+
+    public function Country()
+    {
+      return $this->belongsTo(Country::class);
+    }
+
 }

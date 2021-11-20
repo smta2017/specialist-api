@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 /**
  * @SWG\Definition(
  *      definition="Order",
@@ -48,7 +49,7 @@ class Order extends Model
     use HasFactory;
 
     public $table = 'orders';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -88,13 +89,29 @@ class Order extends Model
         'special_type_id' => 'required'
     ];
 
-    
-public function scopeUserType($query ,$user_type_id = [])
-{
-    return $query->whereHas('User', function ($q) use($user_type_id) {
-        $q->whereIn('user_type_id', $user_type_id);
-    });
-}
+
+    public function comments($crud = false)
+    {
+        return '<a class="btn btn-sm btn-link" target="_blank" href="order-comment?order_id=' . urlencode($this->id) . '" data-toggle="tooltip" title="Just a demo custom button."><i class="la la-comments"></i> ' . trans('backpack::crud.model.comments') . ' </a>';
+    }
+
+    public function approv($crud = false)
+    {
+        if ($this->order_state_id>1) {
+            
+            return '<a class="btn btn-sm btn-link" href="/order/active?order_id=' . urlencode($this->id) . '" data-toggle="tooltip" title="Just a demo custom button."><i class="la la-check-circle"></i> ' . trans('backpack::crud.model.accept') . ' </a>';
+        }
+
+    }
+
+
+
+    public function scopeType($query, $user_type_id = [])
+    {
+        return $query->whereHas('User', function ($q) use ($user_type_id) {
+            $q->whereIn('user_type_id', 1);
+        });
+    }
 
 
     public function CustomerAddress()
@@ -102,11 +119,11 @@ public function scopeUserType($query ,$user_type_id = [])
         return $this->belongsTo(CustomerAddress::class);
     }
 
-    public function SpecialistType()
+    public function SpecialType()
     {
-        return $this->belongsTo(SpecialistType::class);
+        return $this->belongsTo(SpecialType::class);
     }
-   
+
     public function User()
     {
         return $this->belongsTo(User::class);
@@ -118,7 +135,7 @@ public function scopeUserType($query ,$user_type_id = [])
     }
 
 
-    
+
     public function OrderComments()
     {
         return $this->hasMany(OrderComment::class);

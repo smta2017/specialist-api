@@ -46,12 +46,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class CustomerAddress extends Model
 {
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use SoftDeletes;
 
     use HasFactory;
 
     public $table = 'customer_addresses';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -82,6 +83,11 @@ class CustomerAddress extends Model
         'notes' => 'string'
     ];
 
+    public function getCustAddAttribute($value)
+    {
+        return  $this->user_id .' - '.  $this->User->name . ' \ ' . $this->street;
+    }
+
     /**
      * Validation rules
      *
@@ -93,17 +99,17 @@ class CustomerAddress extends Model
 
     public function scopeCustomerAddress($query)
     {
-        $order_id= \request('user_id');
+        $order_id = \request('user_id');
         if ($order_id) {
             return $query->where('user_id', \request('user_id'));
         }
     }
-        
+
     public function Orders()
     {
         return $this->hasMany(Order::class);
     }
-    
+
     public function User()
     {
         return $this->belongsTo(User::class);
@@ -113,7 +119,4 @@ class CustomerAddress extends Model
     {
         return $this->belongsTo(Area::class);
     }
-
-
-
 }

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -56,6 +57,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
  */
 class Subscription extends Model
 {
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use SoftDeletes;
 
     use HasFactory;
@@ -88,6 +90,11 @@ class Subscription extends Model
         'order_count' => 'integer'
     ];
 
+    public function scopeActive($query)
+    {
+        return $query->whereDate('end_at', '>=', Carbon::now());
+    }
+    
     /**
      * Validation rules
      *

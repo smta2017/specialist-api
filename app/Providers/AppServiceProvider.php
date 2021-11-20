@@ -31,9 +31,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Voyager::addAction(\App\Actions\orderShowComments::class);
-        Voyager::addAction(\App\Actions\CustomerAddress::class);
-        Voyager::addAction(\App\Actions\SliderImages::class);
+        // Voyager::addAction(\App\Actions\orderShowComments::class);
+        // Voyager::addAction(\App\Actions\CustomerAddress::class);
+        // Voyager::addAction(\App\Actions\SliderImages::class);
 
 
 

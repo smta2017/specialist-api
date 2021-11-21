@@ -97,7 +97,7 @@ class Order extends Model
 
     public function approv($crud = false)
     {
-        if ($this->order_state_id>1) {
+        if ($this->order_state_id == 1) {
             
             return '<a class="btn btn-sm btn-link" href="/order/active?order_id=' . urlencode($this->id) . '" data-toggle="tooltip" title="Just a demo custom button."><i class="la la-check-circle"></i> ' . trans('backpack::crud.model.accept') . ' </a>';
         }

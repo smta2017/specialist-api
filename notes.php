@@ -45,8 +45,8 @@ user_type ->drop down list
 
 status to be pending first while confirmed
 
-show status expired:true/false
-filter -> status
+show status expired:true/false[*]
+filter -> status[*]
 
 ===============image slider===================
 
@@ -55,9 +55,10 @@ add slide to slider
 
 ================ payment method =============
 
+(api)
 return msg while subscribe (options [select,one]) -> save on subscribe data as info
 
-
+(api)
 =====================contact us notify email===================
 
 

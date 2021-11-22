@@ -100,6 +100,11 @@ class Slider extends Model
         'auto_play' => 'required'
     ];
 
+    public function slides($crud = false)
+    {
+        return '<a class="btn btn-sm btn-link" target="_blank" href="slider-image?slider_id=' . urlencode($this->id) . '" data-toggle="tooltip" title="Just a demo custom button."><i class="la la-comments"></i> ' . trans('backpack::crud.model.slides') . ' </a>';
+    }
+
     public function scopeActive($query)
     {
         return $query->where('is_active', 1);

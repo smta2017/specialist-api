@@ -47,6 +47,10 @@ class SliderCrudController extends CrudController
         CRUD::column('slider_height');
         CRUD::column('is_active');
 
+
+        CRUD::button('slides')->stack('line')->modelFunction('slides')->makeFirst();
+
+
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');

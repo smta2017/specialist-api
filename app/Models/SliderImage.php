@@ -117,8 +117,8 @@ class SliderImage extends Model
 
     public function scopeSliderImages($query)
     {
-        $order_id= \request('slider_id');
-        if ($order_id) {
+        $slider_id= \request('slider_id');
+        if ($slider_id) {
             return $query->where('slider_id', \request('slider_id'));
         }
     }

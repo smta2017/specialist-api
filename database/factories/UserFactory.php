@@ -32,7 +32,7 @@ class UserFactory extends Factory
             'user_type_id' =>  UserType::pluck('id')->random(),
             'gender' =>  $this->faker->randomElement(['mail','femail']),
             'phone' =>  $this->faker->phoneNumber,
-            'role_id'=>$this->faker->randomElement([1,2]),
+            // 'role_id'=>$this->faker->randomElement([1,2]),
         ];
     }
 

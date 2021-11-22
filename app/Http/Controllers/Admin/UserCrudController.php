@@ -127,6 +127,17 @@ class UserCrudController extends CrudController
         $this->crud->set('show.setFromDb', false);
 
         CRUD::column('id');
+          // image
+          $this->crud->addColumn([
+            'label' => trans('backpack::crud.model.photo'),
+            'name' => "avatar",
+            'type' => 'image',
+            'crop' => false, // set to true to allow cropping, false to disable
+            'aspect_ratio' => 1, // omit or set to 0 to allow any aspect ratio
+            // 'disk'      => 's3_bucket', // in case you need to show images from a different disk
+            // 'prefix'    => 'uploads/images/profile_pictures/' // in case your db value is only the file name (no path), you can use this to prepend your path to the image src (in HTML), before it's shown to the user;
+        ]);
+
         CRUD::column('name');
         $this->crud->addColumn([
             'name'         => 'UserType', // name of relationship method in the model
@@ -134,11 +145,14 @@ class UserCrudController extends CrudController
             'label'        => trans('backpack::crud.model.user_type'), // Table column heading
         ]);
 
-        $this->crud->addColumn([
-            'name'         => 'gender', // name of relationship method in the model
-            'type'         => 'relation',
-            'label'        => trans('backpack::crud.model.gender'), // Table column heading
-        ]);
+        CRUD::column('email');
+        CRUD::column('phone');
+        CRUD::column('email_verified_at')->type('text')->attributes(['readonly'  => 'readonly']);
+        CRUD::column('phone_verified_at')->type('text')->attributes(['readonly'  => 'readonly']);
+        CRUD::column('phone');
+        CRUD::column('gender');
+        CRUD::column('is_active');
+        // CRUD::column('user_type_id');
         CRUD::column('dob')->type('date')->label('Date of bairth');
 
         CRUD::column('created_at')->label(trans('backpack::crud.model.created_at'));

@@ -75,15 +75,14 @@ Route::group(['prefix' => 'en'], function () {
 
 
         Route::group(['middleware' => 'auth:sanctum'], function () {
-            // Route::group(['prefix' => 'users'], function () {
+            Route::group(['prefix' => '/users'], function () {
 
-                // Route::get('/profile', [UserController::class, 'profile']);
                 // Route::put('/profile', [UserController::class, 'editProfile']);
                 // Route::get('/', [UserController::class, 'tuserProfile']);
                 // Route::get('/notifications', [CustomerController::class, 'notifications']);
                 // Route::get('/unread-notifications', [CustomerController::class, 'unReadNotifications']);
                 // Route::get('/notifications/{id}/mark-read', [CustomerController::class, 'markAsRead']);
-            // });
+            });
             Route::post('/users/{id}/avatar', [UserController::class,'updateAvatar']);
             Route::apiResource('/users', UserController::class);
 

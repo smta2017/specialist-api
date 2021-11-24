@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 interface IUser extends IBase
 {
 
-    public function userProfile();
     public function allUsers();
     public function createUser(Request $request);
     public function updateUser(Request $request,$id);

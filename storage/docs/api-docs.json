@@ -3856,42 +3856,6 @@
                 ]
             }
         },
-        "/users/profile": {
-            "get": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "Display the specified Subscription",
-                "description": "Verify OTP code",
-                "produces": [
-                    "application/json"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "successful operation",
-                        "schema": {
-                            "properties": {
-                                "success": {
-                                    "type": "boolean"
-                                },
-                                "data": {
-                                    "$ref": "#"
-                                },
-                                "message": {
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            }
-        },
         "/users/{id}/avatar": {
             "post": {
                 "tags": [
@@ -3996,6 +3960,52 @@
             }
         },
         "/users/{id}": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Display the specified Subscription",
+                "description": "Verify OTP code",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "description": "Display the specified resource.",
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "description": "Display the specified resource.",
+                                    "$ref": "#"
+                                },
+                                "message": {
+                                    "description": "Display the specified resource.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            },
             "put": {
                 "tags": [
                     "User"
@@ -4039,15 +4049,15 @@
                         "schema": {
                             "properties": {
                                 "success": {
-                                    "description": "Update the specified resource in storage.\n\n\n/**",
+                                    "description": "Update the specified resource in storage.",
                                     "type": "boolean"
                                 },
                                 "data": {
-                                    "description": "Update the specified resource in storage.\n\n\n/**",
+                                    "description": "Update the specified resource in storage.",
                                     "$ref": "#"
                                 },
                                 "message": {
-                                    "description": "Update the specified resource in storage.\n\n\n/**",
+                                    "description": "Update the specified resource in storage.",
                                     "type": "string"
                                 }
                             },

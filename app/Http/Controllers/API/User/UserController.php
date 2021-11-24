@@ -30,53 +30,6 @@ class UserController extends AppBaseController
         return $this->user = $user;
     }
 
-
-    /**
-     *
-     * @return \Illuminate\Http\JsonResponse
-     *
-     * @param int $id
-     * @return mixed
-     *
-     * @SWG\Get(
-     *      path="/users/profile",
-     *      summary="Display the specified Subscription",
-     *      tags={"User"},
-     *      description="Verify OTP code",
-     *      produces={"application/json"},
-     *      security = {{"Bearer": {}}},
-     *      @SWG\Response(
-     *          response=200,
-     *          description="successful operation",
-     *          @SWG\Schema(
-     *              type="object",
-     *              @SWG\Property(
-     *                  property="success",
-     *                  type="boolean"
-     *              ),
-     *              @SWG\Property(
-     *                  property="data",
-     *                  ref="#"
-     *              ),
-     *              @SWG\Property(
-     *                  property="message",
-     *                  type="string"
-     *              )
-     *          )
-     *      )
-     * )
-     */
-
-    public function profile()
-    {
-        $users = $this->user->userProfile();
-
-        // return $users;
-        return ApiResponse::format('Users geting successfully', new UserResource($users));
-    }
-
-
-
     /**
      * @param int $id
      * @return Response
@@ -239,17 +192,56 @@ class UserController extends AppBaseController
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @param int $id
+     * @return mixed
+     *
+     * @SWG\Get(
+     *      path="/users/{id}",
+     *      summary="Display the specified Subscription",
+     *      tags={"User"},
+     *      description="Verify OTP code",
+     *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
+     *       @SWG\Parameter(
+     *          name="id",
+     *          description="user id",
+     *          type="integer",
+     *          required=true,
+     *          in="path"
+     *      ),
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  ref="#"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
      */
     public function show($id)
     {
-        return $this->user->find($id);
+        return ApiResponse::format('Users geting successfully', new UserResource($this->user->find($id)));
+
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * 
-    /**
+     *
      *
      * @return \Illuminate\Http\JsonResponse
      *

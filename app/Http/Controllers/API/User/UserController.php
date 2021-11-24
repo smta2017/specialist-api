@@ -403,9 +403,8 @@ class UserController extends AppBaseController
      *                   "name": "admin",
      *                   "email": "admin@admin.com",
      *                   "phone": null,
-     *                   "dop": null,
-     *                   "sms_notification": 1,
-     *                   "notes": 'test',
+     *                   "sms_notification": null,
+     *                   "notes": "uuytt",
      *                   "lang": null})
      *      ),
      * 

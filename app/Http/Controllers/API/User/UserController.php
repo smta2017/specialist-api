@@ -402,12 +402,9 @@ class UserController extends AppBaseController
      *          @SWG\Schema(example={
      *                   "name": "admin",
      *                   "email": "admin@admin.com",
-     *                   "email_verified_at": "2021-11-22T09:03:40.000000Z",
      *                   "phone": null,
-     *                   "phone_verified_at": null,
-     *                   "gender": null,
      *                   "dop": null,
-     *                   "sms_notification": null,
+     *                   "sms_notification": 1,
      *                   "notes": 'test',
      *                   "lang": null})
      *      ),

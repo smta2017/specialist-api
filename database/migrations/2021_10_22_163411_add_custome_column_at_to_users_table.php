@@ -31,6 +31,7 @@ class AddCustomeColumnAtToUsersTable extends Migration
             $table->date('dop')->nullable();
             $table->tinyInteger('sms_notification')->nullable();
             $table->string('lang')->nullable();
+            $table->test('notes')->nullable();
         });
     }
 

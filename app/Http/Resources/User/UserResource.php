@@ -16,6 +16,8 @@ class UserResource extends JsonResource
     public function toArray($request)
     {
         // return parent::toArray($request);
+
+        $cust_area = $this->CustomerAddresses[0]->Area;
         return [
             "id" => $this->id, // 852,
             "name" => $this->name, //"Ludwig Padberg",
@@ -33,6 +35,15 @@ class UserResource extends JsonResource
             "dop" => $this->dop, // null,
             "sms_notification" => $this->sms_notification, // null,
             "lang" => $this->lang, // null
+            "notes" => $this->notes, // null
+            "area" => $cust_area->area_name_ar, // null
+            "city" => $cust_area->City->city_name_ar, // null
+            "edu" => [
+                'edu1' => $this->edu1,
+                'edu2' => $this->edu2,
+                'edu3' => $this->edu3,
+                'edu4' => $this->edu4,
+            ], // null
             "rate" => $this->averageRating(1, true)[0]
         ];
     }

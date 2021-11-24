@@ -3861,7 +3861,7 @@
                 "tags": [
                     "User"
                 ],
-                "summary": "Remove the specified Plan from storage",
+                "summary": "save avatar to storage",
                 "description": "Delete Plan",
                 "consumes": [
                     "multipart/form-data"
@@ -3879,6 +3879,82 @@
                     },
                     {
                         "name": "avatar",
+                        "in": "formData",
+                        "description": "user photo",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/users/{id}/edu": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "save educatios to storage",
+                "description": "Delete Plan",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "edu1",
+                        "in": "formData",
+                        "description": "user photo",
+                        "required": true,
+                        "type": "file"
+                    },
+                    {
+                        "name": "edu2",
+                        "in": "formData",
+                        "description": "user photo",
+                        "required": true,
+                        "type": "file"
+                    },
+                    {
+                        "name": "edu3",
+                        "in": "formData",
+                        "description": "user photo",
+                        "required": true,
+                        "type": "file"
+                    },
+                    {
+                        "name": "edu4",
                         "in": "formData",
                         "description": "user photo",
                         "required": true,

@@ -79,7 +79,7 @@ class UserCrudController extends CrudController
             'type'  => 'dropdown',
             'label' => trans('backpack::crud.model.city')
         ], City::pluck('city_name_ar', 'id')->toArray(), function ($value) { // if the filter is active
-            $this->crud->query = $this->crud->query->whereHas('CustomerAddresses.Area', function ($query) use ($value) {
+            $this->crud->query = $this->crud->query->whereHas('CustomerAddresses.City', function ($query) use ($value) {
                 $query->where('city_id', $value);
             });
         });
@@ -113,7 +113,7 @@ class UserCrudController extends CrudController
 
         CRUD::button('work_area')->stack('line')->modelFunction('workArea')->makeFirst();
 
-
+        // user address
 
         /**
          * Columns can be defined using the fluent syntax or array syntax:

@@ -84,6 +84,7 @@ Route::group(['prefix' => 'en'], function () {
                 // Route::get('/notifications/{id}/mark-read', [CustomerController::class, 'markAsRead']);
             });
             Route::post('/users/{id}/avatar', [UserController::class,'updateAvatar']);
+            Route::post('/users/{id}/edu', [UserController::class,'updateEdu']);
             Route::apiResource('/users', UserController::class);
 
             Route::group(['prefix' => 'plans'], function () {

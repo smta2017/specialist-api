@@ -37,7 +37,7 @@ class UserController extends AppBaseController
      * @SWG\Post(
      *      consumes={"multipart/form-data"},
      *      path="/users/{id}/avatar",
-     *      summary="Remove the specified Plan from storage",
+     *      summary="save avatar to storage",
      *      tags={"User"},
      *      description="Delete Plan",
      *      produces={"application/json"},
@@ -56,6 +56,77 @@ class UserController extends AppBaseController
      *          required=true,
      *          in="formData"
      *      ),
+     * 
+     *     @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  type="string"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
+     */
+
+    public function updateAvatar(Request $request, $id)
+    {
+
+        $validator = \Validator::make(
+            $request->all(),
+            [
+                'avatar' => 'required|max:2048',
+            ]
+        );
+
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 401);
+        }
+
+        if ($files = $request->file('avatar')) {
+
+            //store file into document folder
+            $file = $request->avatar->store('public/user');
+
+            //store your file into database
+            $user =  User::find($id);
+            $user->avatar = substr($file, 7);
+            $user->save();
+            return ApiResponse::format('Users geting successfully', new UserResource($user));
+        }
+ 
+    }
+
+    /**
+     * @param int $id
+     * @return Response
+     *
+     * @SWG\Post(
+     *      consumes={"multipart/form-data"},
+     *      path="/users/{id}/edu",
+     *      summary="save educatios to storage",
+     *      tags={"User"},
+     *      description="Delete Plan",
+     *      produces={"application/json"},
+     *      security = {{"Bearer": {}}},
+     *      @SWG\Parameter(
+     *          name="id",
+     *          description="user id",
+     *          type="integer",
+     *          required=true,
+     *          in="path"
+     *      ),
+     *     
      * 
      *      @SWG\Parameter(
      *          name="edu1",
@@ -108,7 +179,7 @@ class UserController extends AppBaseController
      * )
      */
 
-    public function updateAvatar(Request $request, $id)
+    public function updateEdu(Request $request, $id)
     {
 
         $validator = \Validator::make(
@@ -118,7 +189,6 @@ class UserController extends AppBaseController
                 'edu3' => 'required|max:2048',
                 'edu3' => 'required|max:2048',
                 'edu4' => 'required|max:2048',
-                'avatar' => 'required|max:2048',
             ]
         );
 
@@ -127,17 +197,6 @@ class UserController extends AppBaseController
         }
 
 
-
-        if ($files = $request->file('avatar')) {
-
-            //store file into document folder
-            $file = $request->avatar->store('public/user');
-
-            //store your file into database
-            $user =  User::find($id);
-            $user->avatar = substr($file, 7);
-            $user->save();
-        }
 
         if ($files = $request->file('edu1')) {
 
@@ -349,6 +408,7 @@ class UserController extends AppBaseController
      *                   "gender": null,
      *                   "dop": null,
      *                   "sms_notification": null,
+     *                   "notes": 'test',
      *                   "lang": null})
      *      ),
      * 

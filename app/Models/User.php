@@ -43,9 +43,15 @@ class User extends Authenticatable implements Auditable, MustVerifyEmail, HasMed
         'phone_verified_at',
         'sms_notification',
         'dop',
+        'avatar',
         'gender',
         'lang',
         'user_type_id',
+        'edu1',
+        'edu2',
+        'edu3',
+        'edu4',
+        'notes',
     ];
 
     /**

@@ -22,10 +22,9 @@ class UserRepository extends BaseRepository implements IUser
         return User::class;
     }
 
-    public function userProfile($id)
+    public function userProfile()
     {
-        $user = $this->find($id);
-        return ApiResponse::format('success', $user);
+       return  auth()->user();
     }
 
     public function findUser($id)

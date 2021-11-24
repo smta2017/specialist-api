@@ -2227,15 +2227,6 @@
                 "produces": [
                     "application/json"
                 ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "formData",
-                        "description": "id of Plan",
-                        "required": true,
-                        "type": "file"
-                    }
-                ],
                 "responses": {
                     "200": {
                         "description": "successful operation",
@@ -3020,12 +3011,7 @@
                             "type": "object"
                         }
                     }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
+                }
             }
         },
         "/SpecialType/{id}": {
@@ -3065,12 +3051,7 @@
                             "type": "object"
                         }
                     }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
+                }
             },
             "put": {
                 "tags": [
@@ -3117,12 +3098,7 @@
                             "type": "object"
                         }
                     }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
+                }
             },
             "delete": {
                 "tags": [
@@ -3160,12 +3136,7 @@
                             "type": "object"
                         }
                     }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
+                }
             }
         },
         "/specialistAreas": {
@@ -3885,6 +3856,97 @@
                 ]
             }
         },
+        "/users/profile": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Display the specified Subscription",
+                "description": "Verify OTP code",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/users/{id}/avatar": {
+            "post": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "Remove the specified Plan from storage",
+                "description": "Delete Plan",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "user id",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "avatar",
+                        "in": "formData",
+                        "description": "user photo",
+                        "required": true,
+                        "type": "file"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
         "/users": {
             "get": {
                 "tags": [
@@ -3919,6 +3981,73 @@
                                 },
                                 "message": {
                                     "description": "verify phone OTP.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/users/{id}": {
+            "put": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "update user profile",
+                "description": "update user",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of Plan",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "profile",
+                        "required": false,
+                        "schema": {
+                            "example": {
+                                "name": "admin",
+                                "email": "admin@admin.com",
+                                "email_verified_at": "2021-11-22T09:03:40.000000Z",
+                                "phone": null,
+                                "phone_verified_at": null,
+                                "gender": null,
+                                "dop": null,
+                                "sms_notification": null,
+                                "lang": null
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "description": "Update the specified resource in storage.\n\n\n/**",
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "description": "Update the specified resource in storage.\n\n\n/**",
+                                    "$ref": "#"
+                                },
+                                "message": {
+                                    "description": "Update the specified resource in storage.\n\n\n/**",
                                     "type": "string"
                                 }
                             },

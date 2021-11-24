@@ -14,6 +14,7 @@ class AddCustomeColumnAtToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->text('avatar')->nullable();
             $table->string('phone')->nullable();
             $table->string('facebook_id')->nullable();
             $table->string('google_id')->nullable();
@@ -37,6 +38,7 @@ class AddCustomeColumnAtToUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('avatar');
             $table->dropColumn('phone');
             Schema::dropIfExists('facebook_id');
             Schema::dropIfExists('google_id');

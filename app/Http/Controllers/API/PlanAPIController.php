@@ -248,13 +248,7 @@ class PlanAPIController extends AppBaseController
      *      description="Delete Plan",
      *      produces={"application/json"},
      *      security = {{"Bearer": {}}},
-     *      @SWG\Parameter(
-     *          name="id",
-     *          description="id of Plan",
-     *          type="file",
-     *          required=true,
-     *          in="formData"
-     *      ),
+     *      
      *      @SWG\Response(
      *          response=200,
      *          description="successful operation",

@@ -403,9 +403,9 @@ class UserController extends AppBaseController
      *                   "name": "admin",
      *                   "email": "admin@admin.com",
      *                   "phone": null,
-     *                   "sms_notification": null,
+     *                   "sms_notification": 1,
      *                   "notes": "uuytt",
-     *                   "lang": null})
+     *                   "lang": "ar"})
      *      ),
      * 
      *      @SWG\Response(

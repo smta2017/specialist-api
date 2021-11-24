@@ -15,6 +15,10 @@ class AddCustomeColumnAtToUsersTable extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->text('avatar')->nullable();
+            $table->text('edu1')->nullable();
+            $table->text('edu2')->nullable();
+            $table->text('edu3')->nullable();
+            $table->text('edu4')->nullable();
             $table->string('phone')->nullable();
             $table->string('facebook_id')->nullable();
             $table->string('google_id')->nullable();

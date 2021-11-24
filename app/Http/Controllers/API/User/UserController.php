@@ -56,6 +56,36 @@ class UserController extends AppBaseController
      *          required=true,
      *          in="formData"
      *      ),
+     * 
+     *      @SWG\Parameter(
+     *          name="edu1",
+     *          description="user photo",
+     *          type="file",
+     *          required=true,
+     *          in="formData"
+     *      ),
+     *      @SWG\Parameter(
+     *          name="edu2",
+     *          description="user photo",
+     *          type="file",
+     *          required=true,
+     *          in="formData"
+     *      ),
+     *      @SWG\Parameter(
+     *          name="edu3",
+     *          description="user photo",
+     *          type="file",
+     *          required=true,
+     *          in="formData"
+     *      ),
+     *      @SWG\Parameter(
+     *          name="edu4",
+     *          description="user photo",
+     *          type="file",
+     *          required=true,
+     *          in="formData"
+     *      ),
+     * 
      *     @SWG\Response(
      *          response=200,
      *          description="successful operation",
@@ -84,7 +114,10 @@ class UserController extends AppBaseController
         $validator = \Validator::make(
             $request->all(),
             [
-                // 'id' => 'required',
+                'edu1' => 'required|max:2048',
+                'edu3' => 'required|max:2048',
+                'edu3' => 'required|max:2048',
+                'edu4' => 'required|max:2048',
                 'avatar' => 'required|max:2048',
             ]
         );
@@ -98,17 +131,58 @@ class UserController extends AppBaseController
         if ($files = $request->file('avatar')) {
 
             //store file into document folder
-            $file = $request->avatar->store('public/documents');
+            $file = $request->avatar->store('public/user');
 
             //store your file into database
             $user =  User::find($id);
             $user->avatar = substr($file, 7);
             $user->save();
-            return ApiResponse::format('Users geting successfully', new UserResource($user));
         }
 
+        if ($files = $request->file('edu1')) {
 
-        // return $request->all();
+            //store file into document folder
+            $file = $request->edu1->store('public/users/edu');
+
+            //store your file into database
+            $user =  User::find($id);
+            $user->edu1 = substr($file, 7);
+            $user->save();
+        }
+
+        if ($files = $request->file('edu2')) {
+
+            //store file into document folder
+            $file = $request->edu2->store('public/users/edu');
+
+            //store your file into database
+            $user =  User::find($id);
+            $user->edu2 = substr($file, 7);
+            $user->save();
+        }
+
+        if ($files = $request->file('edu3')) {
+
+            //store file into document folder
+            $file = $request->edu3->store('public/users/edu');
+
+            //store your file into database
+            $user =  User::find($id);
+            $user->edu3 = substr($file, 7);
+            $user->save();
+        }
+
+        if ($files = $request->file('edu4')) {
+
+            //store file into document folder
+            $file = $request->edu4->store('public/users/edu');
+
+            //store your file into database
+            $user =  User::find($id);
+            $user->edu4 = substr($file, 7);
+            $user->save();
+        }
+        return ApiResponse::format('Users geting successfully', new UserResource($user));
     }
 
 
@@ -235,7 +309,6 @@ class UserController extends AppBaseController
     public function show($id)
     {
         return ApiResponse::format('Users geting successfully', new UserResource($this->user->find($id)));
-
     }
 
     /**

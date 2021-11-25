@@ -20,7 +20,7 @@ class UserResource extends JsonResource
         $city_name='';
         if ($this->CustomerAddresses->count()) {
             $area_name = $this->CustomerAddresses[0]->Area->area_name_ar;
-            $city_name =  $this->CustomerAddresses[0]->Area->city_name_ar;
+            $city_name =  $this->CustomerAddresses[0]->Area->City->city_name_ar;
         } 
         return [
             "id" => $this->id, // 852,

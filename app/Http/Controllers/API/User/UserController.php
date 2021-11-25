@@ -104,7 +104,6 @@ class UserController extends AppBaseController
             $user->save();
             return ApiResponse::format('Users geting successfully', new UserResource($user));
         }
- 
     }
 
     /**
@@ -264,7 +263,7 @@ class UserController extends AppBaseController
      *      produces={"application/json"},
      *      security = {{"Bearer": {}}},
      *      @SWG\Parameter(
-     *          name="user_type",
+     *          name="user_type_id",
      *          description="user_type_id",
      *          type="integer",
      *          required=false,
@@ -297,9 +296,14 @@ class UserController extends AppBaseController
         $user = User::query();
         if ($request->user_type_id) {
             $user = $user->where('user_type_id', $request->user_type_id);
-        }
-        $users =  $user->get();
+            // return $user->get();
 
+        }
+        // return 'out';
+
+        $users =  $user->with('CustomerAddresses')->get();
+
+        // return $users;
 
         // $user = $this->model->findUser($id);
         // $rate = $user->averageRating(1, true);

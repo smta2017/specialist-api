@@ -3999,7 +3999,7 @@
                 ],
                 "parameters": [
                     {
-                        "name": "user_type",
+                        "name": "user_type_id",
                         "in": "query",
                         "description": "user_type_id",
                         "required": false,
@@ -4109,9 +4109,9 @@
                                 "name": "admin",
                                 "email": "admin@admin.com",
                                 "phone": null,
-                                "sms_notification": null,
+                                "sms_notification": 1,
                                 "notes": "uuytt",
-                                "lang": null
+                                "lang": "ar"
                             }
                         }
                     }

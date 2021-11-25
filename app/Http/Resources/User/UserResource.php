@@ -43,10 +43,10 @@ class UserResource extends JsonResource
             "area" => $area_name, // null
             "city" => $city_name, // null
             "edu" => [
-                ['edu1' => $this->edu1],
-                ['edu2' => $this->edu2],
-                ['edu3' => $this->edu3],
-                ['edu4' => $this->edu4],
+                ['edu' => $this->edu1],
+                ['edu' => $this->edu2],
+                ['edu' => $this->edu3],
+                ['edu' => $this->edu4],
             ], // null
             "rate" => $this->averageRating(1, true)[0]
         ];

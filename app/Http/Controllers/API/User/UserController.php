@@ -296,11 +296,7 @@ class UserController extends AppBaseController
         $user = User::query();
         if ($request->user_type_id) {
             $user = $user->where('user_type_id', $request->user_type_id);
-            // return $user->get();
-
         }
-        // return 'out';
-
         $users =  $user->with('CustomerAddresses')->get();
 
         // return $users;

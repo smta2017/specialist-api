@@ -35,7 +35,7 @@ class UserResource extends JsonResource
             "is_active" => $this->is_active, // null,
             "is_admin" => $this->is_admin, // null,
             "gender" => $this->gender, // null,
-            "user_type" => $this->user_type, // null,
+            "user_type_id" => $this->user_type_id, // null,
             "dop" => $this->dop, // null,
             "sms_notification" => $this->sms_notification, // null,
             "lang" => $this->lang, // null

@@ -98,7 +98,6 @@ Route::group(['prefix' => 'en'], function () {
 
             Route::resource('orderStates', App\Http\Controllers\API\OrderStateAPIController::class);
 
-            Route::resource('specialistTypes', SpecialistTypeAPIController::class);
 
             Route::put('/customerAddresses/default/{id}', [CustomerAddressAPIController::class, 'setDefault']);
             Route::resource('/customerAddresses', CustomerAddressAPIController::class);
@@ -118,6 +117,8 @@ Route::group(['prefix' => 'en'], function () {
             Route::post('/user/rate/{id}', [RatingAPIController::class, 'store']);
             Route::put('/user/rate/{user_id}/{rate_id}', [RatingAPIController::class, 'update']);
         });
+        Route::resource('specialistTypes', SpecialistTypeAPIController::class);
+
         Route::resource('SpecialType', SpecialTypeAPIController::class);
 
 

@@ -35,7 +35,6 @@ class SpecialistTypeAPIController extends AppBaseController
      *      tags={"SpecialistType"},
      *      description="Get all SpecialistTypes",
      *      produces={"application/json"},
-     *      security = {{"Bearer": {}}},
      *      @SWG\Response(
      *          response=200,
      *          description="successful operation",

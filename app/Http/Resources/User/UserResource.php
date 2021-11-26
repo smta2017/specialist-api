@@ -22,6 +22,7 @@ class UserResource extends JsonResource
             $area_name = $this->CustomerAddresses[0]->Area->area_name_ar;
             $city_name =  $this->CustomerAddresses[0]->Area->City->city_name_ar;
         } 
+        
         return [
             "id" => $this->id, // 852,
             "name" => $this->name, //"Ludwig Padberg",

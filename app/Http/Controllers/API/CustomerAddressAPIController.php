@@ -63,7 +63,6 @@ class CustomerAddressAPIController extends AppBaseController
     {
 
 
-        dd($request->all());
         $customerAddresses = $this->customerAddressRepository->all(
             auth()->check() ? ['user_id' => auth()->user()->id] : [],
             $request->get('skip'),

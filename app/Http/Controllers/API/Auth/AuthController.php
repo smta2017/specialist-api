@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API\Auth;
 use App\Helpers\ApiResponse;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Http\Resources\User\UserResource;
 use App\Repositories\Contracts\User\IAuth;
 use Illuminate\Http\Request;
 use Auth;
@@ -178,7 +179,7 @@ class AuthController extends AppBaseController
 
     public function me()
     {
-        return ApiResponse::format("sucsess", auth()->user());
+        return ApiResponse::format("sucsess",new UserResource(auth()->user()));
     }
 
     /**

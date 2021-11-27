@@ -9,6 +9,7 @@ use App\Models\Chat;
 use App\Repositories\ChatRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\AppBaseController;
+use App\Http\Resources\ChatConvResource;
 use App\Http\Resources\ChatResource;
 use Response;
 
@@ -233,7 +234,7 @@ class ChatAPIController extends AppBaseController
        
        $chats= Chat::select('from_user','to_user')->where('from_user',auth()->user()->id)->groupBy('from_user','to_user')->get();
 
-        return ApiResponse::format('Chats retrieved successfully' ,ChatResource::collection($chats));
+        return ApiResponse::format('Chats retrieved successfully' ,ChatConvResource::collection($chats));
   
     }
 }

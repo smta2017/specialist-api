@@ -559,4 +559,58 @@ class UserController extends AppBaseController
         });
         return ApiResponse::format('Email sent.', $mail);
     }
+
+
+
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     *
+     *
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @param int $id
+     * @return mixed
+     *
+     * @SWG\get(
+     *      path="/links",
+     *      summary="custom links",
+     *      tags={"User"},
+     *      description="update user",
+     *      produces={"application/json"},
+     * 
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  ref="#"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
+     */
+
+
+    public function links()
+    {
+        $links = [
+            'privacy' => \Request::root() . '/privacy',
+            'terms' => \Request::root() . '/terms',
+            'about' => \Request::root() . '/about',
+        ];
+        return ApiResponse::format('Email sent.', $links);
+    }
 }

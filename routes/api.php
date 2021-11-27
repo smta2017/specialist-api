@@ -125,6 +125,7 @@ Route::group(['prefix' => 'en'], function () {
 
         });
         Route::get('/contactus', [UserController::class, 'contactus']);
+        Route::get('/links', [UserController::class, 'links']);
 
         Route::resource('specialistTypes', SpecialistTypeAPIController::class);
 

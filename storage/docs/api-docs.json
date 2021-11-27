@@ -4358,6 +4358,40 @@
                 }
             }
         },
+        "/links": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "custom links",
+                "description": "update user",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "description": "Update the specified resource in storage.",
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "description": "Update the specified resource in storage.",
+                                    "$ref": "#"
+                                },
+                                "message": {
+                                    "description": "Update the specified resource in storage.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/userTypes": {
             "get": {
                 "tags": [

@@ -22,14 +22,14 @@ class UserResource extends JsonResource
             $area_name = $this->CustomerAddresses[0]->Area->area_name_ar;
             $city_name =  $this->CustomerAddresses[0]->Area->City->city_name_ar;
         } 
-        
+
         return [
             "id" => $this->id, // 852,
             "name" => $this->name, //"Ludwig Padberg",
             "email" => $this->email, //"hhackett@example.org",
             "email_verified_at" => $this->email_verified_at, //"2021-10-28T21:38:17.000000Z",
             "created_at" => $this->created_at, //"2021-10-28T21:38:18.000000Z",
-            "avatar" => $this->avatar, //"2021-10-28T21:38:18.000000Z",
+            "avatar" => \Request::root() . $this->avatar, //"2021-10-28T21:38:18.000000Z",
             "updated_at" => $this->updated_at, //"2021-10-28T21:38:18.000000Z",
             "phone" => $this->phone, // null,
             "phone_verified_at" => $this->phone_verified_at, // null,
@@ -44,10 +44,10 @@ class UserResource extends JsonResource
             "area" => $area_name, // null
             "city" => $city_name, // null
             "edu" => [
-                ['edu' => $this->edu1],
-                ['edu' => $this->edu2],
-                ['edu' => $this->edu3],
-                ['edu' => $this->edu4],
+                ['edu' => \Request::root() . $this->edu1],
+                ['edu' => \Request::root() . $this->edu2],
+                ['edu' => \Request::root() . $this->edu3],
+                ['edu' => \Request::root() . $this->edu4],
             ], // null
             "rate" => $this->averageRating(1, true)[0]
         ];

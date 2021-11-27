@@ -21,6 +21,7 @@ use App\Http\Controllers\API\SpecialTypeAPIController;
 use App\Http\Controllers\API\SubscriptionAPIController;
 use App\Http\Controllers\API\User\UserController;
 use App\Http\Controllers\API\UserTypeAPIController;
+use App\Http\Controllers\NotificationController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -77,9 +78,9 @@ Route::group(['prefix' => 'en'], function () {
         Route::group(['middleware' => 'auth:sanctum'], function () {
             Route::group(['prefix' => '/users'], function () {
 
-                // Route::get('/notifications', [CustomerController::class, 'notifications']);
-                // Route::get('/unread-notifications', [CustomerController::class, 'unReadNotifications']);
-                // Route::get('/notifications/{id}/mark-read', [CustomerController::class, 'markAsRead']);
+                Route::get('/notifications', [NotificationController::class, 'notifications']);
+                Route::get('/unread-notifications', [NotificationController::class, 'unReadNotifications']);
+                Route::get('/notifications/{id}/mark-read', [NotificationController::class, 'markAsRead']);
             });
             Route::post('/users/{id}/avatar', [UserController::class,'updateAvatar']);
             Route::post('/users/{id}/edu', [UserController::class,'updateEdu']);
@@ -117,6 +118,8 @@ Route::group(['prefix' => 'en'], function () {
             Route::post('/user/rate/{id}', [RatingAPIController::class, 'store']);
             Route::put('/user/rate/{user_id}/{rate_id}', [RatingAPIController::class, 'update']);
         });
+        Route::get('/contactus', [UserController::class, 'contactus']);
+
         Route::resource('specialistTypes', SpecialistTypeAPIController::class);
 
         Route::resource('SpecialType', SpecialTypeAPIController::class);

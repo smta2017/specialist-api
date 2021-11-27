@@ -13,6 +13,7 @@ use App\Http\Controllers\AppBaseController;
 use App\Http\Resources\CustomerAddress\CustomerAddressResource;
 use App\Http\Resources\Subscription\SubscriptionResource;
 use App\Http\Resources\User\UserResource;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends AppBaseController
 {
@@ -29,6 +30,7 @@ class UserController extends AppBaseController
     {
         return $this->user = $user;
     }
+
 
     /**
      * @param int $id
@@ -489,5 +491,72 @@ class UserController extends AppBaseController
     {
         $specialist = $this->user->getSpecialistByArea($area_id);
         return ApiResponse::format("success", $specialist);
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     *
+     *
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * @param int $id
+     * @return mixed
+     *
+     * @SWG\get(
+     *      path="/contactus",
+     *      summary="update user profile",
+     *      tags={"User"},
+     *      description="update user",
+     *      produces={"application/json"},
+     *  @SWG\Parameter(
+     *          name="title",
+     *          description="title of contact",
+     *          type="string",
+     *          required=false,
+     *          in="query"
+     *      ),
+     *  @SWG\Parameter(
+     *          name="body",
+     *          description="body of contact",
+     *          type="string",
+     *          required=false,
+     *          in="query"
+     *      ),
+     * 
+     *      @SWG\Response(
+     *          response=200,
+     *          description="successful operation",
+     *          @SWG\Schema(
+     *              type="object",
+     *              @SWG\Property(
+     *                  property="success",
+     *                  type="boolean"
+     *              ),
+     *              @SWG\Property(
+     *                  property="data",
+     *                  ref="#"
+     *              ),
+     *              @SWG\Property(
+     *                  property="message",
+     *                  type="string"
+     *              )
+     *          )
+     *      )
+     * )
+     */
+
+
+    public function contactus(Request $request)
+    {
+
+        $customer = User::find(3);
+        $mail =  Mail::send('emails.contact', (['title' => $request->title, 'body' => $request->body]), function ($m) use ($customer) {
+            $m->from('info@a5essai.com', 'a5essai');
+            $m->to('smta0@yahoo.com');
+            $m->subject('contact');
+        });
+        return ApiResponse::format('Email sent.', $mail);
     }
 }

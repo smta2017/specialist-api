@@ -3394,12 +3394,7 @@
                             "type": "object"
                         }
                     }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
+                }
             },
             "post": {
                 "tags": [
@@ -4182,6 +4177,56 @@
                 }
             }
         },
+        "/contactus": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "update user profile",
+                "description": "update user",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "title",
+                        "in": "query",
+                        "description": "title of contact",
+                        "required": false,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "query",
+                        "description": "body of contact",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "description": "Update the specified resource in storage.",
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "description": "Update the specified resource in storage.",
+                                    "$ref": "#"
+                                },
+                                "message": {
+                                    "description": "Update the specified resource in storage.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/userTypes": {
             "get": {
                 "tags": [
@@ -4379,6 +4424,132 @@
                         }
                     }
                 }
+            }
+        },
+        "/users/notifications": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "get user notifications",
+                "description": "user notifications",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "description": "Update the specified resource in storage.",
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "description": "Update the specified resource in storage.",
+                                    "$ref": "#"
+                                },
+                                "message": {
+                                    "description": "Update the specified resource in storage.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/users/unread-notifications": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "get user unread-notifications",
+                "description": "user notifications",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "description": "Update the specified resource in storage.",
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "description": "Update the specified resource in storage.",
+                                    "$ref": "#"
+                                },
+                                "message": {
+                                    "description": "Update the specified resource in storage.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/users/notifications/{id}/mark-read": {
+            "get": {
+                "tags": [
+                    "User"
+                ],
+                "summary": "update user profile",
+                "description": "update user",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "id of notification",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "description": "Update the specified resource in storage.",
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "description": "Update the specified resource in storage.",
+                                    "$ref": "#"
+                                },
+                                "message": {
+                                    "description": "Update the specified resource in storage.",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             }
         }
     },

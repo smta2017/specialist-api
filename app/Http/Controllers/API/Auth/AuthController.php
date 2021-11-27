@@ -64,7 +64,7 @@ class AuthController extends AppBaseController
      *          description="CustomerAddress that should be updated",
      *          required=false,
      *          @SWG\Schema(example= {
-     *                                "email":"sameh@test.com",
+     *                                "email":"admin@admin.com",
      *                                "password":"password"
      *                              }
      *          )

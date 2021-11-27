@@ -117,6 +117,12 @@ Route::group(['prefix' => 'en'], function () {
             Route::get('/user/rate/{id}', [RatingAPIController::class, 'getRate']);
             Route::post('/user/rate/{id}', [RatingAPIController::class, 'store']);
             Route::put('/user/rate/{user_id}/{rate_id}', [RatingAPIController::class, 'update']);
+
+            // Route::resource('chats', App\Http\Controllers\API\ChatAPIController::class);
+            Route::get('chats', [App\Http\Controllers\API\ChatAPIController::class,'conversations']);
+            Route::post('chats/send', [App\Http\Controllers\API\ChatAPIController::class,'send']);
+            Route::get('chats/{user_id}', [App\Http\Controllers\API\ChatAPIController::class,'conversation']);
+
         });
         Route::get('/contactus', [UserController::class, 'contactus']);
 
@@ -145,3 +151,5 @@ Route::group(['prefix' => 'en'], function () {
         Route::post('/test2', [PlanApiController::class, 'test']);
     });
 });
+
+

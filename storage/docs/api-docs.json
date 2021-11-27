@@ -227,7 +227,7 @@
                         "required": false,
                         "schema": {
                             "example": {
-                                "email": "sameh@test.com",
+                                "email": "admin@admin.com",
                                 "password": "password"
                             }
                         }
@@ -549,6 +549,137 @@
                         }
                     }
                 }
+            }
+        },
+        "/chats/send": {
+            "post": {
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Update the specified Chat in storage",
+                "description": "Update Chat",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Chat that should be updated",
+                        "required": false,
+                        "schema": {
+                            "example": {
+                                "to_user_id": 2,
+                                "msg": "hello"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/chats/{user_id}": {
+            "get": {
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Update the specified Chat in storage",
+                "description": "Update Chat",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "id of user",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/chats": {
+            "get": {
+                "tags": [
+                    "Chat"
+                ],
+                "summary": "Update the specified Chat in storage",
+                "description": "Update Chat",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
             }
         },
         "/cities": {
@@ -4573,6 +4704,39 @@
                 "area_name_en": {
                     "description": "area_name_en",
                     "type": "string"
+                }
+            }
+        },
+        "Chat": {
+            "required": [
+                "from_user",
+                "to_user",
+                "msg"
+            ],
+            "properties": {
+                "from_user": {
+                    "description": "from_user",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "to_user": {
+                    "description": "to_user",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "msg": {
+                    "description": "msg",
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "created_at",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updated_at": {
+                    "description": "updated_at",
+                    "type": "string",
+                    "format": "date-time"
                 }
             }
         },

@@ -1,6 +1,6 @@
 
 INSERT INTO `users` (`name`, `email`, `password`,`email_verified_at` ,`remember_token` ) VALUES
-('admin', 'admin@admin.com','$2y$10$nY.vWDJX3u1hViHVvFEyae5/2.lAucTH.u4ldvyt0jTbI1.5RwBZu','2021-11-22 09:03:40','mycCgT2vCH');
+('admin', 'admin@admin.com','$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi','2021-11-22 09:03:40','mycCgT2vCH');
 CREATE TABLE `areas` (
   `id` int(11) NOT NULL,
   `city_id` int(11) NOT NULL,

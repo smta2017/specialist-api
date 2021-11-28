@@ -22,6 +22,7 @@ use App\Http\Controllers\API\SubscriptionAPIController;
 use App\Http\Controllers\API\User\UserController;
 use App\Http\Controllers\API\UserTypeAPIController;
 use App\Http\Controllers\NotificationController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -82,8 +83,8 @@ Route::group(['prefix' => 'en'], function () {
                 Route::get('/unread-notifications', [NotificationController::class, 'unReadNotifications']);
                 Route::get('/notifications/{id}/mark-read', [NotificationController::class, 'markAsRead']);
             });
-            Route::post('/users/{id}/avatar', [UserController::class,'updateAvatar']);
-            Route::post('/users/{id}/edu', [UserController::class,'updateEdu']);
+            Route::post('/users/{id}/avatar', [UserController::class, 'updateAvatar']);
+            Route::post('/users/{id}/edu', [UserController::class, 'updateEdu']);
             Route::apiResource('/users', UserController::class);
 
             Route::group(['prefix' => 'plans'], function () {
@@ -119,10 +120,9 @@ Route::group(['prefix' => 'en'], function () {
             Route::put('/user/rate/{user_id}/{rate_id}', [RatingAPIController::class, 'update']);
 
             // Route::resource('chats', App\Http\Controllers\API\ChatAPIController::class);
-            Route::get('chats', [App\Http\Controllers\API\ChatAPIController::class,'conversations']);
-            Route::post('chats/send', [App\Http\Controllers\API\ChatAPIController::class,'send']);
-            Route::get('chats/{user_id}', [App\Http\Controllers\API\ChatAPIController::class,'conversation']);
-
+            Route::get('chats', [App\Http\Controllers\API\ChatAPIController::class, 'conversations']);
+            Route::post('chats/send', [App\Http\Controllers\API\ChatAPIController::class, 'send']);
+            Route::get('chats/{user_id}', [App\Http\Controllers\API\ChatAPIController::class, 'conversation']);
         });
         Route::get('/contactus', [UserController::class, 'contactus']);
         Route::get('/links', [UserController::class, 'links']);
@@ -154,3 +154,10 @@ Route::group(['prefix' => 'en'], function () {
 });
 
 
+Route::get('/allusers', function () {
+
+
+    foreach (User::whereNotNull('user_type_id')->get() as $value) {
+        echo $value->id . '-' . $value->email . ' -> ' . $value->UserType->name . '<br/>';
+    }
+});

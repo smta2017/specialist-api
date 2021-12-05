@@ -3942,7 +3942,7 @@
                 "tags": [
                     "Subscription"
                 ],
-                "summary": "Add Subscribe for user",
+                "summary": "get Subscribtions for user",
                 "description": "create Subscription",
                 "produces": [
                     "application/json"

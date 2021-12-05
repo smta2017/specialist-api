@@ -196,14 +196,14 @@ class ChatAPIController extends AppBaseController
   
     }
 
-      /**
+    /**
      * @param int $id
      * @param UpdateChatAPIRequest $request
      * @return Response
      *
      * @SWG\Get(
      *      path="/chats",
-     *      summary="Update the specified Chat in storage",
+     *      summary="Get chats conversetions",
      *      tags={"Chat"},
      *      description="Update Chat",
      *      produces={"application/json"},
@@ -232,7 +232,7 @@ class ChatAPIController extends AppBaseController
     public function conversations()
     {
        
-       $chats= Chat::select('from_user','to_user')->where('from_user',auth()->user()->id)->groupBy('from_user','to_user')->get();
+       $chats= Chat::select('from_user','to_user')->where('from_user',auth()->user()->id)->orWhere('to_user',auth()->user()->id)->groupBy('from_user','to_user')->get();
 
         return ApiResponse::format('Chats retrieved successfully' ,ChatConvResource::collection($chats));
   

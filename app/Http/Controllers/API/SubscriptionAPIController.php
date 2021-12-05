@@ -299,7 +299,7 @@ class SubscriptionAPIController extends AppBaseController
      *
      * @SWG\Post(
      *      path="/user-subscribe/{id}",
-     *      summary="Add Subscribe for user",
+     *      summary="add Subscribtions for user",
      *      tags={"Subscription"},
      *      description="create Subscription",
      *      produces={"application/json"},
@@ -339,6 +339,6 @@ class SubscriptionAPIController extends AppBaseController
         if (!$subscription) {
             return  ApiResponse::format('subscribe is out of count.');
         }
-        return ApiResponse::format('Subscription added as successfully', new SubscriptionResource($subscription));
+        return ApiResponse::format('Subscription added as successfully and wating for approved', new SubscriptionResource($subscription));
     }
 }

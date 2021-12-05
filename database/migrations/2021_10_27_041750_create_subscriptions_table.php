@@ -20,6 +20,7 @@ class CreateSubscriptionsTable extends Migration
             $table->integer('plan_id');
             $table->date('start_at');
             $table->date('end_at');
+            $table->integer('states')->default(0);
             $table->integer('order_count');
             $table->timestamps();
             $table->softDeletes();

@@ -651,7 +651,7 @@
                 "tags": [
                     "Chat"
                 ],
-                "summary": "Update the specified Chat in storage",
+                "summary": "Get chats conversetions",
                 "description": "Update Chat",
                 "produces": [
                     "application/json"
@@ -3942,7 +3942,7 @@
                 "tags": [
                     "Subscription"
                 ],
-                "summary": "get Subscribtions for user",
+                "summary": "add Subscribtions for user",
                 "description": "create Subscription",
                 "produces": [
                     "application/json"

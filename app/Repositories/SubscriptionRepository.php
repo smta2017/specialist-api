@@ -48,9 +48,17 @@ class SubscriptionRepository extends BaseRepository
     {
         $plan = Plan::findOrFail($id);
 
-        if ($plan->can_supscribing_count <= auth()->user()->Subscriptions->count() && !is_null($plan->can_supscribing_count)) {
+        if (
+            $plan->can_supscribing_count <= auth()->user()->Subscriptions->where('plan_id', $id)->count()
+            && !is_null($plan->can_supscribing_count)
+        ) {
 
-            return false;
+            return ['status' => 0, 'msg' => 'out_of_count'];
+        }
+
+
+        if (Subscription::where('user_id', auth()->user()->id)->active()->get()) {
+            return ['status' => 0, 'msg' => 'has_active_subscribe'];
         }
 
         $data =   [
@@ -60,6 +68,8 @@ class SubscriptionRepository extends BaseRepository
             'end_at' => Carbon::now()->addDays($plan->period_in_days),
             'order_count' => $plan->request_counts
         ];
-        return Subscription::create($data);
+
+        return ['status' => 1, 'data' => Subscription::create($data)];
+
     }
 }

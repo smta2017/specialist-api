@@ -334,11 +334,12 @@ class SubscriptionAPIController extends AppBaseController
      */
     public function UserSubscribe($id)
     {
+
         $subscription = $this->subscriptionRepository->storeUserSubscribe($id);
 
-        if (!$subscription) {
-            return  ApiResponse::format('subscribe is out of count.');
+        if (!$subscription['status']) {
+            return  ApiResponse::format($subscription['msg'],'',false);
         }
-        return ApiResponse::format('Subscription added as successfully and wating for approved', new SubscriptionResource($subscription));
+        return ApiResponse::format('النص اللي هيضيفه جمال', new SubscriptionResource($subscription['data']));
     }
 }
